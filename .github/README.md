@@ -5,7 +5,7 @@ Code vẽ hoạt hình 2D cho video YouTube, toàn bộ hình do code tự vẽ 
 - **Nhân Gian Chưa Kể**: truyện tâm linh dân gian Việt, tông tối, nhân vật búp bê, phủ sepia. Đây là nét vẽ hiện tại (từ tập 121).
 - **Hạt Bụi Xanh**: khoa học kiểu phim tài liệu (vũ trụ, sinh vật khổng lồ), có cảnh 3D.
 
-Không có trong repo: kịch bản, giọng đọc, pipeline render/TTS, video đã xuất, dữ liệu Studio. `.gitignore` chặn mọi thứ, chỉ mở đúng các file dưới đây.
+Kèm theo: 2 cảnh mẫu và code tạo giọng đọc (gọi API). Không có trong repo: kịch bản các tập, pipeline dựng video, video đã xuất, dữ liệu Studio. `.gitignore` chặn mọi thứ, chỉ mở đúng các file dưới đây.
 
 ## Cấu trúc
 
@@ -26,6 +26,37 @@ Không có trong repo: kịch bản, giọng đọc, pipeline render/TTS, video 
 | `channel/hat-bui-xanh.js` | Hạt Bụi Xanh: bảng màu `P`, nền vũ trụ/đại dương, Trái Đất, thước tỉ lệ, sinh vật và vật so sánh (cá voi, khủng long, xe buýt, Landmark 81…) |
 | `channel/hat-bui-xanh-3d.js` | Cảnh 3D qua three.js: Trái Đất xoay (texture ngày/đêm/mây tự cung cấp), hố đen |
 | `channel/art-hat-bui-xanh.js` | Ảnh đại diện và banner kênh Hạt Bụi Xanh |
+| `videos/mau-nhan-gian/`, `videos/mau-hat-bui-xanh/` | Cảnh mẫu ~30 giây cho mỗi kênh |
+| `scripts/tts.mjs` | Tạo giọng đọc: gọi API OmniVoice / ElevenLabs / Edge TTS, trả mp3 + mốc từng từ |
+| `scripts/vi-so.mjs`, `scripts/tts_edge.py` | Đổi số thành chữ trước khi đọc; Edge TTS miễn phí |
+
+## Mẫu
+
+**Nhân Gian Chưa Kể** (`videos/mau-nhan-gian/video.js`): gian nhà ban đêm, đèn dầu, nhân vật búp bê, lớp sepia.
+
+![Mẫu Nhân Gian Chưa Kể](mau-nhan-gian.jpg)
+
+**Hạt Bụi Xanh** (`videos/mau-hat-bui-xanh/video.js`): Trái Đất, cá voi xanh so với xe buýt và người.
+
+![Mẫu Hạt Bụi Xanh](mau-hat-bui-xanh.jpg)
+
+Mỗi cảnh trong `video.js` có lời đọc `say` và hàm vẽ `draw(k)`. Các mốc `{a}`, `{b}`… trong lời đọc được đổi thành thời điểm thật nhờ mốc từng từ của giọng đọc, rồi dùng trong hình bằng `k.at('a', 0.8)` hoặc `k.cue('b')`.
+
+## Tạo giọng đọc
+
+```bash
+cp .env.example .env          # điền khoá của nhà cung cấp muốn dùng
+node scripts/tts.mjs "Các cụ bảo, chim lợn kêu trên mái nhà nào, nhà ấy sắp có tang." out.mp3 --provider omnivoice --voice default --speed 0.95
+# → out.mp3 + out.mp3.json = [{ "t": 0, "d": 0.74, "text": "Các" }, …]
+```
+
+| `--provider` | Cần gì | Ghi chú |
+|---|---|---|
+| `omnivoice` | `OMNI_URL` (+ `OMNI_KEY`) trỏ tới server OmniVoice | Giọng `default` của 2 kênh. Số được đổi thành chữ trước khi gửi (`vi-so.mjs`) |
+| `elevenlabs` | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Model mặc định `eleven_flash_v2_5` |
+| `edge` | Python + `pip install edge-tts` | Miễn phí, giọng `vi-VN-NamMinhNeural` / `vi-VN-HoaiMyNeural` |
+
+Trong code: `import { tts } from './scripts/tts.mjs'; const words = await tts(text, 'out.mp3', { provider: 'omnivoice', voice: 'default' });`
 
 ## Dùng thế nào
 
