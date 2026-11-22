@@ -1,0 +1,67 @@
+[
+  {
+    "name": "m87",
+    "file": "assets/m87.jpg",
+    "w": 2560,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:Black hole - Messier 87 crop max res.jpg",
+    "title": "Black hole - Messier 87 crop max res",
+    "author": "Event Horizon Telescope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_hole_-_Messier_87_crop_max_res.jpg"
+  },
+  {
+    "name": "sgr-a",
+    "file": "assets/sgr-a.jpg",
+    "w": 1920,
+    "h": 1920,
+    "src": "commons",
+    "id": "File:A view of the Milky Way supermassive black hole Sagittarius A* in polarised light (eso2406a).jpg",
+    "title": "A view of the Milky Way supermassive black hole Sagittarius A* in polarised light (eso2406a)",
+    "author": "EHT Collaboration",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:A_view_of_the_Milky_Way_supermassive_black_hole_Sagittarius_A*_in_polarised_light_(eso2406a).jpg"
+  },
+  {
+    "name": "sao-choi",
+    "file": "assets/sao-choi.jpg",
+    "w": 1920,
+    "h": 2018,
+    "src": "commons",
+    "id": "File:Comet Hale-Bopp Phot-mar14-hbs-2.jpg",
+    "title": "Comet Hale-Bopp Phot-mar14-hbs-2",
+    "author": "ESO/E. Slawik",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Comet_Hale-Bopp_Phot-mar14-hbs-2.jpg"
+  },
+  {
+    "name": "ngan-ha",
+    "file": "assets/ngan-ha.jpg",
+    "w": 1920,
+    "h": 1965,
+    "src": "commons",
+    "id": "File:Comet Hale-Bopp Phot-mar14-hbs-1-hires.jpg",
+    "title": "Comet Hale-Bopp Phot-mar14-hbs-1-hires",
+    "author": "ESO/E. Slawik",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Comet_Hale-Bopp_Phot-mar14-hbs-1-hires.jpg"
+  },
+  {
+    "name": "gaia",
+    "file": "assets/gaia.jpg",
+    "w": 1920,
+    "h": 1358,
+    "src": "commons",
+    "id": "File:Gaia observes the Milky Way ESA24305955.jpeg",
+    "title": "Gaia observes the Milky Way ESA24305955",
+    "author": "European Space Agency",
+    "license": "CC BY-SA 3.0 igo",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Gaia_observes_the_Milky_Way_ESA24305955.jpeg"
+  }
+]

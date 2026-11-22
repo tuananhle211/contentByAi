@@ -1,0 +1,28 @@
+[
+ {
+  "name": "ca-map-trang",
+  "file": "assets/ca-map-trang.jpg",
+  "w": 1200,
+  "h": 836,
+  "src": "commons",
+  "id": "File:White shark.jpg",
+  "title": "White shark",
+  "author": "Terry Goss",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:White_shark.jpg"
+ },
+ {
+  "name": "ca-map-trang-mat",
+  "file": "assets/ca-map-trang-mat.jpg",
+  "w": 1920,
+  "h": 1624,
+  "src": "commons",
+  "id": "File:Guadalupe Island Great White Shark Face On.jpg",
+  "title": "Guadalupe Island Great White Shark Face On",
+  "author": "Sharkcrew",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Guadalupe_Island_Great_White_Shark_Face_On.jpg"
+ }
+]

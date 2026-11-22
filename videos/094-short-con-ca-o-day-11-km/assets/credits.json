@@ -1,0 +1,47 @@
+[
+ {
+  "name": "trieste",
+  "file": "assets/trieste.jpg",
+  "w": 2560,
+  "h": 2026,
+  "src": "commons",
+  "id": "File:Bathyscaphe Trieste with USS Lewis (DE-535) over the Marianas Trench on 23 January 1960 (USN 710619).jpg",
+  "title": "Bathyscaphe Trieste with USS Lewis (DE-535) over the Marianas Trench on 23 January 1960 (USN 710619)",
+  "author": "U.S. Navy photo USN 710619",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench_on_23_January_1960_(USN_710619).jpg"
+ },
+ {
+  "name": "con-do",
+  "type": "clip",
+  "dir": "assets/clips/con-do",
+  "frames": 271,
+  "fps": 30,
+  "srcFps": 23.98,
+  "srcW": 1920,
+  "srcH": 1080,
+  "from": 15,
+  "w": 1920,
+  "h": 1080,
+  "src": "commons",
+  "id": "File:Ex1402-dive06 red animal.webm",
+  "title": "Ex1402-dive06 red animal",
+  "author": "NOAA Okeanos Explorer",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Ex1402-dive06_red_animal.webm"
+ },
+ {
+  "name": "ca-oc-2",
+  "file": "assets/ca-oc-2.jpg",
+  "w": 482,
+  "h": 639,
+  "src": "commons",
+  "id": "File:Pseudoliparis swirei.png",
+  "title": "Pseudoliparis swirei",
+  "author": "Gerringer M. E., Linley T. D., Jamieson A. J., Goetze E., Drazen J. C.",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pseudoliparis_swirei.png"
+ }
+]

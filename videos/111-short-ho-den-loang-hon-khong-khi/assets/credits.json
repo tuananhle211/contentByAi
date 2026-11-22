@@ -1,0 +1,28 @@
+[
+  {
+    "name": "eht-m87",
+    "file": "assets/eht-m87.jpg",
+    "w": 2560,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:Black hole - Messier 87 crop max res.jpg",
+    "title": "Black hole - Messier 87 crop max res",
+    "author": "Event Horizon Telescope, uploader cropped and converted TIF to JPG",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_hole_-_Messier_87_crop_max_res.jpg"
+  },
+  {
+    "name": "mat-troi",
+    "file": "assets/mat-troi.jpg",
+    "w": 1920,
+    "h": 1920,
+    "src": "commons",
+    "id": "File:Full disk of the Sun (eso1703e-comparisona).jpg",
+    "title": "Full disk of the Sun (eso1703e-comparisona)",
+    "author": "NASA/SDO, ALMA (ESO/NAOJ/NRAO)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Full_disk_of_the_Sun_(eso1703e-comparisona).jpg"
+  }
+]

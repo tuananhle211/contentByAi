@@ -1,0 +1,21 @@
+[
+  { "id": "co-that", "name": "Chuyện tâm linh có thật (chung)", "seeds": ["chuyện tâm linh có thật", "truyện ma có thật", "chuyện ma có thật ở việt nam", "trải nghiệm tâm linh"] },
+  { "id": "lang-que", "name": "Truyện ma làng quê", "seeds": ["truyện ma làng quê", "truyện ma miền bắc", "truyện ma miền tây", "truyện ma ngày xưa"] },
+  { "id": "bi-an", "name": "Bí ẩn chưa có lời giải Việt Nam", "seeds": ["bí ẩn chưa có lời giải việt nam", "những bí ẩn chưa có lời giải", "hiện tượng lạ ở việt nam", "chuyện lạ có thật"] },
+  { "id": "ky-an", "name": "Kỳ án tâm linh", "seeds": ["kỳ án tâm linh", "vụ án tâm linh", "vụ án kỳ lạ nhất việt nam", "kỳ án có thật"] },
+  { "id": "bua-ngai", "name": "Bùa ngải / thư ếch", "seeds": ["bùa ngải", "chuyện bùa ngải có thật", "thư ếch", "bùa yêu"] },
+  { "id": "ma-da", "name": "Ma da / sông nước", "seeds": ["ma da", "chuyện ma da kéo chân", "ma sông nước", "chết đuối ma da"] },
+  { "id": "ma-lai", "name": "Ma lai / ma rừng / Tây Bắc", "seeds": ["ma lai", "ma rừng", "truyện ma tây bắc", "ma xó"] },
+  { "id": "boc-mo", "name": "Nghĩa địa / bốc mộ / cải táng", "seeds": ["chuyện bốc mộ", "cải táng", "người bốc mộ", "chuyện nghĩa địa"] },
+  { "id": "thay-phap", "name": "Thầy pháp / trừ tà", "seeds": ["thầy pháp", "trừ tà", "chuyện thầy bà", "đuổi vong"] },
+  { "id": "trung-tang", "name": "Trùng tang / hung niên", "seeds": ["trùng tang", "chuyện trùng tang có thật", "trùng tang liên táng", "chết giờ trùng"] },
+  { "id": "long-mach", "name": "Long mạch / mộ kết / phong thủy", "seeds": ["long mạch", "mộ kết", "trấn yểm", "bị yểm bùa"] },
+  { "id": "vong-theo", "name": "Vong theo / đám cưới ma / hồn nhập", "seeds": ["vong theo", "đám cưới ma", "ma nhập", "nhặt tiền ngoài đường"] },
+  { "id": "nha-ma", "name": "Nhà ma / biệt thự hoang", "seeds": ["nhà ma có thật", "biệt thự ma đà lạt", "ngôi nhà ma ám", "nhà hoang"] },
+  { "id": "benh-vien", "name": "Tâm linh bệnh viện / nhà xác", "seeds": ["chuyện ma bệnh viện", "nhà xác", "chuyện tâm linh bệnh viện", "ca trực đêm"] },
+  { "id": "chien-truong", "name": "Tâm linh chiến trường / tìm mộ", "seeds": ["chuyện tâm linh chiến trường", "ngoại cảm tìm mộ", "chuyện tâm linh người lính", "truyện ma trường sơn"] },
+  { "id": "ran-than", "name": "Rắn thần / báo oán", "seeds": ["rắn thần", "giết rắn bị báo oán", "chuyện báo oán", "nhân quả báo ứng"] },
+  { "id": "hoat-hinh", "name": "Truyện ma hoạt hình (định dạng)", "seeds": ["truyện ma hoạt hình", "hoạt hình kinh dị", "truyện kinh dị hoạt hình", "phim hoạt hình ma"] },
+  { "id": "twist", "name": "Truyện ngắn kinh dị có twist", "seeds": ["truyện ngắn kinh dị", "truyện kinh dị có thật", "truyện ma kết thúc bất ngờ", "truyện kinh dị ngắn"] },
+  { "id": "nghe-dem", "name": "Nghề đêm / nghề tâm linh", "seeds": ["tài xế taxi chở ma", "nghề hỏa táng", "người khâm liệm", "người giữ nghĩa trang"] }
+]

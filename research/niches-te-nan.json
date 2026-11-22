@@ -1,0 +1,20 @@
+[
+  { "id": "the-loai", "name": "Thể loại 'tại sao thật tệ khi' / cuộc đời của một", "seeds": ["tại sao thật tệ khi", "cuộc đời của một", "sự thật phía sau nghề", "góc khuất nghề"] },
+  { "id": "campuchia", "name": "Lừa đảo Campuchia / việc nhẹ lương cao", "seeds": ["lừa đảo campuchia", "việc nhẹ lương cao", "bị bán sang campuchia", "giải cứu người việt campuchia"] },
+  { "id": "lua-dao-mang", "name": "Thủ đoạn lừa đảo qua mạng", "seeds": ["thủ đoạn lừa đảo", "lừa đảo qua mạng", "giả danh công an lừa đảo", "lừa đảo tình cảm"] },
+  { "id": "co-bac", "name": "Cờ bạc online / cá độ", "seeds": ["cờ bạc online", "tài xỉu online", "nhà cái lừa đảo", "nghiện cờ bạc"] },
+  { "id": "tin-dung-den", "name": "Tín dụng đen / app vay", "seeds": ["tín dụng đen", "app vay tiền", "vay nặng lãi", "bùng nợ"] },
+  { "id": "ma-tuy", "name": "Ma tuý kiểu mới", "seeds": ["ma túy", "nước vui", "thuốc lá điện tử ma túy", "bóng cười"] },
+  { "id": "mai-dam", "name": "Mại dâm trá hình / sugar", "seeds": ["massage trá hình", "sugar baby", "gái gọi", "karaoke tay vịn"] },
+  { "id": "da-cap", "name": "Đa cấp / hội thảo", "seeds": ["đa cấp", "lừa đảo đa cấp", "hội thảo đa cấp", "bán hàng đa cấp"] },
+  { "id": "tien-ao", "name": "Sàn ảo / đầu tư lừa đảo", "seeds": ["sàn tiền ảo lừa đảo", "đầu tư lừa đảo", "sàn forex lừa đảo", "lùa gà"] },
+  { "id": "nghe-kho", "name": "Nghề khổ / nghề lạ", "seeds": ["nghề khổ nhất", "nghề nguy hiểm nhất", "nghề lạ kiếm tiền", "nghề kiếm tiền nhiều nhất"] },
+  { "id": "xkld", "name": "Xuất khẩu lao động / lao động chui", "seeds": ["xuất khẩu lao động", "lao động bất hợp pháp", "đi nhật bỏ trốn", "đi hàn lao động"] },
+  { "id": "nha-tu", "name": "Đời trong tù / trại cai nghiện", "seeds": ["cuộc sống trong tù", "trại giam", "trại cai nghiện", "tử tù"] },
+  { "id": "giang-ho", "name": "Giang hồ / bảo kê", "seeds": ["giang hồ", "bảo kê", "giang hồ mạng", "băng nhóm"] },
+  { "id": "kol-livestream", "name": "KOL / livestream lừa", "seeds": ["kol lừa đảo", "livestream lừa đảo", "giàu ảo", "idol tiktok"] },
+  { "id": "buon-nguoi", "name": "Buôn người / bán nội tạng", "seeds": ["buôn người", "bán sang trung quốc", "bán thận", "mang thai hộ"] },
+  { "id": "ngoai-tinh", "name": "Ngoại tình / đánh ghen / hôn nhân", "seeds": ["ngoại tình", "đánh ghen", "lấy chồng nước ngoài", "con giáp thứ 13"] },
+  { "id": "vu-an", "name": "Vụ án / kỳ án Việt kể lại", "seeds": ["vụ án chấn động", "kỳ án việt nam", "hồ sơ vụ án", "chuyện cảnh giác"] },
+  { "id": "ai-scam", "name": "Lừa đảo AI / deepfake", "seeds": ["lừa đảo deepfake", "lừa đảo bằng ai", "lừa đảo chuyển khoản", "lừa đảo mua hàng online"] }
+]

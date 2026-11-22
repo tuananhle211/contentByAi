@@ -1,0 +1,72 @@
+[
+  {
+    "name": "oumuamua-mh",
+    "file": "assets/oumuamua-mh.jpg",
+    "w": 1920,
+    "h": 1256,
+    "src": "commons",
+    "id": "File:Eso1737a-shorter.jpg",
+    "title": "Eso1737a-shorter",
+    "author": "Original ESO/M. Kornmesser (+ background position from original change by Nagualdesign)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Eso1737a-shorter.jpg"
+  },
+  {
+    "name": "oumuamua-that",
+    "file": "assets/oumuamua-that.jpg",
+    "w": 1280,
+    "h": 792,
+    "src": "commons",
+    "id": "File:A2017U1 5gsmoothWHT enhanced.jpg",
+    "title": "A2017U1 5gsmoothWHT enhanced",
+    "author": "Alan Fitzsimmons (Astrophysics Research Centre, Queen's University Belfast), Isaac Newton Group (https://www.ing.iac.es/ - Instituto de Astrofísica de Canarias) Derivative: nagualdesign",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:A2017U1_5gsmoothWHT_enhanced.jpg"
+  },
+  {
+    "name": "pan-starrs",
+    "file": "assets/pan-starrs.jpg",
+    "w": 1920,
+    "h": 1280,
+    "src": "commons",
+    "id": "File:Pan-STARRS Observatory (2019-12-4315).jpg",
+    "title": "Pan-STARRS Observatory (2019-12-4315)",
+    "author": "R. Ratkowski",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Pan-STARRS_Observatory_(2019-12-4315).jpg"
+  },
+  {
+    "name": "sao-choi",
+    "file": "assets/sao-choi.jpg",
+    "w": 2560,
+    "h": 1718,
+    "src": "commons",
+    "id": "File:2020-07-21 - Neowise - D Rousseau.jpg",
+    "title": "2020-07-21 - Neowise - D Rousseau",
+    "author": "Davrou",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2020-07-21_-_Neowise_-_D_Rousseau.jpg"
+  },
+  {
+    "name": "oumuamua-mp",
+    "type": "clip",
+    "dir": "assets/clips/oumuamua-mp",
+    "frames": 420,
+    "fps": 30,
+    "srcFps": 25,
+    "srcW": 1920,
+    "srcH": 1080,
+    "from": 0,
+    "w": 1920,
+    "h": 1080,
+    "src": "commons",
+    "id": "File:Animation of artist's concept of `Oumuamua.webm",
+    "title": "Animation of artist's concept of `Oumuamua",
+    "author": "ESO/M. Kornmesser",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Animation_of_artist%27s_concept_of_%60Oumuamua.webm"
+  }
+]

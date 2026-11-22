@@ -1,0 +1,521 @@
+// Nhân Gian Chưa Kể — tập 3: Gọi Hồn | Người Về Lại Gọi Vợ Mình Là Chị. Kịch bản duyệt 14/11: kich-ban.md.
+// Một giọng người kể, kể liền mạch như tập 1. Tục gọi hồn sau 49 ngày kể dưới dạng "làng tôi có tục"; truyện không cổ súy:
+// 9/10 câu bà đồng nói đều tìm được người mớm. Truyện hư cấu, tên người tên làng hư cấu.
+import * as thumbs from '/videos/106-goi-hon-nguoi-ve-goi-vo-la-chi/thumbs.js';
+import { PAPER, AMBER, COLD, shade, cold, tag, quote, chapter, oil, nextScene, subScene } from '/channel/nhan-gian.js';
+import { houseHD, filmGrade } from '/channel/nhan-gian-hd.js';
+import { charHD, kitchenHD, KITCHEN_HD, altarRoomHD, altarLightsHD, nhaTrongHD, NHA_HD, lotusHD, quanHD, highwayHD, passHD } from '/channel/nhan-gian-hd-sets.js';
+import {
+  HUY, HUY_LON, BO, ME, BA_NOI, CHU_TU, CHU_THINH, BA_HAI, LIEN, BIN, DAN,
+  medium, truck, rod, bike, receipt, tenLines,
+} from '/channel/nhan-gian-lang.js';
+
+
+// Phông HD + nhân vật có khối (nâng cấp 15/11).
+const ch = (k, x, y, h, o) => charHD(k, x, y, h, o);
+const PHOTO_BO = (k) => () => k.char(960, 560, 230, { ...BO, face: 'calm', shadow: false });
+const altarRoom = (k, o = {}) => altarRoomHD(k, o, PHOTO_BO(k));
+const altarLights = altarLightsHD;
+const kitchen = kitchenHD, KITCHEN = KITCHEN_HD, house = houseHD, nhaTrong = nhaTrongHD, NHA = NHA_HD, lotus = lotusHD, pass = passHD;
+const quan = (k, o = {}) => quanHD(k, o, () => { k.char(1460, 830, 230, { ...BO, face: 'happy', pose: 'hold', shadow: false }); k.char(1500, 790, 115, { ...BIN, face: 'happy', shadow: false }); });
+const highway = (k, x, o = {}) => { highwayHD(k, o); if (o.rider) bike(k, x, 880, 1, o.rider); };
+const zoom = (k, cx, cy, s, fn) => k.group({ x: cx, y: cy, s }, () => k.group({ x: -cx, y: -cy }, fn));
+const lie = (k, x, y, h, o) => k.group({ x, y, r: -Math.PI / 2 }, () => ch(k, 0, 0, h, o));
+const black = (k) => { k.ctx.fillStyle = '#05060a'; k.ctx.fillRect(-200, -200, k.W + 400, k.H + 400); };
+const after = (k, c, off = 0) => k.t > k.cue(c, off);
+const kneel = (k, x, y, h, o) => k.group({ x, y }, () => ch(k, 0, 0, h * 0.72, o));
+const TEN = ['Tiếng ho khan', 'Gọi bà nội là "mẹ"', 'Cái phích móp', 'Con dao dưới ghế lái', 'Gói tiền dưới chân bàn thờ', 'Gọi mẹ tôi là "chị"', '"Em xin lỗi chị"', 'Thằng bé ở Ba Lăng', '"Tôi chỉ là cái ống"', '"Tép ơi…"'];
+// Buổi gọi hồn: bà đồng trước bàn thờ, cả nhà quỳ sau. o.turn hướng khăn, o.shake, o.dim (tối đèn).
+function seance(k, o = {}) {
+  altarRoom(k, {});
+  medium(k, 960, 940, 360, { shake: o.shake ?? 0, turn: o.turn ?? 0, slump: o.slump ?? 0 });
+  kneel(k, 560, 1010, 470, { ...BA_NOI, face: o.baFace ?? 'sad', tears: o.baTears ?? 0, pose: 'hold' });
+  kneel(k, 360, 1010, 440, { ...ME, face: o.meFace ?? 'blank', tilt: o.meDown ? 0.35 : 0 });
+  kneel(k, 1360, 1010, 470, { ...CHU_THINH, face: o.thFace ?? 'blank', flip: true });
+  kneel(k, 1560, 1010, 330, { ...HUY, face: o.huyFace ?? 'sad', flip: true });
+  shade(k, o.dark ?? 0.72, [...altarLights(1), { x: 960, y: 700, r: 360, warm: 0.6 }]);
+}
+
+const grain = (sc) => ({ ...sc, draw(k) { sc.draw(k); filmGrade(k, 'day', 0.06); } });
+const video = {
+  meta: {
+    title: 'Gọi Hồn | Người Về Lại Gọi Vợ Mình Là Chị',
+    description: `Bốn mươi chín ngày sau khi bố tôi mất, nhà tôi mời bà đồng về gọi hồn. Người về nói đúng giọng bố, kể đúng chỗ bố giấu tiền dưới chân bàn thờ. Rồi người ấy quay sang mẹ tôi, gọi: "Chị ơi."
+Mười lăm năm lấy nhau, bố tôi chưa bao giờ gọi mẹ là chị.
+
+Truyện gọi hồn kể bằng hoạt hình: một chuyến xe đêm trên đèo, một thị trấn giữa đường, và mười câu bà đồng nói. Chín câu có người mớm. Còn câu thứ mười…`,
+    footer: `📖 Truyện hư cấu dựa trên tục gọi hồn trong dân gian. Truyện không khuyến khích mê tín: phần lớn những gì bà đồng nói đều có lời giải. Tên người, tên làng và tình tiết đều hư cấu.
+🕯️ Nhân Gian Chưa Kể: những chuyện người xưa truyền tai nhau, mà chưa ai giải thích được.`,
+    links: [['▶ Tập trước: Ma Da', '101-ma-da-moi-nam-song-lay-mot-nguoi'], ['🔔 Đăng ký', 'https://www.youtube.com/@nhangianchuake?sub_confirmation=1']],
+    tags: ['gọi hồn', 'truyện ma', 'chuyện tâm linh', 'truyện ma hoạt hình', 'bà đồng', 'ngoại cảm', 'chuyện tâm linh có thật', 'truyện ma làng quê', 'hoạt hình kinh dị', 'nhân gian chưa kể'],
+    hashtags: ['truyenma', 'goihon', 'tamlinh'],
+    gpu: true, // vẽ canvas bằng GPU (Metal) cho nhanh — người dùng yêu cầu 14/11
+    style: 'clean', tts: 'omnivoice', omniVoice: 'default', speed: 0.9,
+    lead: 0.6, tail: 1.3, pause: 0.45,
+    transition: 'fade', sfxTransitions: false, camera: 0.03, scribble: false,
+    sfxVolume: 0.5, paper: '#05060a', privacy: 'private',
+  },
+  thumbnail: thumbs.a,
+
+  scenes: [
+    {
+      chapter: 'Mở đầu',
+      say: '{a}Bốn mươi chín ngày sau khi bố tôi mất, nhà tôi mời bà đồng về gọi hồn. {b}Người về nói đúng giọng bố tôi. Kể đúng những chuyện mà chỉ bố tôi biết. Cả nhà tôi khóc như mưa. {c}Rồi người ấy quay sang mẹ tôi, khẽ gọi: Chị ơi. {d}Mười lăm năm lấy nhau, bố tôi chưa bao giờ gọi mẹ là chị.',
+      sfx: [['gong', 0, 0.25], ['stinger', 'c', 0.4]],
+      draw(k) {
+        zoom(k, 960, 760, 1.25 - 0.25 * k.at('a', 6, 'inOut'), () => seance(k, { shake: after(k, 'b') && !after(k, 'c') ? 0.5 : 0, turn: after(k, 'c') ? -1 : 0, meDown: after(k, 'c'), baTears: after(k, 'b') ? 1 : 0, baFace: after(k, 'b') ? 'cry' : 'sad' }));
+        tag(k, 'BỐN MƯƠI CHÍN NGÀY', 'a');
+        quote(k, '"Chị ơi."', 'c', { color: COLD, until: 'd' });
+      },
+    },
+    {
+      say: '{a}Để kể vì sao người ấy gọi mẹ tôi như thế, tôi phải kể lại từ cái đêm chiếc xe tải của bố lao xuống đèo.',
+      sfx: [['wind', 0, 0.3]],
+      draw(k) {
+        pass(k, { rain: true });
+        truck(k, k.lerp(200, 1100, k.at('a', 6, 'linear')), 830, 0.7, { lights: true });
+        shade(k, 0.6, [{ x: k.lerp(500, 1400, k.at('a', 6, 'linear')), y: 760, r: 500 }]);
+      },
+    },
+    {
+      say: '{a}Đây là Nhân Gian Chưa Kể. Nếu bạn muốn nghe tiếp những chuyện chưa có lời giải, hãy bấm đăng ký. {c}Còn bây giờ, xin bạn tắt bớt đèn.',
+      sfx: [['click', 'c', 0.5]],
+      draw(k) {
+        black(k); oil(k, 960, 820, 1.6);
+        const off = k.at('c', 1.2);
+        shade(k, 0.75 + 0.2 * off, [{ x: 960, y: 650, r: 700 - 300 * off, flicker: 1, warm: 1 }]);
+        k.text('NHÂN GIAN CHƯA KỂ', k.W / 2, 230, { size: 92, font: 'title', color: PAPER, fx: 'fade', p: k.at('a', 1) });
+        k.text('Gọi Hồn · Người Về Lại Gọi Vợ Mình Là Chị', k.W / 2, 330, { size: 46, color: AMBER, fx: 'fade', p: k.at('a', 1.5) });
+      },
+    },
+
+    // ===== CHƯƠNG 1 =====
+    {
+      chapter: 'Người lái xe đường dài',
+      say: '{a}Bố tôi lái xe tải đường dài, chở hàng từ xuôi lên mạn ngược. Mỗi tháng bố về nhà hai lần, mỗi lần chỉ ở một đêm. {b}Bố ít nói. Ở nhà, bố hiếm khi cười, hiếm khi gọi tên ai. Mẹ tôi cũng ít nói. Hai người ngồi ăn cơm với nhau mà cả bữa không ai nói câu nào, như hai người lạ ngồi chung một quán.',
+      draw(k) {
+        if (k.t < k.cue('b')) { house(k, { time: 'day' }); truck(k, 1880, 860, 0.6, {}); ch(k, 1300, 900, 440, { ...BO, face: 'calm', walk: true, walkSpeed: 0.5 }); k.vignette(0.35); tag(k, '1997', 'a'); }
+        else { kitchen(k, { fire: 0.6, bowl: false }); const { ctx } = k; ctx.fillStyle = '#5a4030'; ctx.beginPath(); ctx.ellipse(960, 896, 280, 26, 0, 0, Math.PI * 2); ctx.fill(); ch(k, 760, 900, 470, { ...BO, face: 'blank' }); ch(k, 1160, 900, 430, { ...ME, face: 'blank', flip: true }); ch(k, 960, 900, 320, { ...HUY, face: 'blank' }); shade(k, 0.55, [KITCHEN.fire]); }
+        chapter(k, 1, 'Người lái xe đường dài');
+      },
+    },
+    {
+      say: '{a}Nhưng khi chỉ có hai bố con, bố là một người khác. {b}Bố gọi tôi là thằng Tép, vì hồi bé tôi gầy nhom như con tép. Cái tên ấy bố chỉ gọi khi không có ai nghe thấy. Trước mặt mẹ, trước mặt bà, bố vẫn gọi tôi là Huy. {c}Sáng hôm bố đi chuyến cuối cùng, bố xoa đầu tôi, bảo mùng Một tháng sau về, hai bố con đi câu ở đầm sen. Tôi gật đầu. Không ai khác nghe thấy lời hẹn ấy.',
+      draw(k) {
+        lotus(k, { time: 'dawn' });
+        ch(k, 760, 920, 470, { ...BO, face: after(k, 'a') ? 'happy' : 'calm', pose: after(k, 'c') ? 'wave' : 'hold' });
+        ch(k, 1000, 920, 330, { ...HUY, face: 'happy', pose: 'hold' });
+        rod(k, 800, 760, 1); rod(k, 1030, 800, 0.8);
+        k.vignette(0.35);
+        quote(k, '"Thằng Tép"', 'b', { color: AMBER, until: 'c' });
+        quote(k, 'Mùng Một, đi câu ở đầm sen.', 'c', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Chiều hôm ấy, trước khi đi, bố ngồi ở hiên rít điếu cày, như mọi lần. Bố hút thuốc lào từ năm mười lăm tuổi, nên lúc nào cũng có một tiếng ho khan, khàn đặc, ho xong thì hắng giọng hai cái. Cả xóm nghe tiếng ho là biết bố tôi về. {b}Cạnh bố là cái phích nước bố mang theo mỗi chuyến, bị móp một bên. Tôi hỏi sao không mua cái mới. Bố bảo nó móp chứ có hỏng đâu, đồ còn dùng được thì cứ dùng.',
+      draw(k) {
+        house(k, { time: 'dusk' });
+        ch(k, 900, 880, 440, { ...BO, face: 'calm', pose: 'hold' });
+        const { ctx } = k;
+        ctx.strokeStyle = '#a8894f'; ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(860, 700); ctx.lineTo(820, 860); ctx.stroke();
+        ctx.save(); ctx.globalAlpha = 0.35; k.steam(900, 640, 1); ctx.restore();
+        ctx.fillStyle = '#c8402a'; ctx.strokeStyle = '#211a15'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(1040, 880); ctx.lineTo(1040, 760); ctx.quadraticCurveTo(1060, 740, 1080, 760); ctx.lineTo(1080, 790); ctx.quadraticCurveTo(1068, 800, 1080, 810); ctx.lineTo(1080, 880); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ch(k, 1200, 880, 320, { ...HUY, face: 'calm', flip: true });
+        k.vignette(0.4);
+        quote(k, 'Cái phích móp một bên.', 'b', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Một năm trở lại đây, bố gửi tiền về ít hơn trước. Bố bảo hàng ít, chuyến ít. Những chuyến về, bố hay nhắc đến thị trấn Ba Lăng, nằm ở giữa đường, nơi bố thường dừng xe nghỉ qua đêm. {b}Mẹ tôi không bao giờ hỏi gì thêm. Tháng nào mẹ cũng đạp xe lên bưu điện huyện một lần, về nhà thì im lặng. Hồi ấy tôi nghĩ mẹ đi gửi thư cho ông bà ngoại.',
+      draw(k) {
+        if (k.t < k.cue('b')) { kitchen(k, { fire: 0, bowl: false }); oil(k, 960, 860, 1); ch(k, 1100, 900, 430, { ...ME, face: 'blank', pose: 'hold' }); shade(k, 0.7, [{ x: 960, y: 760, r: 420, flicker: 1, warm: 1 }]); quote(k, 'Thị trấn Ba Lăng', 'a', { color: AMBER }); return; }
+        highway(k, 0, { time: 'day' }); bike(k, k.lerp(300, 1500, k.at('b', 6, 'linear')), 880, 1, ME); k.vignette(0.35);
+      },
+    },
+    {
+      say: '{a}Rồi một đêm tháng Tám, trời mưa to, xe của bố trượt bánh ở khúc cua thứ bảy của đèo Khe, lao xuống vực. {b}Chú Tư, phụ xe của bố, văng ra ngoài từ trước khi xe rơi, gãy một chân nhưng còn sống. Bố tôi thì không. {c}Người ta báo tin về lúc nửa đêm. Bà nội ngất đi. Còn mẹ tôi không khóc. Mẹ lặng lẽ thắp đèn, lấy cái áo sơ mi trắng bố hay mặc đi ăn cỗ ra là phẳng, rồi ngồi ôm cái áo cho đến sáng.',
+      sfx: [['thunder', 'a', 0.35], ['boom', ['a', 3], 0.35]],
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          pass(k, { rain: true });
+          const p = k.at('a', 4, 'in');
+          k.group({ x: k.lerp(900, 1650, p), y: k.lerp(830, 1200, p * p), r: 0.6 * p }, () => truck(k, 0, 0, 0.7, { lights: p < 0.8 }));
+          shade(k, 0.65, [{ x: k.lerp(1200, 1700, p), y: 800, r: 500 * (1 - 0.7 * p) + 80 }]);
+          k.flash(k.cue('a', 0.3), 0.5);
+          tag(k, 'ĐÈO KHE · THÁNG TÁM', 'a');
+          return;
+        }
+        kitchen(k, { fire: 0, bowl: false }); oil(k, 960, 860, 1);
+        ch(k, 1100, 900, 430, { ...ME, face: 'blank', gloom: 0.7, pose: 'hold' });
+        const { ctx } = k; ctx.fillStyle = '#efece4'; ctx.strokeStyle = '#211a15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(1040, 640); ctx.lineTo(1160, 640); ctx.lineTo(1150, 760); ctx.lineTo(1050, 760); ctx.closePath(); ctx.fill(); ctx.stroke();
+        shade(k, 0.72, [{ x: 960, y: 760, r: 420, flicker: 1, warm: 1 }]);
+      },
+    },
+    {
+      say: '{a}Đám tang bố, cả làng đến. Chú Tư chống nạng đến muộn nhất, thắp nén hương, rồi đứng ở góc sân rất lâu. Chú chào bà nội, chào tôi, nhưng không dám nhìn mẹ tôi lấy một lần. {b}Hồi ấy tôi nghĩ chú áy náy vì mình sống mà bố tôi chết. Phải hơn một tháng sau, tôi mới hiểu chú áy náy vì chuyện khác.',
+      draw(k) {
+        house(k, { time: 'dusk' });
+        const { ctx } = k; ctx.fillStyle = 'rgba(30,30,40,0.7)'; ctx.beginPath(); ctx.moveTo(500, 560); ctx.lineTo(1400, 560); ctx.lineTo(1500, 640); ctx.lineTo(400, 640); ctx.closePath(); ctx.fill();
+        for (let i = 0; i < 5; i++) ch(k, 450 + i * 110, 900, 400, { ...DAN(['#3a3a3a', '#4a4a4a', '#2e2e2e', '#3e3e3e', '#353535'][i]), face: 'sad', hat: 'band', hatColor: '#efece4' });
+        ch(k, 1020, 900, 420, { ...ME, face: 'blank', hat: 'band', hatColor: '#efece4' });
+        ch(k, 1180, 900, 320, { ...HUY, face: 'sad', hat: 'band', hatColor: '#efece4' });
+        ch(k, 1650, 900, 440, { ...CHU_TU, face: 'sad', look: -1, prop: 'staff' });
+        k.vignette(0.45);
+        quote(k, 'Chú không dám nhìn mẹ tôi lấy một lần.', 'a', { until: 'b', size: 44 });
+      },
+    },
+
+    // ===== CHƯƠNG 2 =====
+    {
+      chapter: 'Buổi gọi hồn',
+      say: '{a}Bố mất đột ngột, không kịp dặn dò một câu. Bà nội tôi không chịu được điều ấy. {b}Ở làng tôi có tục: người mất được bốn mươi chín ngày, nếu chết bất đắc kỳ tử, thì gia đình mời bà đồng về gọi hồn, để người đã khuất có dịp dặn lại những gì còn dang dở. {c}Mẹ tôi không muốn. Chú Thịnh, em trai bố, cũng không tin. Chú bảo gọi hồn là trò của mấy bà đồng moi tiền. Nhưng bà nội đã quyết, không ai cãi.',
+      draw(k) {
+        altarRoom(k, {});
+        ch(k, 620, 980, 470, { ...BA_NOI, face: 'sad', pose: 'hold' });
+        if (after(k, 'c')) { ch(k, 1350, 980, 470, { ...CHU_THINH, face: 'angry', pose: 'point', flip: true }); ch(k, 1550, 980, 430, { ...ME, face: 'sad', flip: true }); }
+        shade(k, 0.6, [...altarLights(1.2), { x: 620, y: 700, r: 360 }]);
+        chapter(k, 2, 'Buổi gọi hồn');
+      },
+    },
+    {
+      say: '{a}Người được mời là bà Hai Quy, bà đồng nổi tiếng nhất vùng. Người ta đồn bà gọi hồn ai về thì người ấy nói đúng giọng, đúng tật, đúng cả những chuyện trong nhà mà người ngoài không thể biết. {b}Bà đến vào chiều ngày thứ bốn mươi chín. Bà nhìn quanh nhà rất lâu, nhìn ảnh bố, nhìn mẹ tôi. {c}Rồi bà ngồi uống nước với bà nội, hỏi han đủ thứ: bố tôi tuổi gì, mất giờ nào, thích ăn gì, hút thuốc gì. Bà nội kể hết. Lúc ấy không ai để ý những câu hỏi ấy. Sau này tôi mới để ý.',
+      draw(k) {
+        house(k, { time: 'dusk' });
+        ch(k, k.t < k.cue('c') ? k.lerp(-100, 900, k.at('a', 4)) : 900, 900, 440, { ...BA_HAI, face: 'cold', walk: k.t < k.cue('a', 4), look: after(k, 'b') ? 1 : 0, talk: after(k, 'c') ? 0.3 : 0 });
+        if (after(k, 'c')) ch(k, 1120, 900, 440, { ...BA_NOI, face: 'sad', talk: 0.2, flip: true });
+        k.vignette(0.45);
+        quote(k, 'Tuổi gì? Mất giờ nào? Hút thuốc gì?', 'c', { color: AMBER, size: 46 });
+      },
+    },
+    {
+      say: '{a}Trời tối hẳn. Bà Hai Quy bảo tắt hết đèn, chỉ để hai ngọn nến trên bàn thờ, và dặn cả nhà: hồn về hỏi gì thì đáp, đừng ai gọi to tên người chết. Bà trùm khăn đỏ lên đầu, ngồi trước bàn thờ, miệng lầm rầm khấn. Khói hương dày đến mức tôi không nhìn rõ mặt ai. {b}Một lúc lâu, người bà run lên. Rồi bà ho, một tiếng ho khan, khàn đặc. {c}Đúng tiếng ho của bố tôi, người hút thuốc lào hai mươi năm.',
+      sfx: [['heartbeat', 'b', 0.4], ['stinger', 'c', 0.35]],
+      draw(k) {
+        zoom(k, 960, 760, 1 + 0.35 * k.at('a', 10, 'inOut'), () => seance(k, { shake: after(k, 'b') ? 1 : 0, dark: 0.78, huyFace: after(k, 'c') ? 'shock' : 'sad' }));
+        quote(k, 'Đúng tiếng ho của bố tôi.', 'c', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Giọng nói cất lên dưới tấm khăn không còn là giọng bà Hai Quy. Nó trầm, khàn, nói chậm, cuối câu hay bỏ lửng. Giọng bố tôi. {b}Người ấy gọi: Mẹ ơi. Bà nội tôi oà khóc, bò lên ôm lấy bà đồng. {c}Người ấy kể cái phích nước trên xe bị móp một bên, vì bố đánh rơi ở bến phà. Kể con dao bố để dưới ghế lái. Những chuyện ấy, chỉ người đi xe với bố mới biết.',
+      draw(k) {
+        altarRoom(k, {});
+        medium(k, 960, 940, 360, { shake: 0.3, turn: after(k, 'b') ? -0.6 : 0 });
+        if (after(k, 'b')) kneel(k, 760, 1010, 470, { ...BA_NOI, face: 'cry', tears: 1, pose: 'hold' }); else kneel(k, 560, 1010, 470, { ...BA_NOI, face: 'sad', pose: 'hold' });
+        kneel(k, 360, 1010, 440, { ...ME, face: 'blank' });
+        kneel(k, 1360, 1010, 470, { ...CHU_THINH, face: 'shock', flip: true });
+        kneel(k, 1560, 1010, 330, { ...HUY, face: 'shock', flip: true });
+        shade(k, 0.72, [...altarLights(1), { x: 960, y: 700, r: 360, warm: 0.6 }]);
+        quote(k, '"Mẹ ơi."', 'b', { color: COLD, until: 'c' });
+        quote(k, 'Cái phích móp. Con dao dưới ghế lái.', 'c', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Rồi người ấy nói: Dưới chân bàn thờ, viên gạch thứ ba, con để lại cho mẹ ít tiền. {b}Chú tôi cầm đèn chui xuống gầm bàn thờ, cạy viên gạch thứ ba. Bên dưới có một gói giấy dầu. Trong gói là tiền, đủ để sửa lại cái mái nhà. {c}Không ai trong nhà biết chỗ ấy. Cả nhà khóc như mưa. Bà nội lạy bà đồng như lạy Phật. Đến chú Thịnh, người không tin, cũng đứng chết lặng.',
+      sfx: [['creak', 'b', 0.35], ['stinger', ['b', 3], 0.35]],
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          zoom(k, 900, 900, 2.2, () => { altarRoom(k, { brick: k.at(k.cue('b', 2), 1) }); ch(k, 1120, 990, 470, { ...CHU_THINH, face: 'shock', pose: 'point' }); oil(k, 1040, 990, 0.7); shade(k, 0.6, [{ x: 960, y: 900, r: 420, warm: 0.8 }]); });
+          quote(k, '"Viên gạch thứ ba."', 'a', { color: COLD, until: 'b' });
+          return;
+        }
+        seance(k, { baFace: 'cry', baTears: 1, thFace: 'shock', huyFace: 'cry' });
+      },
+    },
+    {
+      say: '{a}Rồi tấm khăn đỏ quay về phía mẹ tôi. Giọng bố tôi, chậm và khàn, nói: Chị ơi, em xin lỗi chị. {b}Cả gian thờ im phắc. Ai cũng nghe thấy. {c}Mười lăm năm lấy nhau, bố tôi gọi mẹ là mình, là bà nó, là mẹ thằng Huy. Chưa bao giờ là chị. {d}Tất cả mọi người ngẩng lên nhìn nhau. Chỉ có mẹ tôi là cúi đầu xuống thấp hơn.',
+      sfx: [['stinger', 'a', 0.45]],
+      draw(k) {
+        const z = after(k, 'd') ? 1 + 0.6 * k.at('d', 2, 'inOut') : 1;
+        zoom(k, 360, 900, z, () => seance(k, { turn: -1, meDown: after(k, 'd'), meFace: after(k, 'd') ? 'sad' : 'blank', thFace: after(k, 'b') ? 'shock' : 'blank', baFace: after(k, 'b') ? 'shock' : 'cry', huyFace: 'shock' }));
+        quote(k, '"Chị ơi, em xin lỗi chị."', 'a', { color: COLD, until: 'c' });
+        quote(k, 'Chưa bao giờ là chị.', 'c', { color: AMBER, until: 'd' });
+      },
+    },
+    {
+      say: '{a}Người ấy nói thêm một câu nữa, mà lúc ấy không ai hiểu: Mẹ với chị lo cho thằng bé ở Ba Lăng giúp con. {b}Bà nội hỏi thằng bé nào. Chú Thịnh đứng phắt dậy, quát bà đồng nói bậy. Giọng dưới tấm khăn đỏ không trả lời ai. Người bà đồng đổ gục xuống. {c}Lúc bà ngẩng lên, giọng đã là giọng bà Hai Quy, mệt mỏi, như vừa đi một quãng đường rất xa. Bà nhìn chú Thịnh, nói chậm rãi: tôi chỉ là cái ống, người về nói gì thì tôi nói nấy. {d}Bà nhận tiền, rồi đi ngay trong đêm.',
+      sfx: [['boom', ['b', 2], 0.3]],
+      draw(k) {
+        if (k.t < k.cue('d')) {
+          altarRoom(k, {});
+          medium(k, 960, 940, 360, { slump: after(k, 'b', 2) && !after(k, 'c') ? 1 : 0, turn: 0 });
+          kneel(k, 560, 1010, 470, { ...BA_NOI, face: 'shock', pose: 'hold' });
+          kneel(k, 360, 1010, 440, { ...ME, face: 'sad', tilt: 0.35 });
+          if (after(k, 'b')) ch(k, 1360, 1000, 470, { ...CHU_THINH, face: 'angry', pose: 'shout', flip: true }); else kneel(k, 1360, 1010, 470, { ...CHU_THINH, face: 'blank', flip: true });
+          kneel(k, 1560, 1010, 330, { ...HUY, face: 'shock', flip: true });
+          shade(k, 0.72, [...altarLights(1), { x: 960, y: 700, r: 360, warm: 0.6 }]);
+          quote(k, '"…thằng bé ở Ba Lăng."', 'a', { color: COLD, until: 'b' });
+          quote(k, '"Tôi chỉ là cái ống."', 'c', { color: AMBER, until: 'd' });
+          return;
+        }
+        house(k, { time: 'night' }); ch(k, k.lerp(1000, -200, k.at('d', 3, 'in')), 900, 440, { ...BA_HAI, face: 'cold', walk: true }); shade(k, 0.55, [{ x: 1620, y: 170, r: 1200 }]);
+      },
+    },
+
+    // ===== CHƯƠNG 3 =====
+    {
+      chapter: 'Chữ "chị"',
+      say: '{a}Đêm ấy, người trong họ bàn tán đến khuya. Bà nội bảo hồn mới về còn mê, nói nhầm là chuyện thường. Chuyện thằng bé ở Ba Lăng, bà bảo chắc là con một người bạn nào đó của bố. {b}Mẹ tôi không nói gì. Mẹ dọn mâm, rửa bát, quét nhà, rồi đi ngủ sớm.',
+      draw(k) {
+        if (k.t < k.cue('b')) { altarRoom(k, {}); ch(k, 620, 980, 470, { ...BA_NOI, face: 'sad', talk: 0.2 }); for (let i = 0; i < 3; i++) ch(k, 1250 + i * 150, 980, 440, { ...DAN(['#3a3a4a', '#4a3a2a', '#3a4a3a'][i]), face: 'blank', flip: true }); shade(k, 0.6, altarLights(1.3)); }
+        else { kitchen(k, { fire: 0.3, bowl: false }); ch(k, k.lerp(700, 1200, k.at('b', 5, 'linear')), 900, 430, { ...ME, face: 'blank', walk: true, walkSpeed: 0.4 }); shade(k, 0.65, [KITCHEN.fire]); }
+        chapter(k, 3, 'Chữ "chị"');
+      },
+    },
+    {
+      say: '{a}Còn tôi thì không ngủ được. {b}Tôi nghĩ mãi về chữ chị. Nếu là hồn bố về, sao bố lại gọi mẹ như thế? Còn nếu không phải bố, thì sao người ấy biết cái phích móp, con dao dưới ghế, cả gói tiền dưới chân bàn thờ? {c}Sáng hôm sau, tôi hỏi mẹ. Mẹ đang quét sân, chỉ bảo: người chết rồi, nói gì thì cũng để người ta yên. Rồi mẹ quét tiếp, quét đi quét lại một chỗ đã sạch từ lâu. {d}Trong số những chuyện người ấy kể, chuyện xe cộ thì chỉ người đi xe với bố mới biết. Và người đi xe với bố, chỉ có một.',
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          black(k); const { ctx } = k; ctx.fillStyle = '#3a2c20'; ctx.fillRect(300, 700, 1300, 60);
+          lie(k, 1300, 690, 330, { ...HUY, face: 'blank', look: 0, lookY: -1 });
+          shade(k, 0.55, [{ x: 1500, y: 300, r: 900 }]);
+          k.text('CHỊ?', 960, 300, { size: 120, font: 'title', color: COLD, fx: 'fade', p: k.at('b', 1) });
+          return;
+        }
+        if (k.t < k.cue('d')) { house(k, { time: 'day' }); ch(k, 900, 900, 430, { ...ME, face: 'blank', pose: 'hold' }); const { ctx } = k; ctx.strokeStyle = '#a8894f'; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(960, 700); ctx.lineTo(1000 + Math.sin(k.t * 3) * 40, 900); ctx.stroke(); ch(k, 1200, 900, 320, { ...HUY, face: 'sad', flip: true }); k.vignette(0.35); return; }
+        black(k); truck(k, 1300, 800, 0.9, {}); ch(k, 1450, 800, 360, { ...CHU_TU, face: 'blank' }); shade(k, 0.5, [{ x: 1300, y: 600, r: 700 }]);
+        quote(k, 'Người đi xe với bố, chỉ có một.', 'd', { color: AMBER });
+      },
+    },
+
+    // ===== CHƯƠNG 4 =====
+    {
+      chapter: 'Thị trấn Ba Lăng',
+      say: '{a}Chiều hôm sau, tôi đạp xe sang nhà chú Tư. Chú ngồi trên chõng tre, cái chân gãy còn bó bột, bên cạnh là một chai rượu đã vơi quá nửa. {b}Tôi hỏi thẳng chú: thằng bé ở Ba Lăng là ai? {c}Chú Tư nhìn tôi rất lâu, rồi rót một chén rượu, uống cạn.',
+      draw(k) {
+        nhaTrong(k);
+        ch(k, 760, 780, 440, { ...CHU_TU, face: after(k, 'c') ? 'sad' : 'blank' });
+        const { ctx } = k; ctx.fillStyle = '#efece4'; ctx.strokeStyle = '#211a15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.rect(700, 700, 50, 60); ctx.fill(); ctx.stroke();
+        ch(k, 1350, 900, 330, { ...HUY, face: after(k, 'b') ? 'angry' : 'calm', flip: true });
+        shade(k, 0.5, [NHA.door]);
+        quote(k, '"Thằng bé ở Ba Lăng là ai?"', 'b', { until: 'c' });
+        chapter(k, 4, 'Thị trấn Ba Lăng');
+      },
+    },
+    {
+      say: '{a}Chú kể, ở Ba Lăng có một quán nước ven đường của một người đàn bà tên Liên. Bốn năm nay, chuyến nào đi qua, bố tôi cũng dừng ở đó, ở lại qua đêm. {b}Cô Liên có một đứa con trai năm tuổi, tên Bin. Thằng bé gọi bố tôi là bố. {c}Chú Tư nói xong, quay mặt đi: Chú xin lỗi. Bố mày bắt chú thề không được nói.',
+      sfx: [['stinger', 'b', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          quan(k, {});
+          truck(k, 600, 890, 0.6, {});
+          ch(k, 1200, 830, 420, { ...LIEN, face: 'happy', pose: 'hold' });
+          if (after(k, 'b')) { ch(k, 1000, 830, 440, { ...BO, face: 'happy', pose: 'cheer' }); ch(k, 1320, 830, 260, { ...BIN, face: 'happy', pose: 'cheer' }); }
+          cold(k, 0.6);
+          return;
+        }
+        nhaTrong(k); ch(k, 760, 780, 440, { ...CHU_TU, face: 'cry', tears: 0.7, look: -1 }); ch(k, 1350, 900, 330, { ...HUY, face: 'shock', flip: true }); shade(k, 0.5, [NHA.door]);
+        quote(k, '"Bố mày bắt chú thề không được nói."', 'c');
+      },
+    },
+    {
+      say: '{a}Tôi đạp xe về, không nhớ đường. Bố tôi, người ít nói, người cả bữa cơm không nói một câu với mẹ, hoá ra có một ngôi nhà khác, một đứa con khác, cách nhà tôi một trăm cây số. {b}Và tôi chợt nghĩ: người biết những chuyện trên xe của bố, đâu chỉ có chú Tư.',
+      draw(k) {
+        highway(k, k.lerp(1600, 400, k.at('a', 8, 'linear')), { time: 'dusk', rider: { ...HUY, face: 'blank' } });
+        k.vignette(0.45);
+        quote(k, 'Đâu chỉ có chú Tư.', 'b', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Chủ nhật tuần ấy, tôi nói dối mẹ là đi học thêm, đạp xe một mạch lên Ba Lăng. Một trăm cây số, tôi đi từ lúc trời chưa sáng đến quá trưa. {b}Quán nước của cô Liên nằm ngay đầu thị trấn, dưới một gốc bàng. Trước cửa có một thằng bé đang chơi ô tô gỗ.',
+      draw(k) {
+        if (k.t < k.cue('b')) { highway(k, k.lerp(200, 1300, k.at('a', 8, 'linear')), { time: 'day', sign: true, rider: { ...HUY, face: 'angry' } }); truck(k, k.lerp(2300, -400, (k.t % 4) / 4), 860, 0.5, { flip: true }); k.vignette(0.35); tag(k, 'CHỦ NHẬT', 'a'); return; }
+        quan(k, {}); ch(k, 1000, 960, 260, { ...BIN, face: 'calm', pose: 'hold' });
+        const { ctx } = k; ctx.fillStyle = '#a8732f'; ctx.strokeStyle = '#211a15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.rect(940, 930, 70, 30); ctx.fill(); ctx.stroke();
+        ch(k, 300, 960, 330, { ...HUY, face: 'calm' }); k.vignette(0.35);
+      },
+    },
+    {
+      say: '{a}Thằng bé ngẩng lên nhìn tôi. Nó có đôi mắt của bố tôi. Đôi mắt một mí, đuôi hơi xếch, nhìn người lạ thì nhìn rất lâu. Tôi không cần hỏi gì thêm. {b}Nó giơ cái ô tô gỗ lên khoe với tôi: bố nó đẽo cho nó. Rồi nó bảo, rất nghiêm trang, rằng bố nó đi xa, nhưng bố hứa mùng Một sẽ về dẫn nó đi chơi. {c}Cùng một buổi sáng hôm ấy, bố tôi đã hứa với hai đứa con, ở hai nơi, cùng một ngày mùng Một.',
+      sfx: [['stinger', 'c', 0.35]],
+      draw(k) {
+        zoom(k, 1000, 800, after(k, 'b') ? 1.5 : 2.2, () => { quan(k, {}); ch(k, 1000, 960, 260, { ...BIN, face: after(k, 'b') ? 'happy' : 'blank', pose: after(k, 'b') ? 'cheer' : 'hold', talk: after(k, 'b') && !after(k, 'c') ? 0.25 : 0 }); ch(k, 820, 960, 330, { ...HUY, face: after(k, 'c') ? 'sad' : 'shock', flip: false }); });
+        k.vignette(0.4);
+        quote(k, '"Bố hứa mùng Một về."', 'b', { color: AMBER, until: 'c' });
+        quote(k, 'Hai đứa con. Một ngày mùng Một.', 'c', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Cô Liên nhận ra tôi ngay. Cô bảo bố tôi hay khoe ảnh tôi, cái ảnh tôi mặc áo đồng phục ngày khai giảng. Trên vách quán, cô cũng treo một tấm ảnh: bố tôi bế thằng Bin, cười. Một nụ cười mà ở nhà tôi chưa bao giờ thấy. {b}Cô kể, năm năm trước, quán của cô ngập trong trận lũ. Xe của bố tôi bị kẹt lại ở thị trấn ba ngày, bố tôi xắn quần lội nước giúp cô khiêng đồ. Rồi chuyến sau bố dừng lại. Rồi chuyến sau nữa. {c}Cô rót nước cho tôi, tay run đến mức nước tràn ra bàn. Rồi cô kể, không cần tôi hỏi.',
+      draw(k) {
+        if (k.t < k.cue('b')) { zoom(k, 1480, 540, after(k, 'a', 5) ? 2.4 : 1, () => { quan(k, { photo: true }); ch(k, 1200, 830, 420, { ...LIEN, face: 'sad' }); ch(k, 800, 900, 330, { ...HUY, face: 'blank' }); }); k.vignette(0.4); return; }
+        if (k.t < k.cue('c')) { quan(k, {}); k.water(820, { color: '#7a6a4a', amp: 8, alpha: 0.8 }); ch(k, 1000, 900, 440, { ...BO, face: 'calm', pose: 'hold' }); ch(k, 1250, 900, 420, { ...LIEN, face: 'sad' }); cold(k, 0.55); return; }
+        quan(k, {}); ch(k, 1100, 860, 420, { ...LIEN, face: 'sad', pose: 'hold' }); ch(k, 800, 900, 330, { ...HUY, face: 'blank' }); k.vignette(0.4);
+      },
+    },
+    {
+      say: '{a}Cô kể, sau đám tang, cô không dám về làng tôi. Cô sợ mẹ tôi, sợ bà nội tôi, sợ cả làng. Nhưng thằng Bin thì vẫn hỏi bố đâu. {b}Cô nghe người ta nói nhà tôi sắp mời bà Hai Quy về gọi hồn. Thế là cô tìm đến nhà bà Hai Quy trước, đưa bà một ít tiền, và kể cho bà nghe tất cả những gì cô biết về bố tôi.',
+      sfx: [['stinger', 'b', 0.35]],
+      draw(k) {
+        if (k.t < k.cue('b')) { quan(k, {}); ch(k, 1100, 860, 420, { ...LIEN, face: 'cry', tears: 0.6, talk: 0.25 }); ch(k, 1300, 860, 260, { ...BIN, face: 'sad' }); k.vignette(0.4); return; }
+        house(k, { time: 'dusk' }); ch(k, 800, 900, 440, { ...BA_HAI, face: 'cold', pose: 'hold' }); ch(k, 1050, 900, 420, { ...LIEN, face: 'sad', talk: 0.3, flip: true }); cold(k, 0.55);
+        quote(k, 'Cô đến nhà bà đồng trước.', 'b', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Cái phích móp, con dao dưới ghế lái, cô biết vì cô ngồi xe bố tôi nhiều lần. Gói tiền dưới chân bàn thờ, bố tôi dặn cô từ năm ngoái: nếu bố có mệnh hệ gì, gói tiền ấy là để cho Bin. {b}Cô chỉ muốn hồn bố tôi nói một câu, để nhà tôi biết có thằng Bin trên đời. {c}Tôi hỏi cô về chữ chị. Cô cúi đầu. Bốn năm nay, mỗi lần nhắc đến mẹ tôi với bố, cô vẫn gọi là chị nhà anh. Chắc bà Hai Quy nghe cô nói thế, rồi quen miệng.',
+      draw(k) {
+        zoom(k, 1100, 600, 1.6, () => { quan(k, {}); ch(k, 1100, 860, 420, { ...LIEN, face: after(k, 'c') ? 'sad' : 'cry', tears: 0.8, talk: 0.2, tilt: after(k, 'c') ? 0.3 : 0 }); });
+        k.vignette(0.45);
+        quote(k, '"Chị nhà anh."', 'c', { color: COLD });
+      },
+    },
+    {
+      say: '{a}Vậy là xong. Tôi nghĩ thế, trên đường về. Không có hồn nào về cả. Chỉ có một người đàn bà kể chuyện, và một bà đồng giỏi nhại giọng. Tôi thấy nhẹ người, rồi lại thấy giận. Giận bố, giận cô Liên, giận cả bà đồng. Và giận chính mình, vì đã khóc như mưa trước một tấm khăn đỏ. {b}Còn lại một điều tôi chưa dám nghĩ đến: mẹ tôi. Hôm gọi hồn, khi nghe chữ chị, mẹ không ngẩng lên như mọi người. Mẹ cúi xuống.',
+      draw(k) {
+        if (k.t < k.cue('b')) { highway(k, 0, { time: 'dusk' }); ch(k, k.lerp(1500, 600, k.at('a', 8, 'linear')), 880, 330, { ...HUY, face: 'blank', walk: true, walkSpeed: 0.4 }); bike(k, k.lerp(1600, 700, k.at('a', 8, 'linear')), 880, 0.9); k.vignette(0.45); return; }
+        zoom(k, 360, 900, 1.6, () => seance(k, { turn: -1, meDown: true, meFace: 'sad' }));
+        quote(k, 'Mẹ cúi xuống.', 'b', { color: AMBER });
+      },
+    },
+
+    // ===== CHƯƠNG 5 =====
+    {
+      chapter: 'Mẹ',
+      say: '{a}Về đến nhà thì trời đã tối. Mẹ ngồi nhặt rau trong bếp, không hỏi tôi đi đâu cả ngày. {b}Tôi đứng ở cửa bếp, nói một câu: con vừa ở Ba Lăng về. {c}Tay mẹ dừng lại. Rồi mẹ tiếp tục nhặt rau.',
+      draw(k) {
+        kitchen(k, { fire: 0.5, bowl: false });
+        ch(k, 900, 900, 430, { ...ME, face: after(k, 'c') ? 'sad' : 'blank', pose: 'hold' });
+        ch(k, 300, 900, 330, { ...HUY, face: 'blank' });
+        shade(k, 0.62, [KITCHEN.fire, { x: 900, y: 700, r: 360, warm: 0.5 }]);
+        quote(k, '"Con vừa ở Ba Lăng về."', 'b', { until: 'c' });
+        chapter(k, 5, 'Mẹ');
+      },
+    },
+    {
+      say: '{a}Mẹ bảo, mẹ biết từ ba năm trước. Một người bán hàng ở chợ huyện nhìn thấy bố bế một đứa bé ở Ba Lăng, về kể lại. Mẹ không hỏi bố. Mẹ không làm ầm lên. Mẹ chỉ im lặng, như mẹ vẫn im lặng. {b}Mẹ mà làm to chuyện, thì nhà mình tan, mẹ nói. Mà bố con thì vẫn đi xe qua Ba Lăng. {c}Cả gói tiền dưới chân bàn thờ, mẹ cũng biết từ năm ngoái, lúc lau bàn thờ thấy viên gạch lệch. Mẹ mở ra xem, rồi đặt lại y như cũ. Mẹ đoán được đó là tiền bố để dành cho ai. Mẹ bảo, cái gì không phải của mình thì mình không đụng vào.',
+      sfx: [['stinger', 'a', 0.35]],
+      draw(k) {
+        if (k.t < k.cue('c')) { zoom(k, 900, 650, 1.6, () => { kitchen(k, { fire: 0.5, bowl: false }); ch(k, 900, 900, 430, { ...ME, face: 'sad', pose: 'hold', talk: 0.2 }); shade(k, 0.6, [KITCHEN.fire, { x: 900, y: 650, r: 400, warm: 0.5 }]); }); quote(k, '"Mẹ biết từ ba năm trước."', 'a', { color: AMBER, until: 'b' }); quote(k, '"Mẹ mà làm to chuyện, thì nhà mình tan."', 'b', { until: 'c' }); return; }
+        zoom(k, 900, 900, 2.2, () => { altarRoom(k, { brick: 1 }); ch(k, 1100, 990, 430, { ...ME, face: 'blank', pose: 'hold' }); shade(k, 0.55, [{ x: 900, y: 860, r: 420, warm: 0.6 }]); });
+        cold(k, 0.55);
+      },
+    },
+    {
+      say: '{a}Rồi mẹ lấy trong túi áo ra một xấp giấy mỏng, đặt lên bàn. Biên lai gửi tiền ở bưu điện huyện. Người nhận: Lê Thị Liên, thị trấn Ba Lăng. Ngày gửi: tháng Chín. Tháng Mười. {b}Từ sau đám tang bố, tháng nào mẹ cũng đạp xe lên bưu điện, gửi cho cô Liên một ít tiền. Không ký tên. {c}Những chuyến đi bưu điện mà tôi tưởng là gửi thư cho ông bà ngoại.',
+      sfx: [['stinger', 'a', 0.4]],
+      draw(k) {
+        black(k);
+        receipt(k, 820, 520, 1.3, ['Người nhận: LÊ THỊ LIÊN', 'Địa chỉ: Thị trấn Ba Lăng', 'Ngày gửi: 09/1997', 'Người gửi: (để trống)'], -0.05, k.at('a', 1));
+        receipt(k, 1150, 600, 1.2, ['Người nhận: LÊ THỊ LIÊN', 'Ngày gửi: 10/1997'], 0.08, k.at('a', 6));
+        shade(k, 0.4, [{ x: 960, y: 560, r: 900, warm: 0.5 }]);
+        quote(k, 'Không ký tên.', 'b', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Tôi hỏi mẹ, tại sao. {b}Mẹ im lặng rất lâu. Rồi mẹ nói một câu mà đến giờ tôi vẫn nhớ từng chữ: {c}Thằng bé ấy không có tội gì. Người ta đã gọi mẹ là chị, thì mẹ làm chị.',
+      draw(k) {
+        zoom(k, 900, 650, 1.8, () => { kitchen(k, { fire: 0.4, bowl: false }); ch(k, 900, 900, 430, { ...ME, face: after(k, 'c') ? 'cry' : 'sad', tears: after(k, 'c') ? 0.7 : 0, pose: 'hold', talk: after(k, 'c') ? 0.25 : 0 }); shade(k, 0.62, [KITCHEN.fire, { x: 900, y: 650, r: 400, warm: 0.6 }]); });
+        quote(k, '"Người ta đã gọi mẹ là chị, thì mẹ làm chị."', 'c', { color: AMBER, size: 52 });
+      },
+    },
+    {
+      say: '{a}Tôi không biết bà nội đứng sau lưng tôi từ lúc nào. Bà đã nghe hết. {b}Bà không nói gì. Bà quay vào gian thờ, thắp một nén hương cho bố, đứng rất lâu. {c}Rồi bà bảo mẹ: mùng Một tới, đón thằng bé về đây, cho nó thắp cho bố nó nén hương.',
+      draw(k) {
+        if (k.t < k.cue('b')) { kitchen(k, { fire: 0.4, bowl: false }); ch(k, 900, 900, 430, { ...ME, face: 'sad' }); ch(k, 300, 900, 330, { ...HUY, face: 'sad' }); ch(k, 160, 900, 440, { ...BA_NOI, face: 'sad' }); shade(k, 0.6, [KITCHEN.fire, { x: 200, y: 600, r: 400 }]); return; }
+        altarRoom(k, {}); ch(k, 960, 980, 470, { ...BA_NOI, face: after(k, 'c') ? 'cry' : 'sad', tears: after(k, 'c') ? 0.7 : 0, pose: 'hold', talk: after(k, 'c') ? 0.25 : 0 });
+        shade(k, 0.55, [...altarLights(1.3), { x: 960, y: 700, r: 400, warm: 0.6 }]);
+        quote(k, '"Đón thằng bé về đây."', 'c', { color: AMBER });
+      },
+    },
+
+    // ===== CHƯƠNG 6 =====
+    {
+      chapter: 'Câu thứ mười',
+      say: '{a}Mấy hôm sau, tôi ngồi một mình trong gian thờ, viết ra giấy tất cả những gì bà Hai Quy đã nói tối hôm ấy. Tôi nhớ được mười câu. {b}Tiếng ho khan của bố, cả xóm ai cũng biết, bà Hai Quy chỉ cần hỏi một người là ra. Cái phích móp, con dao dưới ghế lái, gói tiền dưới chân bàn thờ, cô Liên đã kể. Câu gọi bà nội là mẹ, ai cũng đoán được. Chữ chị là chữ của cô Liên. Thằng bé ở Ba Lăng, là điều cô Liên muốn nói nhất. {c}Chín câu đầu, tôi đều tìm được người đã mớm cho bà đồng. {d}Chỉ còn câu thứ mười.',
+      sfx: [['scratch', 'b', 0.25], ['stinger', 'd', 0.4]],
+      draw(k) {
+        black(k);
+        tenLines(k, 960, 540, TEN, { cues: TEN.map((_, i) => k.cue('a', 1 + i * 0.4)), struck: 9, strikeCue: 'c', hl: after(k, 'd') ? 9 : -1, hlCue: 'd' });
+        shade(k, 0.35, [{ x: 960, y: 540, r: 900, warm: 0.4 }]);
+        chapter(k, 6, 'Câu thứ mười');
+      },
+    },
+    {
+      say: '{a}Hôm ấy, trước khi bà đồng đổ gục xuống, tấm khăn đỏ đã quay về phía tôi. Giọng bố tôi nói rất khẽ, khẽ đến mức chỉ tôi ngồi gần mới nghe thấy: {b}Tép ơi. Mùng Một bố không đi câu với con được rồi. {c}Lúc ấy tôi khóc quá, không để ý. Bây giờ ngồi một mình, tôi mới thấy lạnh dọc sống lưng.',
+      sfx: [['heartbeat', 'b', 0.45]],
+      draw(k) {
+        zoom(k, 1300, 800, 1.6, () => seance(k, { turn: 1, huyFace: after(k, 'b') ? 'cry' : 'sad', dark: 0.8 }));
+        cold(k, 0.5);
+        quote(k, '"Tép ơi. Mùng Một bố không đi câu với con được rồi."', 'b', { color: COLD, size: 48 });
+      },
+    },
+    {
+      say: '{a}Cái tên Tép, bố chỉ gọi khi không có ai nghe thấy. Lời hẹn đi câu, bố nói với tôi lúc sáng sớm, khi cả nhà còn ngủ. {b}Tôi đạp xe lên Ba Lăng thêm một lần nữa, chỉ để hỏi cô Liên một câu: bố có bao giờ gọi con là Tép không? {c}Cô Liên lắc đầu. Cô bảo bố tôi lúc nào cũng gọi tôi là thằng Huy. Cô chưa bao giờ nghe cái tên ấy.',
+      sfx: [['stinger', 'c', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('b')) { lotus(k, { time: 'dawn' }); k.vignette(0.45); return; }
+        quan(k, {}); ch(k, 1100, 860, 420, { ...LIEN, face: 'blank', talk: after(k, 'c') ? 0.25 : 0 }); ch(k, 800, 900, 330, { ...HUY, face: after(k, 'c') ? 'shock' : 'calm' }); k.vignette(0.4);
+        quote(k, '"Cô chưa bao giờ nghe cái tên ấy."', 'c', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Tôi đến nhà bà Hai Quy. Bà đã ốm nặng, không tiếp ai. Năm sau, bà mất. {b}Tôi đứng ngoài cổng rất lâu. Con trai bà ra tiễn tôi, bảo: mẹ tôi đi gọi hồn cả đời, nhưng chưa bao giờ nhận là mình nghe thấy người chết. Bà chỉ bảo, bà nói những gì người ta kể cho bà. Vậy thì ai đã kể cho bà câu thứ mười? Tôi chưa bao giờ hỏi được bà câu ấy.',
+      draw(k) {
+        house(k, { time: 'dusk' });
+        ch(k, 1300, 900, 330, { ...HUY, face: 'sad', look: -1 });
+        k.prop('incense', 960, 820, 140);
+        k.vignette(0.5);
+        tag(k, '1998', 'a');
+      },
+    },
+
+    // ===== KẾT =====
+    {
+      chapter: 'Kết',
+      say: '{a}Sau này, tôi đọc nhiều về chuyện gọi hồn. Người ta bảo phần lớn các bà đồng giỏi quan sát, giỏi hỏi dò, giỏi nhại giọng, và luôn có người mớm chuyện cho. Tôi tin điều đó. Chín câu trong mười câu tối hôm ấy, tôi đã tìm được lời giải. {b}Nhưng không cuốn sách nào giải thích được, làm sao một người lạ biết cái tên mà bố tôi chỉ gọi khi hai bố con ngồi một mình.',
+      draw(k) {
+        k.ctx.fillStyle = '#1f242c'; k.ctx.fillRect(-200, -200, k.W + 400, k.H + 400);
+        ch(k, 400, 1000, 560, { ...HUY_LON, face: 'blank', pose: 'think' });
+        const memo = (x, y, c, fn) => { const p = k.at(c, 0.6); if (p <= 0) return; const { ctx } = k; ctx.save(); ctx.globalAlpha = p; ctx.beginPath(); ctx.rect(x, y, 440, 248); ctx.clip(); k.group({ x, y, s: 440 / 1920 }, fn); ctx.restore(); ctx.save(); ctx.globalAlpha = p; ctx.strokeStyle = 'rgba(239,228,204,0.7)'; ctx.lineWidth = 3; ctx.strokeRect(x, y, 440, 248); ctx.restore(); };
+        memo(760, 120, k.cue('a', 3), () => seance(k, {}));
+        memo(1290, 120, k.cue('a', 6), () => { quan(k, {}); ch(k, 1100, 860, 420, { ...LIEN, face: 'sad' }); });
+        memo(1025, 420, k.cue('a', 9), () => { black(k); receipt(k, 960, 540, 2, ['Người nhận: LÊ THỊ LIÊN'], 0, 1); });
+        shade(k, 0.45, [{ x: 600, y: 500, r: 700, warm: 0.4 }, { x: 1300, y: 400, r: 800 }]);
+        quote(k, 'Làm sao một người lạ biết cái tên ấy?', 'b', { color: AMBER });
+      },
+    },
+    {
+      say: '{a}Mùng Một năm ấy, cô Liên dắt thằng Bin về làng tôi. Mẹ tôi ra tận đầu ngõ đón. Mẹ châm cho thằng bé một nén hương, cầm tay nó cắm lên bát hương của bố. Bà nội đứng nhìn, rồi quay đi lau nước mắt. {b}Từ năm ấy, sáng mùng Một nào tôi cũng ra đầm sen câu cá. Mấy năm sau, có thêm thằng Bin ngồi bên cạnh. Nó lớn lên, có đôi mắt y hệt bố, và ngồi câu cũng lặng im y hệt bố. {c}Mẹ tôi vẫn gọi nó là thằng em. Cô Liên mỗi lần về làng vẫn gọi mẹ tôi là chị.',
+      draw(k) {
+        if (k.t < k.cue('b')) { altarRoom(k, {}); ch(k, 860, 980, 430, { ...ME, face: 'sad', pose: 'hold' }); ch(k, 1000, 980, 260, { ...BIN, face: 'calm', pose: 'hold' }); ch(k, 1250, 980, 420, { ...LIEN, face: 'cry', tears: 0.6, flip: true }); ch(k, 560, 980, 440, { ...BA_NOI, face: 'cry', tears: 0.6 }); shade(k, 0.55, [...altarLights(1.3), { x: 960, y: 700, r: 500, warm: 0.6 }]); return; }
+        lotus(k, { time: 'dawn' });
+        ch(k, 760, 920, 440, { ...HUY_LON, face: 'calm', pose: 'hold' }); ch(k, 1000, 920, 330, { ...BIN, body: 'kid', face: 'calm', pose: 'hold' });
+        rod(k, 800, 760, 1); rod(k, 1030, 800, 0.8);
+        k.vignette(0.35);
+        tag(k, 'MÙNG MỘT', 'b');
+      },
+    },
+    {
+      lead: 0.8, tail: 2.5,
+      say: '{a}Bốn mươi chín ngày sau khi bố tôi mất, người về gọi mẹ tôi là chị. Chín câu người ấy nói, tôi đều biết ai đã mớm cho. {b}Còn câu thứ mười, đến giờ, tôi vẫn chỉ biết một người có thể nói ra.',
+      sfx: [['wind', 0, 0.25]],
+      draw(k) {
+        lotus(k, { time: 'dawn' });
+        shade(k, 0.35, [{ x: 960, y: 400, r: 1300 }]);
+        quote(k, 'Câu thứ mười, chỉ một người có thể nói ra.', 'b', { color: PAPER, size: 52 });
+      },
+    },
+
+    // ===== CUỐI =====
+    nextScene({
+      say: '{next}Tập sau: ở xóm tôi, người ta bảo chim lợn kêu trên mái nhà nào, nhà ấy sắp có tang. Năm ấy, nó đậu trên mái nhà tôi ba đêm liền. Nhưng không ai trong nhà chết cả.',
+      title: 'Chim Lợn | Ba Đêm Kêu Trên Mái Nhà Tôi',
+      hook: 'Ba đêm liền… nhưng không ai trong nhà chết cả.',
+      art(k) {
+        const { ctx } = k;
+        const g = ctx.createLinearGradient(0, 200, 0, 800); g.addColorStop(0, '#070a14'); g.addColorStop(1, '#1c2640'); ctx.fillStyle = g; ctx.fillRect(400, 200, 1120, 600);
+        ctx.fillStyle = '#efe8cf'; ctx.beginPath(); ctx.arc(1350, 300, 46, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#14161c'; ctx.beginPath(); ctx.moveTo(500, 800); ctx.lineTo(700, 560); ctx.lineTo(1220, 560); ctx.lineTo(1420, 800); ctx.closePath(); ctx.fill();
+        k.prop('owl', 960, 540, 120);
+        k.vignette(0.5);
+      },
+    }),
+    subScene({
+      say: '{q}Nếu là mẹ của Huy, bạn có gửi tiền nuôi đứa con riêng của chồng không? Hãy để lại câu trả lời. {sub}Và nếu muốn nghe tiếp những chuyện chưa có lời giải, hãy đăng ký Nhân Gian Chưa Kể.',
+      question: 'Nếu là mẹ của Huy, bạn có gửi tiền nuôi đứa con riêng của chồng không?',
+      art(k) { receipt(k, 960, 960, 0.6, ['Người nhận: LÊ THỊ LIÊN'], -0.05, 1); },
+    }),
+  ],
+};
+video.scenes = video.scenes.map(grain);
+export default video;

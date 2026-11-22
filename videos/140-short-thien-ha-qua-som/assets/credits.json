@@ -1,0 +1,39 @@
+[
+  {
+    "name": "deep-field",
+    "file": "assets/deep-field.jpg",
+    "w": 2508,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:Webb's First Deep Field.jpg",
+    "title": "Webb's First Deep Field",
+    "author": "NASA, ESA, CSA, and STScI",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Webb%27s_First_Deep_Field.jpg"
+  },
+  {
+    "name": "z14",
+    "file": "assets/z14.jpg",
+    "w": 1920,
+    "h": 1876,
+    "src": "commons",
+    "id": "File:JADES-GS-z14-0 NASA.png",
+    "title": "JADES-GS-z14-0 NASA",
+    "author": "NASA, ESA, CSA, STScI, Brant Robertson (UC Santa Cruz), Ben Johnson (CfA), Sandro Tacchella (Cambridge), Phill Cargile (CfA)",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:JADES-GS-z14-0_NASA.png"
+  },
+  {
+    "name": "z14-mh",
+    "file": "assets/z14-mh.jpg",
+    "w": 1920,
+    "h": 1146,
+    "src": "commons",
+    "id": "File:Artist’s impression of JADES-GS-z14-0 (eso2507c).jpg",
+    "title": "Artist’s impression of JADES-GS-z14-0 (eso2507c)",
+    "author": "ESO/M. Kornmesser",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Artist%E2%80%99s_impression_of_JADES-GS-z14-0_(eso2507c).jpg"
+  }
+]

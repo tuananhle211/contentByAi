@@ -1,0 +1,20 @@
+[
+  { "id": "tai-chinh", "name": "Tài chính cá nhân", "seeds": ["lãi kép là gì", "lạm phát là gì", "cách quản lý tiền", "chứng khoán cho người mới"] },
+  { "id": "kinh-te", "name": "Kinh tế đời sống (giá nhà, vàng, tỷ giá)", "seeds": ["tại sao giá nhà tăng", "tại sao giá vàng tăng", "tỷ giá đô la", "lãi suất ngân hàng"] },
+  { "id": "kinh-doanh", "name": "Câu chuyện doanh nghiệp", "seeds": ["câu chuyện thương hiệu", "tại sao công ty phá sản", "mô hình kinh doanh", "đế chế kinh doanh"] },
+  { "id": "tam-ly", "name": "Tâm lý học", "seeds": ["hiệu ứng tâm lý", "thao túng tâm lý", "tâm lý học hành vi", "hiệu ứng dunning kruger"] },
+  { "id": "lich-su-vn", "name": "Lịch sử Việt Nam", "seeds": ["lịch sử việt nam tóm tắt", "trận bạch đằng", "nhà trần", "thời bắc thuộc"] },
+  { "id": "quoc-gia", "name": "Địa lý & các quốc gia", "seeds": ["tại sao singapore giàu", "tại sao nhật bản phát triển", "quốc gia giàu nhất thế giới", "bản đồ thế giới"] },
+  { "id": "co-the", "name": "Cơ thể người", "seeds": ["điều gì xảy ra với cơ thể khi", "tại sao chúng ta ngủ", "cơ thể người hoạt động như thế nào", "tại sao bị chuột rút"] },
+  { "id": "vu-tru", "name": "Vũ trụ & thiên văn", "seeds": ["lỗ đen là gì", "vũ trụ lớn như thế nào", "sao hỏa", "hệ mặt trời"] },
+  { "id": "luat", "name": "Luật & quyền lợi đời sống", "seeds": ["bảo hiểm xã hội một lần", "thuế thu nhập cá nhân", "luật lao động nghỉ việc", "quyền lợi người lao động"] },
+  { "id": "cong-nghe", "name": "Công nghệ giải thích dễ hiểu", "seeds": ["ai hoạt động như thế nào", "chip bán dẫn là gì", "internet hoạt động như thế nào", "blockchain là gì"] },
+  { "id": "sach", "name": "Tóm tắt sách bằng hình", "seeds": ["tóm tắt sách", "tóm tắt sách hay", "sách hay nên đọc", "bài học từ sách"] },
+  { "id": "cau-do", "name": "Câu đố & tư duy logic", "seeds": ["câu đố logic", "câu đố iq", "câu đố mẹo", "thử thách tư duy"] },
+  { "id": "what-if", "name": "Điều gì xảy ra nếu…", "seeds": ["điều gì sẽ xảy ra nếu", "chuyện gì xảy ra nếu trái đất", "nếu con người", "giả sử"] },
+  { "id": "nghe", "name": "Nghề nghiệp & thu nhập", "seeds": ["nên học ngành gì", "nghề nào lương cao", "lương ngành", "nghề tương lai"] },
+  { "id": "thuc-pham", "name": "Sự thật về thực phẩm", "seeds": ["bột ngọt có hại không", "sự thật về mì tôm", "ăn gì tốt cho", "thực phẩm có hại"] },
+  { "id": "dong-vat", "name": "Thế giới động vật", "seeds": ["động vật kỳ lạ", "loài vật thông minh nhất", "tại sao mèo", "sự thật về loài"] },
+  { "id": "than-thoai", "name": "Thần thoại & truyền thuyết", "seeds": ["thần thoại hy lạp", "thần thoại bắc âu", "truyền thuyết việt nam", "thần thoại trung hoa"] },
+  { "id": "bi-an", "name": "Bí ẩn & chuyện lạ", "seeds": ["bí ẩn chưa có lời giải", "chuyện lạ có thật", "bí ẩn lịch sử", "sự thật đáng sợ"] }
+]

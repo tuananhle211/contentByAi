@@ -1,0 +1,14 @@
+[
+  { "id": "oumuamua", "name": "Oumuamua vật thể lạ", "seeds": ["oumuamua"] },
+  { "id": "wow", "name": "Tín hiệu Wow", "seeds": ["tín hiệu wow"] },
+  { "id": "ton618", "name": "Hố đen lớn nhất TON 618", "seeds": ["hố đen lớn nhất vũ trụ"] },
+  { "id": "fermi", "name": "Nghịch lý Fermi", "seeds": ["nghịch lý fermi"] },
+  { "id": "bootes", "name": "Khoảng trống Boötes", "seeds": ["khoảng trống bootes"] },
+  { "id": "tabby", "name": "Ngôi sao Tabby", "seeds": ["ngôi sao tabby"] },
+  { "id": "jwst", "name": "James Webb phát hiện", "seeds": ["kính james webb phát hiện"] },
+  { "id": "planet9", "name": "Hành tinh thứ 9", "seeds": ["hành tinh thứ 9"] },
+  { "id": "vat-chat-toi", "name": "Vật chất tối", "seeds": ["vật chất tối là gì"] },
+  { "id": "betelgeuse", "name": "Betelgeuse nổ", "seeds": ["sao betelgeuse"] },
+  { "id": "bi-an-vu-tru", "name": "Bí ẩn vũ trụ chung", "seeds": ["bí ẩn vũ trụ"] },
+  { "id": "ngoai-hanh-tinh", "name": "Người ngoài hành tinh / tín hiệu", "seeds": ["tín hiệu ngoài hành tinh"] }
+]

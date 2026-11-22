@@ -1,0 +1,20 @@
+[
+ {"id":"ho-den","name":"Hố đen & vũ trụ cực hạn","seeds":["lỗ đen là gì","điều gì xảy ra nếu rơi vào hố đen","hố đen trắng","sao neutron"]},
+ {"id":"big-bang","name":"Nguồn gốc vũ trụ","seeds":["vụ nổ big bang","trước big bang là gì","vũ trụ hình thành như thế nào","vũ trụ sẽ kết thúc như thế nào"]},
+ {"id":"he-mat-troi","name":"Hệ Mặt Trời & hành tinh","seeds":["mặt trời sẽ chết như thế nào","sao hỏa có sự sống không","sao kim","sao mộc"]},
+ {"id":"tan-the","name":"Trái Đất diệt vong (khoa học)","seeds":["trái đất sẽ diệt vong như thế nào","tiểu hành tinh va vào trái đất","đại tuyệt chủng","nếu trái đất ngừng quay"]},
+ {"id":"thien-tai","name":"Thảm hoạ thiên nhiên giải thích","seeds":["siêu núi lửa yellowstone","sóng thần xảy ra như thế nào","động đất mạnh nhất lịch sử","siêu bão"]},
+ {"id":"khung-long","name":"Khủng long & sinh vật tiền sử","seeds":["khủng long tuyệt chủng như thế nào","sinh vật tiền sử đáng sợ nhất","megalodon","kỷ băng hà"]},
+ {"id":"tien-hoa","name":"Nguồn gốc sự sống & tiến hoá","seeds":["sự sống bắt đầu như thế nào","con người tiến hóa như thế nào","tổ tiên loài người","tại sao chỉ còn homo sapiens"]},
+ {"id":"bien-sau","name":"Đại dương sâu","seeds":["rãnh mariana có gì","sinh vật biển sâu","đáy đại dương có gì","sinh vật dưới biển sâu đáng sợ"]},
+ {"id":"vat-ly-ky-la","name":"Vật lý kỳ lạ","seeds":["du hành thời gian có thật không","vật lý lượng tử là gì","thuyết tương đối hẹp","đa vũ trụ có thật không"]},
+ {"id":"tham-hoa-khoa-hoc","name":"Thảm hoạ do con người & khoa học","seeds":["thảm họa chernobyl","bom nguyên tử hoạt động như thế nào","thảm họa titanic","vụ nổ beirut"]},
+ {"id":"nao-bo","name":"Bộ não & ý thức","seeds":["bộ não hoạt động như thế nào","ý thức là gì","tại sao chúng ta mơ","trí nhớ hoạt động như thế nào"]},
+ {"id":"dieu-gi-neu","name":"Điều gì xảy ra nếu… (khoa học)","seeds":["điều gì xảy ra nếu mặt trăng biến mất","điều gì xảy ra nếu","nếu con người biến mất","nếu mặt trời biến mất"]},
+ {"id":"nguoi-ngoai","name":"Sự sống ngoài Trái Đất","seeds":["người ngoài hành tinh có thật không","nghịch lý fermi","tìm kiếm sự sống ngoài trái đất","thang kardashev"]},
+ {"id":"phat-minh","name":"Phát minh & thí nghiệm đổi thế giới","seeds":["thí nghiệm khoa học điên rồ nhất","phát minh vĩ đại nhất lịch sử","nikola tesla","einstein"]},
+ {"id":"ngu","name":"Khoa học cho giấc ngủ","seeds":["khoa học cho giấc ngủ","vũ trụ ru ngủ","kiến thức ru ngủ","nghe để ngủ khoa học"]},
+ {"id":"dich-benh","name":"Dịch bệnh trong lịch sử (khoa học)","seeds":["dịch hạch đen","đại dịch cúm tây ban nha","virus hoạt động như thế nào","vi khuẩn kháng thuốc"]},
+ {"id":"quy-mo","name":"Quy mô & con số khổng lồ","seeds":["so sánh kích thước vũ trụ","vũ trụ lớn như thế nào","thứ nhỏ nhất trong vũ trụ","con số lớn nhất"]},
+ {"id":"bi-an-chua-giai","name":"Bí ẩn khoa học chưa lời giải","seeds":["bí ẩn khoa học chưa có lời giải","vật chất tối là gì","những bí ẩn lớn nhất vũ trụ","tín hiệu wow"]}
+]

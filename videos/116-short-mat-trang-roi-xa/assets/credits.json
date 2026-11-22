@@ -1,0 +1,52 @@
+[
+  {
+    "name": "guong-laser",
+    "file": "assets/guong-laser.jpg",
+    "w": 1920,
+    "h": 1940,
+    "src": "commons",
+    "id": "File:Apollo 11 Lunar Laser Ranging Experiment.jpg",
+    "title": "Apollo 11 Lunar Laser Ranging Experiment",
+    "author": "NASA",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Apollo_11_Lunar_Laser_Ranging_Experiment.jpg"
+  },
+  {
+    "name": "nhat-thuc",
+    "file": "assets/nhat-thuc.jpg",
+    "w": 1280,
+    "h": 820,
+    "src": "commons",
+    "id": "File:Total solar eclipse 2017 at Orin Junction, Wyoming - 02.jpg",
+    "title": "Total solar eclipse 2017 at Orin Junction, Wyoming - 02",
+    "author": "O'Dea",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Total_solar_eclipse_2017_at_Orin_Junction,_Wyoming_-_02.jpg"
+  },
+  {
+    "name": "trang-ram",
+    "file": "assets/trang-ram.jpg",
+    "w": 1920,
+    "h": 1826,
+    "src": "commons",
+    "id": "File:FullMoon2010.jpg",
+    "title": "FullMoon2010",
+    "author": "Gregory H. Revera",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:FullMoon2010.jpg"
+  },
+  {
+    "name": "trai-dat-that",
+    "file": "assets/trai-dat-that.jpg",
+    "w": 2560,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:The Blue Marble, AS17-148-22727.jpg",
+    "title": "The Blue Marble, AS17-148-22727",
+    "author": "Harrison Schmitt / Apollo 17",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble,_AS17-148-22727.jpg"
+  }
+]

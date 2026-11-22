@@ -1,0 +1,18 @@
+[
+  { "id": "co-nhan-day", "name": "Cổ nhân dạy / người xưa nói", "seeds": ["cổ nhân dạy", "người xưa nói", "lời dạy của cổ nhân", "trí tuệ cổ nhân"] },
+  { "id": "khong-tu", "name": "Khổng Tử, Nho giáo về gia đình", "seeds": ["khổng tử dạy", "tam tòng tứ đức", "lời dạy của khổng tử", "tam cương ngũ thường"] },
+  { "id": "phat-day-gd", "name": "Phật dạy về gia đình", "seeds": ["phật dạy vợ chồng", "phật dạy về gia đình", "phật dạy cha mẹ con cái", "nhân quả gia đình"] },
+  { "id": "ca-dao", "name": "Ca dao tục ngữ về gia đình (giải nghĩa/phản biện)", "seeds": ["ca dao tục ngữ về gia đình", "con có cha như nhà có nóc", "tục ngữ về cha mẹ", "ý nghĩa câu tục ngữ"] },
+  { "id": "cau-noi-gd", "name": "Câu nói hay về gia đình", "seeds": ["câu nói hay về gia đình", "triết lý gia đình", "câu nói hay về cha mẹ", "câu nói thấm thía về gia đình"] },
+  { "id": "bao-hieu", "name": "Báo hiếu & nợ cha mẹ (tranh luận)", "seeds": ["báo hiếu cha mẹ", "con cái có nợ cha mẹ không", "nuôi con để báo hiếu", "chữ hiếu"] },
+  { "id": "day-con", "name": "Dạy con / cha mẹ độc hại", "seeds": ["cách dạy con", "cha mẹ độc hại", "dạy con kiểu nhật", "sai lầm khi dạy con"] },
+  { "id": "vo-chong", "name": "Triết lý vợ chồng / hôn nhân", "seeds": ["đạo vợ chồng", "triết lý hôn nhân", "bài học hôn nhân", "vợ chồng sống với nhau"] },
+  { "id": "me-chong", "name": "Mẹ chồng nàng dâu", "seeds": ["mẹ chồng nàng dâu", "làm dâu", "có nên sống chung với mẹ chồng", "con dâu"] },
+  { "id": "tien-gd", "name": "Tiền bạc trong gia đình", "seeds": ["vợ chồng ai giữ tiền", "tiền lương vợ chồng", "cho bố mẹ tiền", "chia tài sản cho con"] },
+  { "id": "ve-gia", "name": "Về già / nuôi con dưỡng già", "seeds": ["về già", "nuôi con dưỡng già", "tuổi già", "về già mới hiểu"] },
+  { "id": "dan-ong", "name": "Đàn ông / phụ nữ trong gia đình", "seeds": ["đàn ông trụ cột gia đình", "phụ nữ sau khi lấy chồng", "đàn ông nên", "phụ nữ khôn ngoan"] },
+  { "id": "anh-em", "name": "Anh chị em ruột / họ hàng", "seeds": ["anh em ruột", "họ hàng", "anh em trong nhà", "con cả trong gia đình"] },
+  { "id": "tam-ly-gd", "name": "Tâm lý học gia đình", "seeds": ["tâm lý học gia đình", "tổn thương tuổi thơ", "gia đình độc hại", "đứa trẻ bên trong"] },
+  { "id": "suy-ngam", "name": "Suy ngẫm / triết lý sống", "seeds": ["triết lý cuộc sống", "suy ngẫm cuộc sống", "bài học cuộc sống", "đời người"] },
+  { "id": "tranh-luan", "name": "Tranh luận gia đình (có nên…)", "seeds": ["có nên ly hôn vì con", "có nên lấy chồng", "có nên sinh con", "đúng hay sai"] }
+]

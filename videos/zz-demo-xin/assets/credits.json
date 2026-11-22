@@ -1,0 +1,40 @@
+[
+  {
+    "name": "earth-day",
+    "file": "assets/earth-day.jpg",
+    "w": 2560,
+    "h": 1280,
+    "src": "commons",
+    "id": "File:Land shallow topo 2048.jpg",
+    "title": "Land shallow topo 2048",
+    "author": "Reto Stöckli/NASA GSFC (land surface, shallow water, clouds); Robert Simmon (ocean color, compositing, 3D globes, animation); MODIS Land Group; MODIS Science Data Support Team; MODIS Atmosphere Group; MODIS Ocean Group; USGS EROS Data Center (topography); USGS Terrestrial Remote Sensing Flagstaff Field Center (Antarctica); Defense Meteorological Satellite Program (city lights).",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Land_shallow_topo_2048.jpg"
+  },
+  {
+    "name": "earth-night",
+    "file": "assets/earth-night.jpg",
+    "w": 2560,
+    "h": 1280,
+    "src": "commons",
+    "id": "File:Solarsystemscope texture 8k earth nightmap.jpg",
+    "title": "Solarsystemscope texture 8k earth nightmap",
+    "author": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_nightmap.jpg"
+  },
+  {
+    "name": "earth-clouds",
+    "file": "assets/earth-clouds.jpg",
+    "w": 2560,
+    "h": 1280,
+    "src": "commons",
+    "id": "File:Solarsystemscope texture 8k earth clouds.jpg",
+    "title": "Solarsystemscope texture 8k earth clouds",
+    "author": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Solarsystemscope_texture_8k_earth_clouds.jpg"
+  }
+]

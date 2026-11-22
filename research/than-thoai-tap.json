@@ -1,0 +1,93 @@
+[
+ {
+  "id": "sinh-vat",
+  "name": "sinh vật thần thoại việt nam",
+  "seeds": [
+   "sinh vật thần thoại việt nam"
+  ]
+ },
+ {
+  "id": "tu-bat-tu",
+  "name": "tứ bất tử",
+  "seeds": [
+   "tứ bất tử"
+  ]
+ },
+ {
+  "id": "than-set",
+  "name": "thần sét việt nam",
+  "seeds": [
+   "thần sét việt nam"
+  ]
+ },
+ {
+  "id": "ma-lai",
+  "name": "ma lai",
+  "seeds": [
+   "ma lai"
+  ]
+ },
+ {
+  "id": "ma-da",
+  "name": "ma da",
+  "seeds": [
+   "ma da"
+  ]
+ },
+ {
+  "id": "thanh-giong",
+  "name": "thánh gióng",
+  "seeds": [
+   "thánh gióng"
+  ]
+ },
+ {
+  "id": "son-tinh",
+  "name": "sơn tinh thủy tinh",
+  "seeds": [
+   "sơn tinh thủy tinh"
+  ]
+ },
+ {
+  "id": "con-rong",
+  "name": "lạc long quân âu cơ",
+  "seeds": [
+   "lạc long quân âu cơ"
+  ]
+ },
+ {
+  "id": "rua-than",
+  "name": "rùa thần hồ gươm",
+  "seeds": [
+   "rùa thần hồ gươm"
+  ]
+ },
+ {
+  "id": "my-chau",
+  "name": "mỵ châu trọng thủy",
+  "seeds": [
+   "mỵ châu trọng thủy"
+  ]
+ },
+ {
+  "id": "chu-dong-tu",
+  "name": "chử đồng tử",
+  "seeds": [
+   "chử đồng tử"
+  ]
+ },
+ {
+  "id": "do-thi",
+  "name": "truyền thuyết đô thị việt nam",
+  "seeds": [
+   "truyền thuyết đô thị việt nam"
+  ]
+ },
+ {
+  "id": "thuy-quai",
+  "name": "thủy quái việt nam",
+  "seeds": [
+   "thủy quái việt nam"
+  ]
+ }
+]

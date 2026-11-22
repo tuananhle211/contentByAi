@@ -1,0 +1,47 @@
+[
+ {
+  "name": "giap-xac-day",
+  "file": "assets/giap-xac-day.jpg",
+  "w": 797,
+  "h": 598,
+  "src": "commons",
+  "id": "File:Hirondellea gigas.jpg",
+  "title": "Hirondellea gigas",
+  "author": "Daiju Azuma",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Hirondellea_gigas.jpg"
+ },
+ {
+  "name": "sua-mariana",
+  "type": "clip",
+  "dir": "assets/clips/sua-mariana",
+  "frames": 271,
+  "fps": 30,
+  "srcFps": 29.97,
+  "srcW": 1920,
+  "srcH": 1080,
+  "from": 15,
+  "w": 1920,
+  "h": 1080,
+  "src": "commons",
+  "id": "File:Jellyfish- 2016 Deepwater Exploration of the Marianas.webm",
+  "title": "Jellyfish- 2016 Deepwater Exploration of the Marianas",
+  "author": "oceanexplorergov",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Jellyfish-_2016_Deepwater_Exploration_of_the_Marianas.webm"
+ },
+ {
+  "name": "sua-anh",
+  "w": 1920,
+  "h": 1080,
+  "src": "commons",
+  "id": "File:Jellyfish- 2016 Deepwater Exploration of the Marianas.webm",
+  "title": "Jellyfish- 2016 Deepwater Exploration of the Marianas",
+  "author": "oceanexplorergov",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Jellyfish-_2016_Deepwater_Exploration_of_the_Marianas.webm",
+  "file": "assets/sua-anh.jpg",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
+ }
+]

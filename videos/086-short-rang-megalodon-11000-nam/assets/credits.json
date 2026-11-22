@@ -1,0 +1,48 @@
+[
+ {
+  "name": "rang-tay",
+  "file": "assets/rang-tay.jpg",
+  "w": 1920,
+  "h": 1440,
+  "src": "commons",
+  "id": "File:Carcharocles megalodon tooth.JPG",
+  "title": "Carcharocles megalodon tooth",
+  "author": "Tomleetaiwan",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Carcharocles_megalodon_tooth.JPG"
+ },
+ {
+  "name": "rang-den",
+  "file": "assets/rang-den.jpg",
+  "w": 1920,
+  "h": 1961,
+  "src": "commons",
+  "id": "File:Carcharocles megalodon (Agassz, 1837) 1.jpg",
+  "title": "Carcharocles megalodon (Agassz, 1837) 1",
+  "author": "Géry PARENT",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Carcharocles_megalodon_(Agassz,_1837)_1.jpg"
+ },
+ {
+  "name": "ca-voi-boi",
+  "type": "clip",
+  "dir": "assets/clips/ca-voi-boi",
+  "frames": 241,
+  "fps": 30,
+  "srcFps": 29.82,
+  "srcW": 1920,
+  "srcH": 1080,
+  "from": 2,
+  "w": 1920,
+  "h": 1080,
+  "src": "commons",
+  "id": "File:Humpback whale Tail Sailing behaviour.webm",
+  "title": "Humpback whale Tail Sailing behaviour",
+  "author": "NOAA Sanctuaries",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Humpback_whale_Tail_Sailing_behaviour.webm"
+ }
+]

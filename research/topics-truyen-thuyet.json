@@ -1,0 +1,29 @@
+{
+  "channel": { "id": "ve-la-hieu", "name": "Vẽ Là Hiểu", "handle": "@velahieu", "description": "Truyền thuyết & sử Việt — vẽ ra là hiểu" },
+  "topics": [
+    { "title": "Thánh Gióng có thật không? Truyền thuyết và sử sách nói gì", "pillar": "Truyền thuyết thời Hùng Vương", "format": "long",
+      "notes": "Dài 12–15p. Góc: kể truyền thuyết → giặc Ân là ai, sử sách & lễ hội Gióng nói gì → vì sao người xưa cần một anh hùng như Gióng. Bằng chứng: 'thánh gióng' view TB 595K; Cổ Nhân Tâm Pháp 5,2K sub → 1,08M; iPhim TV 27,6K → 2,69M (7 th). TẬP ĐẦU TIÊN." },
+    { "title": "Sơn Tinh – Thủy Tinh: cuộc chiến với lũ sông Hồng", "pillar": "Truyền thuyết thời Hùng Vương", "format": "long",
+      "notes": "Dài 12p. Góc: truyền thuyết = ký ức về lũ lụt đồng bằng sông Hồng và nghề đắp đê. Bằng chứng: view TB 189K, 11 kênh nhỏ thắng, view/sub 7,7; Cổ Nhân Tâm Pháp 5,2K → 693K. Học sinh lớp 6/9 cũng tìm." },
+    { "title": "Ma lai là gì? Vì sao người xưa tin có ma lai", "pillar": "Sinh vật dân gian", "format": "short",
+      "notes": "Shorts 40–50s, góc văn hoá (không hù doạ). Bằng chứng: top 'ma lai' gần như toàn Shorts, kênh 5–10K → ~4M view. Sau đó làm bản dài 8p." },
+    { "title": "Con Rồng Cháu Tiên: 100 trứng và nguồn gốc người Việt", "pillar": "Truyền thuyết thời Hùng Vương", "format": "long",
+      "notes": "Dài 12p. Góc: truyền thuyết → giới khảo cổ nói gì về nguồn gốc người Việt (Đông Sơn, Văn Lang). Bằng chứng: iPhim TV → 672K; Việt Xưa 1,9K sub → 287K." },
+    { "title": "Rùa thần Hồ Gươm: từ truyền thuyết trả gươm đến cụ rùa thật", "pillar": "Truyền thuyết & lịch sử", "format": "long",
+      "notes": "Dài 12p. Góc: truyền thuyết Lê Lợi trả gươm + cụ rùa Hồ Gươm có thật (mất năm 2016). Bằng chứng: Dấu Tích Lịch Sử 47K → 3,0M view." },
+    { "title": "Ma da: vì sao sông nước Việt có ma da?", "pillar": "Sinh vật dân gian", "format": "short",
+      "notes": "Shorts. Góc: nỗi sợ đuối nước của cư dân sông nước → lời răn trẻ em. Bằng chứng: 'ma da' view TB 536K, Shorts 13K sub → 3,9M." },
+    { "title": "Mỵ Châu – Trọng Thủy: nỏ thần và bi kịch Âu Lạc", "pillar": "Truyền thuyết & lịch sử", "format": "long",
+      "notes": "Dài 15p. Góc: nỏ thần = nỏ Cổ Loa có thật (khảo cổ tìm thấy hàng vạn mũi tên đồng). Bằng chứng: view TB 173K nhưng top là cải lương → còn trống bản kể/giải mã." },
+    { "title": "Thuồng luồng và các thủy quái trong truyền thuyết Việt", "pillar": "Sinh vật dân gian", "format": "long",
+      "notes": "Dài 10p + cắt 2–3 Shorts. Bằng chứng: 'thủy quái việt nam' view TB 607K, top nhiều Shorts; Shorts thuồng luồng 1,5K sub → 205K." },
+    { "title": "Trận Bạch Đằng 938: Ngô Quyền và bãi cọc", "pillar": "Sử Việt", "format": "long",
+      "notes": "Dài 15p, vẽ bản đồ thuỷ triều + bãi cọc. Bằng chứng: Hồn Thiêng Sử Việt 31K → 3,25M (9 th); 'trận bạch đằng' 7 kênh nhỏ thắng." },
+    { "title": "Toàn bộ truyền thuyết thời Hùng Vương trong 30 phút", "pillar": "Tổng hợp", "format": "long",
+      "notes": "Tập tổng hợp ghép tập 1, 2, 4 + Chử Đồng Tử, Bánh chưng bánh giầy. Định dạng 'Toàn bộ X trong N phút' đang thắng (Văn Vở 5,7M; Vui Vẻ 2,3M)." },
+    { "title": "Truyền thuyết đô thị Việt Nam: 5 câu chuyện và sự thật phía sau", "pillar": "Sinh vật dân gian", "format": "long",
+      "notes": "Dài 12p, góc giải mã. Bằng chứng: view TB 291K; Tụi Tui Nhiều Chuyện 14K → 223K (1 th). Cẩn thận: không khẳng định chuyện ma là thật." },
+    { "title": "Thánh Gióng lớn nhanh như thổi — chuyện gì thật sự xảy ra?", "pillar": "Sinh vật dân gian", "format": "short",
+      "notes": "Shorts cắt từ tập 1 để kéo người xem về video dài. Bằng chứng: Shorts Thánh Gióng 10,7K sub → 730K." }
+  ]
+}

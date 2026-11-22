@@ -1,0 +1,28 @@
+[
+  {
+    "name": "xuong-trex",
+    "file": "assets/xuong-trex.jpg",
+    "w": 2560,
+    "h": 1706,
+    "src": "commons",
+    "id": "File:Tyrannosaurus rex skeleton (cast of specimen MOR 555) at Cleveland Museum of Natural History.jpg",
+    "title": "Tyrannosaurus rex skeleton (cast of specimen MOR 555) at Cleveland Museum of Natural History",
+    "author": "Robosorne",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tyrannosaurus_rex_skeleton_(cast_of_specimen_MOR_555)_at_Cleveland_Museum_of_Natural_History.jpg"
+  },
+  {
+    "name": "ga-trong",
+    "file": "assets/ga-trong.jpg",
+    "w": 1920,
+    "h": 1268,
+    "src": "commons",
+    "id": "File:Rooster portrait, France.jpg",
+    "title": "Rooster portrait, France",
+    "author": "Clément Bardot",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rooster_portrait,_France.jpg"
+  }
+]

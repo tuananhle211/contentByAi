@@ -1,0 +1,26 @@
+[
+  {
+    "name": "deep-field",
+    "file": "assets/deep-field.jpg",
+    "w": 2508,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:Webb's First Deep Field.jpg",
+    "title": "Webb's First Deep Field",
+    "author": "NASA, ESA, CSA, and STScI",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Webb%27s_First_Deep_Field.jpg"
+  },
+  {
+    "name": "cham-do",
+    "file": "assets/cham-do.jpg",
+    "w": 1280,
+    "h": 854,
+    "src": "commons",
+    "id": "File:Little Red Dots (NIRCam Image) (2025-101).png",
+    "title": "Little Red Dots (NIRCam Image) (2025-101)",
+    "author": "Image: NASA, ESA, CSA, STScI, Dale Kocevski (Colby College)",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Little_Red_Dots_(NIRCam_Image)_(2025-101).png"
+  }
+]

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · Vẽ Là Hiểu</title>
+<link rel="icon" href="/output/channel/avatar.png">
+<link rel="stylesheet" href="/studio/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="logo">✎</span><span>Studio</span></div>
+    <nav id="nav">
+      <a href="#overview" data-tab="overview">Tổng quan</a>
+      <a href="#videos" data-tab="videos">Video</a>
+      <a href="#topics" data-tab="topics">Chủ đề</a>
+      <a href="#channels" data-tab="channels">Kênh</a>
+    </nav>
+    <div class="jobs-mini" id="jobsMini"></div>
+  </aside>
+  <main>
+    <header class="top">
+      <h1 id="pageTitle">Tổng quan</h1>
+      <label class="chan-pick">Kênh
+        <select id="channelPick"></select>
+      </label>
+    </header>
+    <div id="view" class="view"><p class="muted">Đang tải…</p></div>
+  </main>
+</div>
+<div id="modal" class="modal" hidden></div>
+<div id="tip" class="tip" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<script type="module" src="/studio/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "ton618",
+    "file": "assets/ton618.jpg",
+    "w": 1024,
+    "h": 1024,
+    "src": "commons",
+    "id": "File:TON 618 SDSS9.jpg",
+    "title": "TON 618 SDSS9",
+    "author": "Sloan Digital Sky Survey, Astrophysical Research Consortium at Apache Point Observatory",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:TON_618_SDSS9.jpg"
+  },
+  {
+    "name": "voyager",
+    "file": "assets/voyager.jpg",
+    "w": 1920,
+    "h": 1588,
+    "src": "commons",
+    "id": "File:Voyager spacecraft.jpg",
+    "title": "Voyager spacecraft",
+    "author": "NASA/JPL",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Voyager_spacecraft.jpg"
+  },
+  {
+    "name": "mat-troi",
+    "file": "assets/mat-troi.jpg",
+    "w": 1920,
+    "h": 1920,
+    "src": "commons",
+    "id": "File:Full disk of the Sun (eso1703e-comparisona).jpg",
+    "title": "Full disk of the Sun (eso1703e-comparisona)",
+    "author": "NASA/SDO, ALMA (ESO/NAOJ/NRAO)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Full_disk_of_the_Sun_(eso1703e-comparisona).jpg"
+  },
+  {
+    "name": "trai-dat-that",
+    "file": "assets/trai-dat-that.jpg",
+    "w": 2560,
+    "h": 2560,
+    "src": "commons",
+    "id": "File:The Blue Marble, AS17-148-22727.jpg",
+    "title": "The Blue Marble, AS17-148-22727",
+    "author": "Harrison Schmitt / Apollo 17",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble,_AS17-148-22727.jpg"
+  }
+]

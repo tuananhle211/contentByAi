@@ -1,0 +1,100 @@
+[
+ {
+  "id": "mo-gio",
+  "name": "Mộ gió",
+  "seeds": [
+   "mộ gió"
+  ]
+ },
+ {
+  "id": "chieu-hon",
+  "name": "Gọi hồn",
+  "seeds": [
+   "gọi hồn"
+  ]
+ },
+ {
+  "id": "nhap-trang",
+  "name": "Quỷ nhập tràng",
+  "seeds": [
+   "quỷ nhập tràng"
+  ]
+ },
+ {
+  "id": "ma-tranh",
+  "name": "Ma trành",
+  "seeds": [
+   "ma trành"
+  ]
+ },
+ {
+  "id": "chim-lon",
+  "name": "Chim lợn",
+  "seeds": [
+   "chim lợn kêu"
+  ]
+ },
+ {
+  "id": "hinh-nhan",
+  "name": "Hình nhân thế mạng",
+  "seeds": [
+   "hình nhân thế mạng"
+  ]
+ },
+ {
+  "id": "ma-troi",
+  "name": "Ma trơi",
+  "seeds": [
+   "ma trơi"
+  ]
+ },
+ {
+  "id": "co-hon",
+  "name": "Tháng cô hồn",
+  "seeds": [
+   "tháng cô hồn"
+  ]
+ },
+ {
+  "id": "lo-ban",
+  "name": "Bùa Lỗ Ban",
+  "seeds": [
+   "bùa lỗ ban"
+  ]
+ },
+ {
+  "id": "than-trung",
+  "name": "Thần trùng",
+  "seeds": [
+   "thần trùng"
+  ]
+ },
+ {
+  "id": "ma-xo",
+  "name": "Ma xó",
+  "seeds": [
+   "ma xó"
+  ]
+ },
+ {
+  "id": "duyen-am",
+  "name": "Duyên âm",
+  "seeds": [
+   "duyên âm"
+  ]
+ },
+ {
+  "id": "kumanthong",
+  "name": "Nuôi kumanthong",
+  "seeds": [
+   "kumanthong"
+  ]
+ },
+ {
+  "id": "do-dem",
+  "name": "Đò chở vong",
+  "seeds": [
+   "đò đêm truyện ma"
+  ]
+ }
+]

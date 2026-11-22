@@ -1,0 +1,12 @@
+[
+  { "id": "su-trieu-dai", "name": "Sử Việt: các triều đại ít được kể", "seeds": ["nhà hồ", "nhà mạc", "lịch sử nhà lý", "nhà hậu lê"] },
+  { "id": "su-nhan-vat", "name": "Sử Việt: nhân vật lịch sử", "seeds": ["vua quang trung", "trần hưng đạo", "lý thường kiệt", "nguyễn trãi"] },
+  { "id": "su-phuong-nam", "name": "Sử Việt: Champa, Phù Nam, mở cõi phương Nam", "seeds": ["vương quốc champa", "vương quốc phù nam", "lịch sử nam tiến", "chúa nguyễn mở cõi"] },
+  { "id": "dia-danh", "name": "Nguồn gốc địa danh & các tỉnh", "seeds": ["nguồn gốc tên gọi", "lịch sử sài gòn", "lịch sử hà nội", "tại sao gọi là"] },
+  { "id": "truyen-thuyet-vn", "name": "Truyền thuyết & thần thoại Việt Nam", "seeds": ["truyền thuyết việt nam", "thần thoại việt nam", "sơn tinh thủy tinh", "tứ bất tử"] },
+  { "id": "su-the-gioi", "name": "Lịch sử thế giới tóm tắt", "seeds": ["lịch sử thế giới tóm tắt", "đế chế la mã", "lịch sử trung quốc tóm tắt", "chiến tranh thế giới thứ nhất"] },
+  { "id": "bi-an-khoa-hoc", "name": "Bí ẩn khoa học & lịch sử (giải thích)", "seeds": ["bí ẩn khoa học", "bí ẩn đại dương", "bí ẩn kim tự tháp", "nền văn minh cổ đại"] },
+  { "id": "van-hoa-viet", "name": "Văn hoá & phong tục Việt (vì sao…)", "seeds": ["nguồn gốc tết", "phong tục việt nam", "tại sao người việt", "nguồn gốc áo dài"] },
+  { "id": "chien-tranh-co", "name": "Trận đánh & chiến thuật cổ đại", "seeds": ["trận đánh nổi tiếng", "chiến thuật quân sự", "binh pháp tôn tử", "trận xích bích"] },
+  { "id": "kinh-te-su", "name": "Lịch sử kinh tế & tiền tệ", "seeds": ["lịch sử tiền tệ", "lịch sử đồng tiền việt nam", "khủng hoảng kinh tế 1929", "bong bóng hoa tulip"] }
+]

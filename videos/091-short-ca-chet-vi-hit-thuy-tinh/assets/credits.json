@@ -1,0 +1,28 @@
+[
+ {
+  "name": "ho-chicxulub",
+  "file": "assets/ho-chicxulub.jpg",
+  "w": 1920,
+  "h": 1220,
+  "src": "nasa",
+  "id": "PIA03379",
+  "title": "Shaded Relief with Height as Color, Yucatan Peninsula, Mexico",
+  "author": "NASA/JPL / NASA JPL",
+  "license": "Public domain (NASA)",
+  "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+  "page": "https://images.nasa.gov/details/PIA03379"
+ },
+ {
+  "name": "ranh-gioi-kpg",
+  "file": "assets/ranh-gioi-kpg.jpg",
+  "w": 2560,
+  "h": 1706,
+  "src": "commons",
+  "id": "File:Cretaceous–Paleogene boundary in Colorado 1.JPG",
+  "title": "Cretaceous–Paleogene boundary in Colorado 1",
+  "author": "Jeffrey Beall",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cretaceous%E2%80%93Paleogene_boundary_in_Colorado_1.JPG"
+ }
+]

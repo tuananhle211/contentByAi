@@ -1,0 +1,34 @@
+[
+  {
+    "name": "wow-in",
+    "file": "assets/wow-in.jpg",
+    "w": 1024,
+    "h": 578,
+    "src": "commons",
+    "id": "File:Wow signal.jpg",
+    "title": "Wow signal",
+    "author": "Credit: Big Ear Radio Observatory and North American AstroPhysical Observatory (NAAPO).",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Wow_signal.jpg"
+  },
+  {
+    "name": "dia-vo-tuyen",
+    "type": "clip",
+    "dir": "assets/clips/dia-vo-tuyen",
+    "frames": 361,
+    "fps": 30,
+    "srcFps": 29.97,
+    "srcW": 1920,
+    "srcH": 1080,
+    "from": 20,
+    "w": 1920,
+    "h": 1080,
+    "src": "commons",
+    "id": "File:Radio telescope Effelsberg in motion.webm",
+    "title": "Radio telescope Effelsberg in motion",
+    "author": "Raimond Spekking",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Radio_telescope_Effelsberg_in_motion.webm"
+  }
+]

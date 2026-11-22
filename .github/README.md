@@ -1,82 +1,92 @@
-# contentByAi: thuật toán hình ảnh
+# contentByAi
 
-Code vẽ hoạt hình 2D cho video YouTube, toàn bộ hình do code tự vẽ trên canvas (không dùng ảnh AI). Repo chỉ chứa phần hình ảnh của 2 kênh:
+Xưởng sản xuất video YouTube hoạt hình, toàn bộ hình vẽ bằng code (canvas + rough.js, không dùng ảnh AI). Gồm: engine vẽ, bộ cảnh từng kênh, kịch bản các tập, pipeline giọng đọc → render → mô tả/thumbnail, web quản lý Studio, và bộ skill cho Claude Code viết kịch bản và dựng video.
 
-- **Nhân Gian Chưa Kể**: truyện tâm linh dân gian Việt, tông tối, nhân vật búp bê, phủ sepia. Đây là nét vẽ hiện tại (từ tập 121).
-- **Hạt Bụi Xanh**: khoa học kiểu phim tài liệu (vũ trụ, sinh vật khổng lồ), có cảnh 3D.
-
-Kèm theo: 2 cảnh mẫu và code tạo giọng đọc (gọi API). Không có trong repo: kịch bản các tập, pipeline dựng video, video đã xuất, dữ liệu Studio. `.gitignore` chặn mọi thứ, chỉ mở đúng các file dưới đây.
+| Kênh | id | Nội dung |
+|---|---|---|
+| Vẽ Là Hiểu | `ve-la-hieu` | Truyền thuyết và sử Việt, kể tếu táo |
+| Long Story Drawn | `the-human-manual` | Người cổ đại (tiếng Anh) |
+| Nói Có Sách | `noi-co-sach` | Shorts tranh luận câu nói xưa về gia đình |
+| Nhân Gian Chưa Kể | `neu-ban-la` | Truyện tâm linh dân gian kể ngôi "tôi", tông tối |
+| Hạt Bụi Xanh | `hat-bui-xanh` | Khoa học kiểu phim tài liệu: vũ trụ, sinh vật khổng lồ |
 
 ## Cấu trúc
 
 | Đường dẫn | Nội dung |
 |---|---|
-| `engine/kit.js` | Bộ API vẽ `k` truyền vào `draw(k)`: nét tay (rough.js), chữ, thời gian/cue, camera, nhóm biến đổi |
-| `engine/characters.js`, `props.js`, `icons.js` | Nhân vật, đạo cụ, icon dùng chung |
-| `engine/brush.js`, `post.js` | Nét rung kiểu vẽ tay, hậu kỳ khung hình |
-| `engine/gl3d.js` | Lớp 3D (three.js) |
-| `engine/templates.js` | Cảnh mẫu: thẻ tiêu đề, gạch đầu dòng, mời đăng ký, tập sau |
-| `engine/player.js`, `player.html` | Trình phát cảnh trong trình duyệt (cần `timing.json` do pipeline sinh ra) |
-| `engine/fonts/` | Be Vietnam Pro, Pangolin, Patrick Hand (giấy phép OFL) |
-| `channel/nhan-gian.js` | Nhân Gian: bảng màu (`PAPER`, `AMBER`, `COLD`), ánh sáng `shade`, đèn dầu, chữ (`tag`, `quote`, `chapter`), cảnh cuối |
-| `channel/nhan-gian-doll.js` | Nhân vật búp bê `doll()` (đứng/đi/ngồi/quỳ, tay, mặt, quần áo nông thôn Bắc Bộ), `dollBike`, `dollFish`, lớp `sepia` |
-| `channel/nhan-gian-hd.js` | Nền chi tiết "HD" dùng chung: trời, núi xa nhiều lớp, tre, cau, mái rơm, vách đất, gạch, gỗ, cây đa, giếng, nhà; chỉnh màu + hạt phim |
-| `channel/nhan-gian-{babi,cauco,gieng,ke,kinh,magiau,nuna}.js` | Bộ cảnh theo truyện: sân nhà, cổng, bãi tha ma, giếng, tủ gỗ, xóm kinh miền Tây, lồng đèn, hiên đình, chiếu… |
-| `channel/art-neu-ban-la.js` | Ảnh đại diện và banner kênh Nhân Gian Chưa Kể |
-| `channel/hat-bui-xanh.js` | Hạt Bụi Xanh: bảng màu `P`, nền vũ trụ/đại dương, Trái Đất, thước tỉ lệ, sinh vật và vật so sánh (cá voi, khủng long, xe buýt, Landmark 81…) |
-| `channel/hat-bui-xanh-3d.js` | Cảnh 3D qua three.js: Trái Đất xoay (texture ngày/đêm/mây tự cung cấp), hố đen |
-| `channel/art-hat-bui-xanh.js` | Ảnh đại diện và banner kênh Hạt Bụi Xanh |
-| `videos/mau-nhan-gian/`, `videos/mau-hat-bui-xanh/` | Cảnh mẫu ~30 giây cho mỗi kênh |
-| `scripts/tts.mjs` | Tạo giọng đọc: gọi API OmniVoice / ElevenLabs / Edge TTS, trả mp3 + mốc từng từ |
-| `scripts/vi-so.mjs`, `scripts/tts_edge.py` | Đổi số thành chữ trước khi đọc; Edge TTS miễn phí |
+| `engine/` | Engine vẽ: API `k` (nét tay, chữ, thời gian/cue, camera), nhân vật, đạo cụ, icon, nét cọ, 3D, player, font |
+| `channel/` | Bộ cảnh và bảng màu từng kênh (`nhan-gian*.js`, `hat-bui-xanh*.js`, `ve-la-hieu.js`…), ảnh kênh (`art-*.js`), hồ sơ kênh, nghiên cứu ngách (`research/`) |
+| `videos/<slug>/` | Mỗi tập: `video.js` (lời đọc + hình từng cảnh), `thumbs.js` (3 mẫu thumbnail), `kich-ban.md` (kịch bản, sổ dữ kiện), `assets/` (ảnh thật + `credits.json`) |
+| `scripts/` | `build.mjs` (giọng → render → mp4, phụ đề, mô tả), `tts.mjs` (gọi API giọng đọc), `thumbs.mjs`, `anh-that.mjs` (ảnh/clip NASA, ESA…), `youtube.mjs` / `upload.mjs` / `analytics.mjs`, `soat-kich-ban.mjs`, `next-slot.mjs`, `niche/` (tìm ngách) |
+| `studio/` | Web Studio (cổng 5180): kênh, chủ đề, lịch đăng, hàng chờ build/upload, số liệu YouTube, "Gói đăng" |
+| `data/studio.json` | Dữ liệu Studio: kênh, chủ đề, trạng thái, lịch |
+| `.claude/skills/` | Skill cho Claude Code: `lam-video`, `y-tuong-video`, `tim-ngach`, `thumbnail`, `concept-truyen-thong`, `phan-tich`, và skill "vibe" từng kênh `kenh-*` |
+| `CLAUDE.md` | Hướng dẫn API vẽ và quy ước dự án cho Claude |
+
+Không có trong repo (xem `.gitignore`): video đã render (`output/`), khung hình tách từ clip (`videos/*/assets/clips/`, tạo lại bằng `scripts/anh-that.mjs --video`), `.env` và token YouTube (`.secrets/`), file ghi âm mẫu giọng.
+
+## Cài đặt
+
+```bash
+npm install
+npx playwright install chromium      # trình duyệt để render
+npm run setup                        # Python venv + edge-tts (giọng miễn phí)
+cp .env.example .env                 # điền khoá: OMNI_URL/OMNI_KEY (OmniVoice), ELEVENLABS_*, YOUTUBE_API_KEY…
+```
+
+Cần thêm `ffmpeg`. Đăng YouTube qua Studio cần `.secrets/client_secret.json` (OAuth client của Google Cloud); token từng kênh tự lưu ở `.secrets/tokens/`.
+
+## Lệnh hay dùng
+
+```bash
+node scripts/build.mjs <slug>              # đọc giọng + render → output/<slug>/video.mp4, thumbnail, phụ đề, mô tả
+node scripts/build.mjs <slug> --stills     # ảnh tĩnh từng cảnh để soát
+node scripts/build.mjs <slug> --meta       # chỉ làm lại mô tả + thumbnail
+node scripts/thumbs.mjs <slug>             # 3 mẫu thumbnail
+node scripts/tts.mjs "câu" out.mp3 --provider omnivoice --voice default
+npm run studio                             # web Studio ở http://localhost:5180
+```
+
+Ví dụ chạy ngay: `node scripts/build.mjs mau-nhan-gian` hoặc `node scripts/build.mjs mau-hat-bui-xanh` (giọng Edge miễn phí).
 
 ## Mẫu
 
-**Nhân Gian Chưa Kể** (`videos/mau-nhan-gian/video.js`): gian nhà ban đêm, đèn dầu, nhân vật búp bê, lớp sepia.
+**Nhân Gian Chưa Kể** (`videos/mau-nhan-gian/video.js`)
 
 ![Mẫu Nhân Gian Chưa Kể](mau-nhan-gian.jpg)
 
-**Hạt Bụi Xanh** (`videos/mau-hat-bui-xanh/video.js`): Trái Đất, cá voi xanh so với xe buýt và người.
+**Hạt Bụi Xanh** (`videos/mau-hat-bui-xanh/video.js`)
 
 ![Mẫu Hạt Bụi Xanh](mau-hat-bui-xanh.jpg)
 
-Mỗi cảnh trong `video.js` có lời đọc `say` và hàm vẽ `draw(k)`. Các mốc `{a}`, `{b}`… trong lời đọc được đổi thành thời điểm thật nhờ mốc từng từ của giọng đọc, rồi dùng trong hình bằng `k.at('a', 0.8)` hoặc `k.cue('b')`.
-
-## Tạo giọng đọc
-
-```bash
-cp .env.example .env          # điền khoá của nhà cung cấp muốn dùng
-node scripts/tts.mjs "Các cụ bảo, chim lợn kêu trên mái nhà nào, nhà ấy sắp có tang." out.mp3 --provider omnivoice --voice default --speed 0.95
-# → out.mp3 + out.mp3.json = [{ "t": 0, "d": 0.74, "text": "Các" }, …]
-```
-
-| `--provider` | Cần gì | Ghi chú |
-|---|---|---|
-| `omnivoice` | `OMNI_URL` (+ `OMNI_KEY`) trỏ tới server OmniVoice | Giọng `default` của 2 kênh. Số được đổi thành chữ trước khi gửi (`vi-so.mjs`) |
-| `elevenlabs` | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Model mặc định `eleven_flash_v2_5` |
-| `edge` | Python + `pip install edge-tts` | Miễn phí, giọng `vi-VN-NamMinhNeural` / `vi-VN-HoaiMyNeural` |
-
-Trong code: `import { tts } from './scripts/tts.mjs'; const words = await tts(text, 'out.mp3', { provider: 'omnivoice', voice: 'default' });`
-
-## Dùng thế nào
-
-Mỗi cảnh là một hàm `draw(k)` gọi lại mỗi khung hình (1920×1080, hoặc 1080×1920 cho Shorts). Ví dụ:
+## Viết một cảnh
 
 ```js
 import { shade, quote } from '/channel/nhan-gian.js';
-import { doll, sepia } from '/channel/nhan-gian-doll.js';
+import { BA, ch, nha } from '/channel/nhan-gian-ke.js';
 
-export function draw(k) {
-  k.ctx.fillStyle = '#1a120c'; k.ctx.fillRect(0, 0, k.W, k.H);
-  doll(k, 960, 980, 520, { kind: 'old', hair: 'bun', view: 'front', arms: 'chest', face: 'calm' });
-  shade(k, 0.6, [{ x: 960, y: 600, r: 700, warm: 1, flicker: 1 }], { vig: 0.5 });
-  quote(k, 'Bà tôi bảo, Ông Kẹ gõ cửa đúng ba tiếng.', 'a', { size: 56 });
-  sepia(k, 0.6);
-}
+export default {
+  meta: { title: 'Thử', tts: 'edge', voice: 'vi-VN-NamMinhNeural', minDuration: 0 },
+  scenes: [{
+    say: '{a}Các cụ bảo, Ông Kẹ gõ cửa đúng ba tiếng.',
+    draw(k) {
+      nha(k, { time: 'night' });
+      ch(k, 960, 990, 330, { ...BA, view: 'side', face: 'calm' });
+      shade(k, 0.75, [{ x: 960, y: 600, r: 600, warm: 1, flicker: 1 }]);
+      quote(k, 'Ông Kẹ gõ cửa đúng ba tiếng.', 'a', { size: 56 });
+    },
+  }],
+};
 ```
 
-- Thời gian: `k.t` (giây trong cảnh), `k.at(cue, dur)` → 0..1, `k.cue(name, offset)`.
-- Nét tay: `k.line/rect/circle/poly/path…` nhận `{ p, stroke, width, fill, seed }`. `p` 0..1 là vẽ dần.
-- Module import bằng đường dẫn tuyệt đối (`/engine/...`, `/channel/...`), nên phục vụ thư mục gốc repo bằng một web server tĩnh.
+`{a}`, `{b}`… trong lời đọc là mốc thời gian lấy từ giọng đọc thật; trong hình dùng `k.at('a', 0.8)` (0→1) hoặc `k.cue('a')`. API đầy đủ: `CLAUDE.md`.
 
-Cài thư viện: `npm install` (roughjs, three; playwright-core chỉ cần khi render hàng loạt).
+## Tạo giọng đọc
+
+| `--provider` | Cần gì | Ghi chú |
+|---|---|---|
+| `omnivoice` | `OMNI_URL` (+ `OMNI_KEY`) trỏ tới server OmniVoice | Giọng `default` của Nhân Gian Chưa Kể và Hạt Bụi Xanh; số được đổi thành chữ trước khi gửi (`vi-so.mjs`) |
+| `elevenlabs` | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Model mặc định `eleven_flash_v2_5` |
+| `edge` | Python + `edge-tts` | Miễn phí |
+
+Trả về mp3 + `.json` mốc từng từ `[{ t, d, text }]`.

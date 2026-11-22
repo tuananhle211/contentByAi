@@ -1,0 +1,952 @@
+// Nhân Gian Chưa Kể — tập 2: Ma Da | Mỗi Năm Sông Lấy Đi Đúng Một Người. Kịch bản duyệt 13/11: kich-ban.md.
+// Tín ngưỡng: ma da (hồn người chết đuối phải kéo người khác thế chỗ), không thưa khi dưới nước gọi tên, hình nhân thế mạng.
+// "Luật làng không cứu người đêm rằm" là hư cấu. Truyện hư cấu, tên người tên làng hư cấu. Không tả xác, không vẽ "con ma".
+// Nhịp (góp ý sau tập 1): mở bằng cao trào, đếm ngược CÒN 7 NGÀY, cảnh NHANH (lead/tail ngắn) xen CHẬM (lead/tail dài), nhiều giọng.
+import * as thumbs from '/videos/101-ma-da-moi-nam-song-lay-mot-nguoi/thumbs.js';
+import { PAPER, AMBER, COLD, shade, cold, dust, tag, quote, oil, nextScene, subScene } from '/channel/nhan-gian.js';
+import {
+  THANG, BO, ME, ONG, NA, TEO, CUU, HIEN, THONG, LUA, CA, DAN, MOON,
+  river, riverWide, torchCrowd, wader, stilt, boat, paddle, strawman, raft, doll, paleHand,
+  pier, PIER, underPier, sanRoom, SAN, dinh, board, market, hill, HILL, hut, HUT, underwater, countdown,
+} from '/channel/nhan-gian-song.js';
+
+const FAST = { lead: 0.3, tail: 0.6 };
+const SLOW = { lead: 0.8, tail: 1.6 };
+const moon = { x: MOON.x, y: MOON.y, r: 1200 };
+const zoom = (k, cx, cy, s, fn) => k.group({ x: cx, y: cy, s }, () => k.group({ x: -cx, y: -cy }, fn));
+const lie = (k, x, y, h, o) => k.group({ x, y, r: -Math.PI / 2 }, () => k.char(0, 0, h, o));
+const black = (k) => { k.ctx.fillStyle = '#05060a'; k.ctx.fillRect(-200, -200, k.W + 400, k.H + 400); };
+const after = (k, c) => k.t > k.cue(c);
+const flash = (k, cue) => k.flash(cue, 0.35, '255,250,240');
+const ROWS = [['1945', 'Anh Tý · đi lưới đêm'], ['1968', 'Chị Hến · giặt áo'], ['1978', 'Ông Cò · say rượu'], ['1991', 'Lụa · 17 tuổi']];
+// Bờ sông đêm rằm: hàng đuốc + bố lội. sink = mức chìm của bố (0..1).
+function ram(k, o = {}) {
+  riverWide(k, { time: 'night' });
+  const L = torchCrowd(k, 60, 1100, 900, 11, { h: 300 });
+  if (o.bo !== false) wader(k, o.boX ?? 1350, 640, 300, { ...BO, face: 'sad', talk: k.talk('bo') }, o.sink ?? 0.5);
+  if (o.me) k.char(300, 990, 420, { ...ME, face: 'cry', tears: 1, pose: 'shout', talk: k.talk('me') });
+  if (o.ong) k.group({ x: 520, y: 990 }, () => k.char(0, 0, 300, { ...ONG, face: 'sad', pose: 'hold' }));
+  shade(k, 0.72, [moon, ...L, { x: o.boX ?? 1350, y: 560, r: 260 }]);
+}
+
+export default {
+  meta: {
+    title: 'Ma Da | Mỗi Năm Sông Lấy Đi Đúng Một Người',
+    description: `Làng chài của tôi tin rằng mỗi năm, sông Cái lấy đi đúng một người. Rằm tháng Bảy năm 1992, người được chọn là bố tôi: bảy đêm liền, dưới gầm bến có tiếng con gái gọi "Sáu ơi".
+Giấu bố lên đồi, nước vẫn tìm đến. Thả người rơm thế mạng, sáng ra nó đứng ở cửa nhà tôi, tay cầm cái mái chèo bố đánh mất từ năm trước.
+
+Truyện ma da kể bằng hoạt hình: bảy ngày đếm ngược đến rằm, một làng chài và một bí mật cả làng giữ kín.`,
+    footer: `📖 Truyện hư cấu dựa trên tín ngưỡng dân gian về ma da (hồn người chết đuối) và tục hình nhân thế mạng. Tên người, tên làng và tình tiết đều hư cấu.
+🛟 Thấy người đuối nước: hô hoạn, gọi 112/114, ném phao hoặc vật nổi; chỉ xuống nước cứu nếu bạn biết cách cứu đuối.
+🕯️ Nhân Gian Chưa Kể: những chuyện người xưa truyền tai nhau, mà chưa ai giải thích được.`,
+    links: [['▶ Tập trước: Ma Xó', '100-ma-xo-goc-bep-nha-ba-ngoai'], ['🔔 Đăng ký', 'https://www.youtube.com/@nhangianchuake?sub_confirmation=1']],
+    tags: ['ma da', 'truyện ma', 'chuyện tâm linh', 'truyện ma hoạt hình', 'truyện ma làng quê', 'hình nhân thế mạng', 'rằm tháng bảy', 'hoạt hình kinh dị', 'chuyện tâm linh có thật', 'nhân gian chưa kể'],
+    hashtags: ['truyenma', 'mada', 'tamlinh'],
+    style: 'clean', tts: 'omnivoice', omniVoice: 'default', speed: 1,
+    voices: {
+      bo: { omniVoice: 'bao_trung' }, ong: { omniVoice: 'anh_khoi' }, cuu: { omniVoice: 'thien_tam' }, thong: { omniVoice: 'phong_vien_nam' },
+      teo: { omniVoice: 'manh_dung' }, me: { omniVoice: 'nguyet_nga' }, hien: { omniVoice: 'mi-pham' }, lua: { omniVoice: 'review-phim' }, na: { omniVoice: 'female-capcut' },
+    },
+    lead: 0.4, tail: 0.7, pause: 0.3,
+    transition: 'cut', sfxTransitions: false, camera: 0.035, scribble: false,
+    sfxVolume: 0.5, paper: '#05060a', privacy: 'private',
+  },
+  thumbnail: thumbs.b,
+
+  scenes: [
+    // ===== MỞ ĐẦU: CAO TRÀO =====
+    {
+      chapter: 'Mở đầu', ...SLOW,
+      say: [
+        '{a}Đêm rằm tháng Bảy năm chín mươi hai, bố tôi lội xuống sông. {b}Nước lên đến ngực. Rồi đến vai. {c}Trên bờ, cả làng đứng thành một hàng dài, tay cầm đuốc. Không ai bước xuống. {d}Mẹ tôi gào lên, hai người đàn ông phải giữ chặt tay mẹ. Ông nội tôi quỳ trên cát. {e}Từ dưới mặt nước đen, có tiếng một người con gái gọi:',
+        { v: 'lua', text: '{f}Sáu ơi.' },
+        '{g}Cả đời, ông nội dạy tôi: nghe dưới nước gọi tên mình thì không bao giờ được thưa. {h}Bố tôi thưa:',
+        { v: 'bo', text: '{i}Ơi.' },
+      ],
+      sfx: [['wind', 0, 0.3], ['heartbeat', 'f', 0.45], ['stinger', 'i', 0.5]],
+      draw(k) {
+        const s = after(k, 'c') ? 1 : 1.5 - 0.5 * k.at('b', 3, 'inOut');
+        zoom(k, 1350, 620, s, () => ram(k, { sink: 0.35 + 0.25 * k.at('b', 3), me: after(k, 'd'), ong: after(k, 'd') }));
+        tag(k, 'RẰM THÁNG BẢY · 1992', 'a');
+        quote(k, '"Sáu ơi."', 'f', { color: COLD, until: 'g' });
+        quote(k, '"Ơi."', 'i', { color: AMBER, size: 64 });
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Làng tôi là một làng chài bên sông Cái. Người làng tôi tin một điều, tin như tin trời sẽ sáng: {b}mỗi năm, sông lấy đi đúng một người. {c}Năm ấy, người được chọn là bố tôi. {d}Bảy ngày. {e}Hai cách để lừa sông. {f}Một cái mái chèo sơn xanh. {g}Và một bí mật mà cả làng tôi đã giữ kín suốt một năm. {h}Chuyện bắt đầu từ bảy ngày trước đó.',
+      sfx: [['whoosh', 'd', 0.3], ['whoosh', 'e', 0.3], ['whoosh', 'f', 0.3], ['whoosh', 'g', 0.3], ['gong', 'h', 0.3]],
+      draw(k) {
+        if (k.t < k.cue('d')) { const L = pier(k, { time: 'day', lit: false }); k.char(1450, 600, 300, { ...BO, face: 'calm', pose: 'hold' }); k.vignette(0.35); quote(k, 'Mỗi năm, sông lấy đi đúng một người.', 'b', { color: AMBER }); return; }
+        if (k.t < k.cue('e')) { black(k); k.text('7 NGÀY', k.W / 2, 540, { size: 160, font: 'title', color: AMBER, fx: 'pop', p: k.at('d', 0.3) }); return; }
+        if (k.t < k.cue('f')) { riverWide(k, { time: 'night' }); strawman(k, 960, 900, 460, {}); raft(k, 1400, 700, 1); shade(k, 0.6, [moon, { x: 960, y: 700, r: 400 }]); return; }
+        if (k.t < k.cue('g')) { black(k); paddle(k, 960, 540, 2.6, -0.2); shade(k, 0.4, [{ x: 960, y: 540, r: 800, warm: 0.4 }]); return; }
+        if (k.t < k.cue('h')) { riverWide(k, { time: 'night' }); const L = torchCrowd(k, 100, 1800, 900, 16, { h: 320 }); shade(k, 0.8, L); return; }
+        black(k); k.text('BẢY NGÀY TRƯỚC', k.W / 2, 540, { size: 90, font: 'title', color: PAPER, fx: 'fade', p: k.at('h', 0.6) });
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Đây là Nhân Gian Chưa Kể. Nếu bạn muốn nghe tiếp những chuyện chưa có lời giải, hãy bấm đăng ký. {c}Còn bây giờ, tắt bớt đèn đi.',
+      sfx: [['click', 'c', 0.5]],
+      draw(k) {
+        black(k); oil(k, 960, 820, 1.6);
+        const off = k.at('c', 1.2);
+        shade(k, 0.75 + 0.2 * off, [{ x: 960, y: 650, r: 700 - 300 * off, flicker: 1, warm: 1 }]);
+        k.text('NHÂN GIAN CHƯA KỂ', k.W / 2, 230, { size: 92, font: 'title', color: PAPER, fx: 'fade', p: k.at('a', 1) });
+        k.text('Ma Da · Mỗi Năm Sông Lấy Đi Đúng Một Người', k.W / 2, 330, { size: 46, color: AMBER, fx: 'fade', p: k.at('a', 1.5) });
+      },
+    },
+
+    // ===== CÒN 7 NGÀY =====
+    {
+      chapter: 'Còn 7 ngày: tiếng gọi tên bố', ...FAST,
+      say: [
+        '{a}Nhà tôi là một căn nhà sàn chân cột cắm xuống nước. Ông nội tôi, ông Lành, đánh cá sáu mươi năm, dạy cháu chắt ba điều trước cả khi dạy bơi.',
+        { v: 'ong', text: '{r1}Một: không tắm sông lúc trời tối. {r2}Hai: nghe dưới nước gọi tên mình, không được thưa. {r3}Ba: đêm rằm tháng Bảy, không ai được xuống nước. Kể cả để cứu người.' },
+        '{z}Điều thứ ba, ông nói rất nhỏ, như sợ sông nghe thấy.',
+      ],
+      sfx: [['click', 'r1', 0.25], ['click', 'r2', 0.25], ['click', 'r3', 0.25]],
+      draw(k) {
+        if (k.t < k.cue('r1')) { pier(k, { time: 'dusk', lit: true }); shade(k, 0.35, [{ x: 1520, y: 500, r: 700 }]); }
+        else {
+          sanRoom(k, { day: true });
+          k.char(800, SAN.y, 470, { ...ONG, face: after(k, 'r3') ? 'sad' : 'calm', pose: 'point', talk: k.talk('ong') });
+          k.char(1050, SAN.y, 330, { ...THANG, face: 'calm', flip: true });
+          k.char(1250, SAN.y, 280, { ...NA, face: 'calm', flip: true });
+          shade(k, 0.4, [SAN.door, SAN.lamp]);
+          const items = [['1. Không tắm sông lúc trời tối.', 'r1'], ['2. Nghe dưới nước gọi tên, không thưa.', 'r2'], ['3. Rằm tháng Bảy, không xuống nước.', 'r3']];
+          items.forEach(([t, c], i) => k.text(t, 120, 180 + i * 80, { size: 46, font: 'title', align: 'left', color: i === 2 ? AMBER : PAPER, fx: 'fade', p: k.at(c, 0.5), outline: '#000', outlineWidth: 6 }));
+          if (after(k, 'r3')) k.text('Kể cả để cứu người.', 120, 420, { size: 40, align: 'left', color: '#e08070', fx: 'fade', p: k.at(k.cue('r3', 2.4), 0.5), outline: '#000', outlineWidth: 6 });
+        }
+        countdown(k, 'CÒN 7 NGÀY', 'Tiếng gọi tên bố');
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Năm trước đó, người sông lấy là Lụa. Mười bảy tuổi, con gái bà Hiền xóm dưới, hát hay nhất bến. {b}Đêm rằm tháng Bảy, thuyền Lụa lật giữa sông. Sáng ra, ông Cửu vớt được Lụa ở khúc sông cong. {c}Từ đó, bà Hiền ngồi ở bến mỗi đêm, nhìn xuống nước. Người làng gọi bà là bà điên.',
+      draw(k) {
+        if (k.t < k.cue('b')) { pier(k, { time: 'day', stilt: false, boats: false }); boat(k, 900, 720, 0.9, {}); k.char(900, 700, 300, { ...LUA, face: 'happy', talk: 0.2 }); cold(k, 0.7); tag(k, 'NĂM NGOÁI', 'a'); return; }
+        if (k.t < k.cue('c')) { riverWide(k, { time: 'night', sand: false }); boat(k, 960, 640, 0.9, { capsized: true }); shade(k, 0.7, [moon]); cold(k, 0.8); return; }
+        pier(k, { time: 'night', boats: false });
+        k.char(560, PIER.y - 20, 300, { ...HIEN, face: 'blank', gloom: 0.6 });
+        shade(k, 0.7, [moon, { x: 560, y: 500, r: 300 }]);
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Tôi nhớ Lụa. Chiều nào chị cũng ra bến giặt áo, hay cõng bé Na theo. Chị dạy Na hát, dạy Na thả thuyền giấy. Na quý chị hơn cả quý tôi. {b}Rằm năm ngoái, sau đêm Lụa chết, Na sốt li bì ba ngày. {c}Khỏi sốt, Na không bao giờ nhắc đến chị nữa. Và nhất định không chịu ngồi lên thuyền.',
+      draw(k) {
+        if (k.t < k.cue('b')) { pier(k, { time: 'dusk', stilt: false, boats: false }); k.char(700, PIER.y - 20, 440, { ...LUA, face: 'happy', pose: 'hold', talk: 0.25 }); k.char(880, PIER.y - 20, 260, { ...NA, face: 'laugh' }); cold(k, 0.55); return; }
+        sanRoom(k, {});
+        if (k.t < k.cue('c')) lie(k, 640, SAN.y - 20, 260, { ...NA, face: 'sleep' });
+        else k.char(560, SAN.y, 280, { ...NA, face: 'blank', look: 1 });
+        k.char(860, SAN.y, 420, { ...ME, face: 'sad', pose: 'hold' });
+        shade(k, 0.65, [SAN.lamp]);
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Bảy ngày trước rằm, tôi và thằng Tèo đi soi ếch ở bờ bến. Tèo là đứa nhát nhất xóm, đi đâu cũng níu vạt áo tôi. {b}Đến gần bến cá, Tèo dừng phắt lại.',
+        { v: 'teo', text: '{c}Mày nghe gì không?' },
+      ],
+      sfx: [['owl', 0.5, 0.25]],
+      draw(k) {
+        pier(k, { time: 'night', boats: true });
+        const x = k.lerp(200, 700, k.at('a', 5, 'linear'));
+        k.char(x, PIER.y - 20, 330, { ...THANG, face: 'calm', walk: !after(k, 'b') });
+        k.char(x - 150, PIER.y - 20, 300, { ...TEO, face: after(k, 'b') ? 'shock' : 'sad', walk: !after(k, 'b'), talk: k.talk('teo') });
+        shade(k, 0.78, [moon, { x: x + 200, y: PIER.y + 40, r: 260 }]);
+        quote(k, '"Mày nghe gì không?"', 'c');
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Dưới gầm bến, chỗ những cây cột gỗ cắm xuống nước, có tiếng một người con gái. Rất khẽ. Kéo dài.',
+        { v: 'lua', text: '{b}Sáu ơi… Sáu ơi…' },
+        '{c}Làng tôi chỉ có một người tên Sáu. {d}Là bố tôi. {e}Tèo vứt cả đèn pin, chạy một mạch không ngoái lại.',
+      ],
+      sfx: [['drip', 'a', 0.35], ['heartbeat', 'b', 0.45], ['stinger', 'd', 0.45], ['whoosh', 'e', 0.35]],
+      draw(k) {
+        if (k.t < k.cue('e')) {
+          zoom(k, 960, 600, 1 + 0.3 * k.at('a', 6, 'inOut'), () => { underPier(k); shade(k, 0.65, [{ x: 960 + Math.sin(k.t * 7) * 30, y: 700, r: 360 }]); });
+          quote(k, '"Sáu ơi… Sáu ơi…"', 'b', { color: COLD, until: 'c' });
+          if (after(k, 'd')) k.text('BỐ TÔI', k.W / 2, 520, { size: 120, font: 'title', color: AMBER, fx: 'pop', p: k.at('d', 0.3) });
+          return;
+        }
+        pier(k, { time: 'night' });
+        k.char(k.lerp(500, -200, k.at('e', 1.5, 'in')), PIER.y - 20, 300, { ...TEO, face: 'shock', walk: true, walkSpeed: 2 });
+        k.char(700, PIER.y - 20, 330, { ...THANG, face: 'shock' });
+        shade(k, 0.78, [moon]);
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Sáng hôm sau, tôi chưa kịp kể với ai thì cả chợ cá đã biết. {b}Bà bán cá nghe thấy. {c}Ông Cửu vớt xác nghe thấy. {d}Hai người đi lưới đêm cũng nghe thấy. {e}Cùng một giọng, cùng một tên.',
+      sfx: [['pop', 'b', 0.2], ['pop', 'c', 0.2], ['pop', 'd', 0.2]],
+      draw(k) {
+        market(k);
+        k.char(420, 880, 420, { ...DAN('#8a5a4a', { body: 'woman', hair: 'bun' }), face: after(k, 'b') ? 'shock' : 'calm', talk: after(k, 'b') && !after(k, 'c') ? 0.4 : 0 });
+        k.char(760, 880, 470, { ...CUU, face: after(k, 'c') ? 'blank' : 'calm' });
+        k.char(1150, 880, 470, { ...DAN('#3a4a5a'), face: after(k, 'd') ? 'shock' : 'calm' }); k.char(1350, 880, 470, { ...DAN('#4a3a2a'), face: after(k, 'd') ? 'shock' : 'calm', flip: true });
+        k.char(1650, 880, 330, { ...THANG, face: 'blank', flip: true });
+        k.vignette(0.4);
+        quote(k, 'Cùng một giọng. Cùng một tên.', 'e', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Trưa ấy, bé Na, em gái tôi, sáu tuổi, vừa chải tóc con búp bê vừa nói, giọng thản nhiên như kể chuyện ăn cơm:',
+        { v: 'na', text: '{b}Đêm qua có chị gọi bố ở dưới gầm nhà mình đấy. Chị gọi lâu lắm.' },
+        '{c}Cái bát trên tay mẹ tôi rơi xuống sàn, vỡ làm đôi.',
+      ],
+      sfx: [['bonk', 'c', 0.5], ['stinger', ['c', 0.3], 0.45]],
+      draw(k) {
+        sanRoom(k, { day: true });
+        k.char(520, SAN.y, 280, { ...NA, face: 'calm', pose: 'hold', talk: k.talk('na') });
+        doll(k, 560, SAN.y - 120, 1.1);
+        k.char(900, SAN.y, 440, { ...ME, face: after(k, 'c') ? 'shock' : 'calm', pose: after(k, 'c') ? 'shrug' : 'hold' });
+        if (after(k, 'c')) { const { ctx } = k; ctx.fillStyle = '#e9e4d8'; ctx.beginPath(); ctx.ellipse(880, SAN.y - 4, 30, 8, 0.2, 0, Math.PI * 2); ctx.ellipse(950, SAN.y - 2, 26, 7, -0.3, 0, Math.PI * 2); ctx.fill(); }
+        shade(k, 0.4, [SAN.door, SAN.lamp]);
+        quote(k, '"Đêm qua có chị gọi bố ở dưới gầm nhà mình đấy."', 'b', { color: COLD });
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Chiều hôm ấy, thầy Thông, thầy cúng của làng, gọi mọi người ra sân đình. Thầy chỉ nói một câu:',
+        { v: 'thong', text: '{b}Sông chọn rồi. Là anh Sáu.' },
+        '{c}Mọi người quay sang nhìn bố tôi. Tôi chờ bố cãi lại, chờ bố cười, chờ bố nói đó là chuyện nhảm. {d}Bố tôi chỉ cúi đầu, như một người đã biết trước.',
+      ],
+      sfx: [['gong', 'b', 0.35]],
+      draw(k) {
+        dinh(k, { time: 'dusk' });
+        k.char(960, 820, 480, { ...THONG, face: 'cold', pose: after(k, 'b') ? 'point' : 'stand', talk: k.talk('thong') });
+        for (let i = 0; i < 6; i++) k.char(200 + i * 110 + (i > 2 ? 900 : 0), 1000, 380, { ...DAN(['#3a4a5a', '#5a4a3a', '#4a5a4a', '#5a3a3a', '#3a3a4a', '#4a4a3a'][i]), face: 'blank', flip: i > 2, look: i > 2 ? -1 : 1 });
+        k.char(1300, 960, 470, { ...BO, face: after(k, 'd') ? 'sad' : 'blank', tilt: after(k, 'd') ? 0.25 : 0 });
+        shade(k, 0.45, [{ x: 960, y: 400, r: 1100 }]);
+        quote(k, '"Sông chọn rồi. Là anh Sáu."', 'b', { until: 'c' });
+      },
+    },
+
+    // ===== CÒN 6 NGÀY =====
+    {
+      chapter: 'Còn 6 ngày: tấm bảng ở đình', ...SLOW,
+      say: '{a}Trong góc đình làng tôi có một tấm bảng gỗ đen mà trẻ con không đứa nào dám nhìn lâu. Người ta sơn trắng lên đó tên những người sông đã lấy, mỗi năm một dòng, từ năm bốn mươi lăm. {b}Năm bốn mươi lăm, anh Tý đi lưới đêm. Năm sáu mươi tám, chị Hến giặt áo. Năm bảy mươi tám, ông Cò say rượu. Năm chín mươi mốt: Lụa. {c}Dòng dưới cùng, năm chín mươi hai, đã có người kẻ sẵn một vạch trắng. Để trống. Chờ. {d}Chiều hôm ấy, tôi thấy thầy Thông đứng trước tấm bảng rất lâu, tay cầm sẵn hộp sơn.',
+      sfx: [['creak', 'a', 0.3], ['stinger', 'c', 0.4]],
+      draw(k) {
+        black(k);
+        if (k.t < k.cue('d')) {
+          const z = after(k, 'c') ? 1 + 0.6 * k.at('c', 2, 'inOut') : 1;
+          zoom(k, 960, after(k, 'c') ? 760 : 520, z, () => board(k, 960, 540, 1, ROWS, { p: after(k, 'b') ? 1 : 0.15 }));
+          shade(k, 0.45, [{ x: 960, y: 540, r: 900, warm: 0.3 }]);
+        } else {
+          board(k, 1250, 500, 0.8, ROWS);
+          k.char(560, 1000, 520, { ...THONG, face: 'blank', pose: 'hold', look: 1 });
+          shade(k, 0.55, [{ x: 900, y: 500, r: 800, warm: 0.4 }]);
+        }
+        countdown(k, 'CÒN 6 NGÀY', 'Tấm bảng ở đình');
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Mẹ tôi sang nhà thầy Thông, quỳ xuống xin thầy một cách. {b}Thầy bảo có hai cách.',
+        { v: 'thong', text: '{c}Một: đưa người đi thật xa khỏi nước. {d}Hai: làm người thế mạng. {e}Còn cách thứ ba, thì không ai muốn nghe.' },
+        '{f}Mẹ hỏi cách thứ ba là gì. Thầy nhìn qua vai mẹ, về phía bố tôi đang đứng ngoài hiên:',
+        { v: 'thong', text: '{g}Người nợ thì tự đi trả.' },
+      ],
+      sfx: [['stinger', 'g', 0.4]],
+      draw(k) {
+        dinh(k, { time: 'night', dark: true });
+        k.char(1150, 900, 480, { ...THONG, face: 'cold', talk: k.talk('thong'), look: after(k, 'f') ? 1 : -1 });
+        k.group({ x: 720, y: 980 }, () => k.char(0, 0, 340, { ...ME, face: 'cry', tears: 0.8, pose: 'hold' }));
+        if (after(k, 'f')) k.char(1650, 820, 420, { ...BO, face: 'blank' });
+        k.prop('incense', 960, 760, 120);
+        shade(k, 0.7, [{ x: 960, y: 700, r: 500, warm: 0.8, flicker: 1 }, ...(after(k, 'f') ? [{ x: 1650, y: 600, r: 260 }] : [])]);
+        quote(k, '"Người nợ thì tự đi trả."', 'g', { color: AMBER });
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Từ hôm ấy, cả chợ không ai mua cá nhà tôi nữa. Người ta bảo cá nhà tôi có hơi nước. {b}Bố thằng Tèo cấm nó chơi với tôi. {c}Tối ấy, Tèo vẫn trèo qua hàng rào sang nhà tôi, ngồi im bên cạnh tôi đến khuya. Nó chẳng nói gì. Nó chỉ không bỏ về.',
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          market(k, { empty: true, emptyX: 1300 });
+          k.char(1300, 880, 420, { ...ME, face: 'sad' });
+          for (let i = 0; i < 4; i++) k.char(300 + i * 150, 880, 440, { ...DAN(['#3a4a5a', '#5a4a3a', '#4a5a4a', '#5a3a3a'][i]), face: 'cold', flip: true, walk: true, walkSpeed: 0.4 });
+          if (after(k, 'b')) { k.char(1650, 880, 470, { ...DAN('#4a3a2a'), face: 'angry', pose: 'point' }); k.char(1780, 880, 300, { ...TEO, face: 'sad' }); }
+          k.vignette(0.45);
+          return;
+        }
+        pier(k, { time: 'night', boats: false, lit: true });
+        k.char(1380, 590, 300, { ...THANG, face: 'sad' }); k.char(1530, 590, 280, { ...TEO, face: 'calm', flip: true });
+        shade(k, 0.7, [moon, { x: 1450, y: 450, r: 350, warm: 0.6 }]);
+      },
+    },
+
+    // ===== CÒN 5 NGÀY =====
+    {
+      chapter: 'Còn 5 ngày: lên đồi', ...FAST,
+      say: [
+        { v: 'ong', text: '{a}Sông muốn lấy người thì phải có người ở gần sông.' },
+        '{b}Ông nội đập tay xuống chiếu. Mẹ tôi gói quần áo cho bố ngay trong đêm. {c}Sáng sớm, bác Cả trên đồi xuống đón bố. Nhà bác cách sông mười cây số, trên một quả đồi đất đỏ, giếng nước phải đào sâu mấy chục mét mới có. {d}Không có sông. Không có ao. Không có ai gọi tên bố. {e}Bố không muốn đi. Lần đầu tiên tôi nghe bố mẹ cãi nhau.',
+        { v: 'bo', text: '{f}Trốn được năm nay thì sang năm sao?' },
+        { v: 'me', text: '{g}Sang năm thì sang năm tính. Năm nay anh phải sống.' },
+      ],
+      sfx: [['bonk', 'b', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('c') || k.t > k.cue('e')) {
+          sanRoom(k, {});
+          if (k.t < k.cue('c')) { k.char(700, SAN.y, 470, { ...ONG, face: 'angry', pose: 'shout', talk: k.talk('ong') }); k.char(1000, SAN.y, 420, { ...ME, face: 'sad', pose: 'hold' }); }
+          else { k.char(800, SAN.y, 470, { ...BO, face: 'angry', talk: k.talk('bo'), flip: true }); k.char(560, SAN.y, 420, { ...ME, face: 'cry', tears: 0.7, talk: k.talk('me') }); }
+          shade(k, 0.6, [SAN.lamp]);
+          quote(k, '"Năm nay anh phải sống."', 'g');
+        } else {
+          hill(k, { time: 'day' });
+          const { ctx } = k; ctx.strokeStyle = 'rgba(239,228,204,0.9)'; ctx.lineWidth = 6; ctx.setLineDash([18, 14]); ctx.beginPath(); ctx.moveTo(1800, 1000); ctx.quadraticCurveTo(1300, 700, 440, 600); ctx.stroke(); ctx.setLineDash([]);
+          k.text('10 cây số', 1250, 760, { size: 56, font: 'title', color: PAPER, outline: '#000', outlineWidth: 8, fx: 'pop', p: k.at('c', 0.5) });
+          quote(k, 'Không sông. Không ao.', 'd', { color: AMBER });
+        }
+        countdown(k, 'CÒN 5 NGÀY', 'Lên đồi');
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Lúc xe đạp chở bố đi qua bến, bố ngoái lại nhìn sông rất lâu. {b}Bà Hiền đang ngồi ở bến. Hai người nhìn nhau. {c}Tôi không hiểu cái nhìn ấy. Phải bốn ngày sau tôi mới hiểu.',
+      draw(k) {
+        pier(k, { time: 'dawn', boats: true });
+        const x = k.lerp(200, 1100, k.at('a', 6, 'linear'));
+        k.char(x, PIER.y - 20, 440, { ...CA, face: 'calm', walk: true, walkSpeed: 0.5 });
+        k.char(x - 60, PIER.y - 30, 420, { ...BO, face: 'sad', look: -1, flip: true });
+        k.char(300, PIER.y - 20, 300, { ...HIEN, face: 'blank', look: 1 });
+        shade(k, 0.35, [{ x: 960, y: 300, r: 1400 }]);
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Chỉ một ngày sau, bác Cả đạp xe xuống làng, mặt cắt không còn giọt máu. {b}Đêm qua trên đồi mưa to. {c}Sáng ra, bác thấy bố nằm úp mặt xuống một cái vũng trâu đằm sau nhà. {d}Nước sâu chưa đến một gang tay.',
+      sfx: [['thunder', 'b', 0.35], ['stinger', 'c', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('b')) { pier(k, { time: 'day' }); k.char(k.lerp(-200, 900, k.at('a', 2, 'out')), PIER.y - 20, 440, { ...CA, face: 'shock', walk: k.t < k.cue('a', 2), walkSpeed: 2 }); k.vignette(0.4); return; }
+        hill(k, { time: 'night', rain: true });
+        if (after(k, 'c')) lie(k, HILL.pool.x + 140, HILL.pool.y - 10, 400, { ...BO, face: 'sleep' });
+        shade(k, 0.6, [{ x: HILL.pool.x, y: HILL.pool.y, r: 520 }]);
+        k.flash(k.cue('b', 0.3), 0.4);
+        quote(k, 'Nước sâu chưa đến một gang tay.', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Bác lôi bố lên thì mặt bố đã tím tái. Bố ho ra cả bùn. {b}Bố kể, bố ra sau nhà rửa chân, trượt ngã, rồi không ngóc đầu lên được.',
+        { v: 'bo', text: '{c}Có cái gì ghì gáy tao xuống. Bàn tay. Nhỏ thôi. Như tay con gái.' },
+        '{d}Trên gáy bố, có một vệt đỏ hằn năm đường. {e}Cũng đêm ấy, ở dưới làng, ông Cửu thề với cả chợ là ông thấy bà Hiền ngồi dưới gầm bến từ chập tối đến sáng, không rời một bước.',
+      ],
+      sfx: [['heartbeat', 'c', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('d')) {
+          hill(k, { time: 'dawn' });
+          k.char(HILL.pool.x - 250, 940, 470, { ...BO, face: 'shock', talk: k.talk('bo'), pose: 'hold' });
+          k.char(HILL.pool.x - 450, 940, 450, { ...CA, face: 'sad', pose: 'hold' });
+          if (after(k, 'c')) paleHand(k, HILL.pool.x + 60, HILL.pool.y - 10, 1.4, 0.4, 0.35 * k.at('c', 1));
+          shade(k, 0.45, [{ x: 960, y: 300, r: 1300 }]);
+          quote(k, '"Bàn tay. Nhỏ thôi. Như tay con gái."', 'c', { color: COLD });
+          return;
+        }
+        if (k.t < k.cue('e')) {
+          black(k);
+          const { ctx } = k;
+          ctx.fillStyle = '#c99868'; ctx.beginPath(); ctx.ellipse(960, 560, 360, 260, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#1d1712'; ctx.beginPath(); ctx.ellipse(960, 330, 380, 140, 0, 0, Math.PI); ctx.fill();
+          ctx.strokeStyle = `rgba(190,40,40,${0.75 * k.at('d', 0.8)})`; ctx.lineWidth = 16; ctx.lineCap = 'round';
+          for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.moveTo(800 + i * 70, 470 + Math.abs(i - 2) * 16); ctx.lineTo(810 + i * 66, 660 - Math.abs(i - 2) * 22); ctx.stroke(); }
+          shade(k, 0.4, [{ x: 960, y: 560, r: 700 }]);
+          return;
+        }
+        underPier(k); k.char(960, 900, 380, { ...HIEN, face: 'blank' });
+        shade(k, 0.8, [{ x: 960, y: 700, r: 320 }]);
+        quote(k, 'Bà Hiền ngồi dưới gầm bến cả đêm.', 'e', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Bố về làng ngay chiều hôm ấy. Ông nội đứng sau lưng bố, nói một câu mà tôi nhớ mãi:',
+        { v: 'ong', text: '{b}Sông không cần mày ra sông. Nước ở đâu, nó ở đó.' },
+      ],
+      draw(k) {
+        pier(k, { time: 'dusk', lit: true, boats: true });
+        k.char(1400, 590, 420, { ...BO, face: 'blank', gloom: 0.6 });
+        k.char(1620, 590, 440, { ...ONG, face: 'sad', talk: k.talk('ong'), flip: true });
+        shade(k, 0.45, [{ x: 1500, y: 400, r: 700 }]);
+        quote(k, '"Nước ở đâu, nó ở đó."', 'b', { color: AMBER });
+      },
+    },
+
+    // ===== CÒN 4 NGÀY =====
+    {
+      chapter: 'Còn 4 ngày: sợi thừng', ...FAST,
+      say: [
+        '{a}Đêm ấy, ông nội lấy một sợi thừng gai, buộc một đầu vào cổ chân bố, đầu kia vào cột cái của nhà.',
+        { v: 'ong', text: '{b}Mày đi đâu thì sợi dây cũng kéo mày lại.' },
+        '{c}Bố không cãi. Bố chỉ chìa chân ra, như một đứa trẻ chìa tay cho thầy giáo đánh.',
+      ],
+      draw(k) {
+        sanRoom(k, { rope: { x: 1500, y: SAN.y - 40 } });
+        k.char(1500, SAN.y, 450, { ...BO, face: 'blank', flip: true });
+        k.char(1280, SAN.y, 450, { ...ONG, face: 'angry', pose: 'hold', talk: k.talk('ong') });
+        shade(k, 0.7, [SAN.lamp, { x: 1350, y: 600, r: 450, warm: 0.5 }]);
+        countdown(k, 'CÒN 4 NGÀY', 'Sợi thừng');
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Nửa đêm, tôi tỉnh dậy vì tiếng bé Na thì thầm. Na nằm sấp trong màn, ghé mặt xuống khe sàn, nói chuyện với khoảng tối bên dưới:',
+        { v: 'na', text: '{b}Chị lạnh à? Em cho chị mượn con búp bê này.' },
+        '{c}Tôi bế xốc Na lên. Dưới khe sàn chỉ có nước đen vỗ vào chân cột, đều đều. Không có ai. {d}Sáng ra, con búp bê của Na biến mất. {e}Còn sợi thừng buộc chân bố thì ướt sũng từ đầu đến cuối, như vừa có ai kéo nó qua sông.',
+      ],
+      sfx: [['drip', 'c', 0.35], ['stinger', 'e', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('d')) {
+          zoom(k, 420, 820, 1.6, () => {
+            sanRoom(k, {});
+            if (k.t < k.cue('c')) { lie(k, 600, SAN.y - 30, 260, { ...NA, face: 'calm', talk: k.talk('na') }); doll(k, 330, SAN.y + 30, 0.8, { r: 1.2 }); }
+            else k.char(440, SAN.y, 330, { ...THANG, face: 'shock', pose: 'hold' });
+            shade(k, 0.75, [{ ...SAN.lamp, r: 380 }]);
+          });
+          quote(k, '"Chị lạnh à? Em cho chị mượn con búp bê này."', 'b', { color: COLD, until: 'c' });
+          return;
+        }
+        sanRoom(k, { day: true, rope: { x: 1500, y: SAN.y - 40 }, wetRope: after(k, 'e') });
+        k.char(1500, SAN.y, 450, { ...BO, face: 'shock', flip: true });
+        if (after(k, 'e')) { const { ctx } = k; ctx.fillStyle = 'rgba(160,190,220,0.6)'; for (let i = 0; i < 10; i++) { const dy = (k.t * 140 + i * 37) % 90; ctx.beginPath(); ctx.ellipse(1150 + i * 34, SAN.y - 60 + dy, 4, 8, 0, 0, Math.PI * 2); ctx.fill(); } }
+        shade(k, 0.4, [SAN.door, SAN.lamp]);
+        quote(k, 'Con búp bê biến mất.', 'd', { until: 'e' });
+        quote(k, 'Sợi thừng ướt sũng.', 'e', { color: AMBER });
+      },
+    },
+
+    // ===== CÒN 3 NGÀY =====
+    {
+      chapter: 'Còn 3 ngày: người rơm', ...FAST,
+      say: '{a}Thầy Thông bảo còn một cách. Làm một người thế mạng. {b}Thầy bó rơm thành hình người, mặc cho nó cái áo nâu bố hay mặc đi lưới, đội cái nón của bố, dán lên ngực một tờ giấy ghi tên tuổi bố. {c}Người làng tôi tin, sông sẽ nhận người rơm thay cho người thật.',
+      draw(k) {
+        dinh(k, { time: 'night', dark: true });
+        k.char(700, 900, 480, { ...THONG, face: 'calm', pose: 'hold' });
+        strawman(k, 1100, 900, 440 * Math.max(0.05, k.at('b', 3, 'out')), {});
+        const L = torchCrowd(k, 1400, 1850, 1000, 4, { h: 320 });
+        shade(k, 0.7, [{ x: 950, y: 600, r: 600, warm: 0.8, flicker: 1 }, ...L]);
+        countdown(k, 'CÒN 3 NGÀY', 'Người rơm');
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Đêm ấy, cả làng ra bến. Người ta đặt người rơm lên một cái bè chuối, thắp nến, đẩy ra giữa dòng. {b}Cái bè trôi xa dần, xa dần, ngọn nến nhỏ như hạt đỗ rồi tắt hẳn. {c}Bố tôi đứng nhìn cho đến khi không còn thấy gì nữa. Bà Hiền cũng đứng đó. {d}Lần đầu tiên tôi thấy bà cười.',
+      sfx: [['wind', 'b', 0.3]],
+      draw(k) {
+        riverWide(k, { time: 'night' });
+        const p = k.at('a', k.cue('c') - k.cue('a'), 'linear'), s = 1 - 0.85 * p;
+        const rx = k.lerp(900, 1500, p), ry = k.lerp(820, 560, p);
+        strawman(k, rx, ry - 10 * s, 300 * s, {}); raft(k, rx, ry, s, p < 0.95 ? 1 : 0);
+        const L = torchCrowd(k, 60, 700, 960, 7, { h: 300 });
+        k.char(780, 990, 470, { ...BO, face: 'blank', look: 1 });
+        k.char(220, 1000, 440, { ...HIEN, face: after(k, 'd') ? 'smug' : 'blank', look: 1 });
+        shade(k, 0.7, [moon, ...L, { x: rx, y: ry - 40, r: 160 * s + 40, warm: 0.8 }, ...(after(k, 'd') ? [{ x: 220, y: 700, r: 260 }] : [])]);
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Sáng hôm sau, tiếng mẹ tôi hét làm cả xóm chạy sang. {b}Người rơm đứng dựa vào cửa nhà tôi. Ướt sũng. Nước chảy ròng ròng xuống sàn. {c}Tờ giấy trên ngực đã bị nước xoá trắng, không còn một chữ. {d}Sông trả nó về.',
+      sfx: [['stinger', 'a', 0.5], ['drip', 'b', 0.4], ['heartbeat', 'd', 0.4]],
+      draw(k) {
+        sanRoom(k, { day: true });
+        const z = after(k, 'c') ? 1 + 0.8 * k.at('c', 1.5, 'inOut') : 1;
+        zoom(k, 1700, 560, z, () => {
+          strawman(k, 1700, SAN.y, 460, { wet: true, blank: true });
+          k.char(1250, SAN.y, 440, { ...ME, face: 'shock', pose: 'shout' });
+          shade(k, 0.35, [SAN.door]);
+        });
+        quote(k, 'Sông trả nó về.', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Và trong tay nó, có ai đó đã nhét một cái mái chèo. {b}Mái chèo gỗ, sơn màu xanh, cán khắc hình một con cá. {c}Cả làng chỉ có một người khắc con cá lên mái chèo. Là bố tôi. {d}Và đó là cái mái chèo bố đã đánh mất, đúng đêm rằm tháng Bảy năm ngoái. {e}Bố tôi lùi lại một bước, rồi ngồi sụp xuống. {f}Nếu là bạn, bạn sẽ hỏi bố, hay hỏi người đã vớt cái mái chèo ấy lên?',
+      sfx: [['stinger', 'b', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('e')) {
+          black(k);
+          paddle(k, 960, 560, 3 * (1 + 0.1 * k.at('a', 8, 'linear')), -0.15);
+          if (after(k, 'b')) { const { ctx } = k; ctx.strokeStyle = AMBER; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(960 - 330, 560 + 50, 90, 50, -0.15, 0, Math.PI * 2 * k.at('b', 0.8)); ctx.stroke(); }
+          shade(k, 0.45, [{ x: 960, y: 560, r: 900, warm: 0.4 }]);
+          quote(k, 'Rằm tháng Bảy năm ngoái.', 'd', { color: AMBER });
+          return;
+        }
+        sanRoom(k, { day: true });
+        strawman(k, 1700, SAN.y, 460, { wet: true, blank: true, paddle: true });
+        k.group({ x: 1200, y: SAN.y }, () => k.char(0, 0, after(k, 'e') ? 330 : 470, { ...BO, face: 'shock', pose: 'facepalm' }));
+        shade(k, 0.4, [SAN.door]);
+        quote(k, 'Bạn sẽ hỏi bố, hay hỏi người đã vớt nó lên?', 'f', { color: AMBER, size: 44 });
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Đêm ấy, bố mang cái mái chèo ra sau nhà, chất rơm lên, châm lửa. {b}Rơm cháy hết lượt này đến lượt khác. Gỗ chỉ xèo xèo, bốc khói trắng, không bén. {c}Gần sáng, bố bỏ cuộc. {d}Cái mái chèo vẫn nằm trên đống tro, chỉ có lớp sơn xanh bị cháy sém một mảng. Một mảng hình bàn tay.',
+      sfx: [['scratch', 'b', 0.3], ['stinger', 'd', 0.4]],
+      draw(k) {
+        black(k);
+        const { ctx } = k;
+        ctx.fillStyle = '#2a2420'; ctx.beginPath(); ctx.ellipse(960, 820, 520, 70, 0, 0, Math.PI * 2); ctx.fill();
+        const burning = k.t < k.cue('c');
+        paddle(k, 960, 760, 2.2, 0, { burnt: after(k, 'd') });
+        if (burning) { for (let i = 0; i < 9; i++) { const h = 140 + 70 * Math.sin(k.t * 9 + i * 1.3); ctx.fillStyle = i % 2 ? '#ff8a2a' : '#ffb340'; ctx.beginPath(); ctx.moveTo(620 + i * 80, 800); ctx.quadraticCurveTo(640 + i * 80, 800 - h, 660 + i * 80 + Math.sin(k.t * 7 + i) * 10, 800 - h * 1.2); ctx.quadraticCurveTo(680 + i * 80, 800 - h * 0.5, 700 + i * 80, 800); ctx.fill(); } k.steam(960, 600, 2); }
+        if (k.t < k.cue('c')) k.char(1500, 950, 470, { ...BO, face: 'angry', pose: 'hold' });
+        shade(k, burning ? 0.55 : 0.6, [{ x: 960, y: 740, r: burning ? 700 : 420, warm: burning ? 1 : 0.2, flicker: burning ? 1 : 0 }]);
+        quote(k, 'Một mảng hình bàn tay.', 'd', { color: AMBER });
+      },
+    },
+
+    // ===== CÒN 2 NGÀY =====
+    {
+      chapter: 'Còn 2 ngày: người vớt xác', ...FAST,
+      say: [
+        '{a}Tôi đi tìm ông Cửu. Ba mươi năm vớt xác trên sông Cái, ai chết đuối cũng qua tay ông. Ông sống một mình trong cái lều trên bãi bồi, ngày nào cũng say. {b}Tôi đặt cái mái chèo xuống trước mặt ông. Ông nhìn nó rất lâu, rồi rót một chén rượu.',
+        { v: 'cuu', text: '{c}Mày muốn biết thật à?' },
+      ],
+      draw(k) {
+        hut(k);
+        k.char(800, 900, 470, { ...CUU, face: 'blank', talk: k.talk('cuu') });
+        k.char(1250, 900, 330, { ...THANG, face: 'calm', flip: true });
+        if (after(k, 'b')) paddle(k, 1020, 860, 0.8, 0.05);
+        shade(k, 0.65, [HUT.lamp]);
+        quote(k, '"Mày muốn biết thật à?"', 'c');
+        countdown(k, 'CÒN 2 NGÀY', 'Người vớt xác');
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        { v: 'cuu', text: '{a}Năm ngoái tao vớt con Lụa. Hai bàn tay nó nắm chặt, tao phải gỡ từng ngón. {b}Trong kẽ móng tay nó có vụn sơn.' },
+        '{c}Ông nhìn thẳng vào tôi.',
+        { v: 'cuu', text: '{d}Sơn xanh. Cả cái bến này, chỉ có một chiếc thuyền sơn xanh.' },
+      ],
+      sfx: [['stinger', 'd', 0.45]],
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          black(k);
+          paleHand(k, 960, 600, 4, 0, 0.9);
+          if (after(k, 'b')) { const { ctx } = k; ctx.fillStyle = '#3f7a6a'; for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.ellipse(888 + i * 48, 480 - 120, 8, 5, 0, 0, Math.PI * 2); ctx.fill(); } }
+          shade(k, 0.4, [{ x: 960, y: 560, r: 700 }]); cold(k, 0.6);
+          return;
+        }
+        if (k.t < k.cue('d')) { zoom(k, 800, 650, 1.6, () => { hut(k); k.char(800, 900, 470, { ...CUU, face: 'cold' }); shade(k, 0.6, [HUT.lamp]); }); return; }
+        pier(k, { time: 'day', stilt: false });
+        boat(k, 960, 760, 1.5, { color: '#3f7a6a' });
+        k.vignette(0.4);
+        quote(k, '"Chỉ có một chiếc thuyền sơn xanh."', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Đêm rằm năm ngoái, thuyền Lụa lật ngay cạnh thuyền bố tôi. {b}Lụa bơi lại, bám vào mạn thuyền xanh. {c}Và luật làng thì ai cũng thuộc: đêm rằm tháng Bảy, không được cứu người.',
+        { v: 'cuu', text: '{d}Bố mày giữ đúng luật. {e}Bố mày gỡ tay nó ra.' },
+      ],
+      sfx: [['whoosh', 'a', 0.3], ['heartbeat', 'b', 0.45], ['stinger', 'e', 0.5]],
+      draw(k) {
+        riverWide(k, { time: 'night', sand: false });
+        boat(k, 1150, 660, 1.2, { color: '#3f7a6a' });
+        k.char(1180, 640, 380, { ...BO, face: after(k, 'e') ? 'cry' : 'shock', pose: after(k, 'e') ? 'point' : 'hold' });
+        k.char(1300, 650, 220, { ...NA, face: 'shock' });
+        if (after(k, 'a')) boat(k, 600, 700, 0.9, { capsized: true });
+        if (after(k, 'b') && k.t < k.cue('e', 0.8)) paleHand(k, 960, 650, 1.2, 0.3, 0.9);
+        const L = torchCrowd(k, 60, 600, 1060, 6, { h: 260 });
+        shade(k, 0.72, [moon, ...L, { x: 1100, y: 600, r: 420 }]);
+        cold(k, 0.75);
+        quote(k, '"Bố mày gỡ tay nó ra."', 'e', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Tôi hỏi: có ai thấy không? {b}Ông Cửu cười, một tiếng cười khô như vỏ hến.',
+        { v: 'cuu', text: '{c}Cả làng đứng trên bờ, cầm đuốc. Cả làng thấy. Không ai nói. Vì ai cũng giữ đúng luật. {d}Tao cũng đứng đó. Ba mươi năm tao vớt người chết. Chưa cứu được một người sống. Đêm ấy là lần duy nhất tao có thể.' },
+        '{e}Ông rót thêm chén nữa. Tay run, rượu đổ cả ra chiếu.',
+      ],
+      draw(k) {
+        if (after(k, 'c') && !after(k, 'd')) { riverWide(k, { time: 'night' }); const L = torchCrowd(k, 60, 1860, 900, 16, { h: 320 }); shade(k, 0.8, L); cold(k, 0.7); quote(k, '"Cả làng thấy. Không ai nói."', 'c', { color: AMBER }); return; }
+        zoom(k, 800, 650, 1.4, () => { hut(k); k.char(800, 900, 470, { ...CUU, face: after(k, 'd') ? 'cry' : 'smug', tears: after(k, 'd') ? 0.7 : 0, talk: k.talk('cuu') }); shade(k, 0.62, [HUT.lamp]); });
+        quote(k, '"Đêm ấy là lần duy nhất tao có thể."', 'd', { until: 'e' });
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Tôi chạy một mạch về nhà. Mẹ đang vo gạo bên mép sàn.',
+        '{b}Mẹ có biết không? {c}Tay mẹ dừng lại giữa rá gạo. Mẹ không trả lời. Thế là đủ. {d}Đêm rằm năm ngoái, mẹ cũng đứng trên bờ, cầm đuốc, như mọi người.',
+        { v: 'me', text: '{e}Mẹ đứng đó, vì bố con với em con đang ở giữa sông. Đêm ấy mẹ chỉ nhìn thấy mỗi chiếc thuyền nhà mình.' },
+      ],
+      draw(k) {
+        sanRoom(k, { day: true });
+        k.char(760, SAN.y, 440, { ...ME, face: after(k, 'c') ? 'sad' : 'calm', pose: 'hold', talk: k.talk('me'), look: after(k, 'e') ? -1 : 0 });
+        k.char(1100, SAN.y, 330, { ...THANG, face: after(k, 'c') ? 'shock' : 'angry', flip: true });
+        shade(k, 0.4, [SAN.door, SAN.lamp]);
+        quote(k, '"Mẹ có biết không?"', 'b', { until: 'c' });
+        quote(k, '"Mẹ chỉ nhìn thấy mỗi chiếc thuyền nhà mình."', 'e');
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Chiều hôm ấy, tôi bắt Tèo dạy tôi lặn. Tèo nhát nhất xóm, nhưng lại bơi giỏi nhất xóm, nín thở được lâu hơn cả người lớn.',
+        { v: 'teo', text: '{b}Mày tập làm gì?' },
+        '{c}Tôi không trả lời. Tèo cũng không hỏi lại. Nó chỉ đếm cho tôi, hết lượt này đến lượt khác, cho đến khi trời tối.',
+      ],
+      sfx: [['whoosh', 'c', 0.25]],
+      draw(k) {
+        pier(k, { time: k.t > k.cue('c', 3) ? 'dusk' : 'day', stilt: false, boats: false });
+        const dive = Math.sin(k.t * 0.9) > 0.2 && after(k, 'c');
+        wader(k, 1300, PIER.y + 90, 300, { ...TEO, face: 'calm', talk: k.talk('teo'), pose: 'point' }, 0.55);
+        if (!dive) wader(k, 1050, PIER.y + 90, 300, { ...THANG, face: 'calm' }, 0.55);
+        else { const { ctx } = k; ctx.strokeStyle = 'rgba(220,230,245,0.6)'; ctx.lineWidth = 3; for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.arc(1050 + i * 14, PIER.y + 80 - i * 20, 6, 0, Math.PI * 2); ctx.stroke(); } }
+        k.vignette(0.4);
+        if (dive) k.text(String(1 + Math.floor((k.t * 1.5) % 30)), 1300, 300, { size: 90, font: 'title', color: PAPER, outline: '#000', outlineWidth: 8 });
+      },
+    },
+
+    // ===== CÒN 1 NGÀY =====
+    {
+      chapter: 'Còn 1 ngày: dưới gầm bến', ...FAST,
+      say: [
+        '{a}Đêm trước rằm, tôi kéo thằng Tèo ra bến. Nó run như cầy sấy nhưng vẫn đi.',
+        { v: 'teo', text: '{b}Mày là bạn tao.' },
+        '{c}Nó nói, rồi níu áo tôi chặt hơn. Đúng nửa đêm, tiếng gọi lại vang lên.',
+        { v: 'lua', text: '{d}Sáu ơi…' },
+        '{e}Lần này tôi không chạy. Tôi chui xuống gầm bến, lội nước đến đầu gối, chĩa đèn pin vào chỗ tiếng gọi.',
+      ],
+      sfx: [['heartbeat', 'd', 0.45], ['drip', 'e', 0.35]],
+      draw(k) {
+        if (k.t < k.cue('e')) {
+          pier(k, { time: 'night' });
+          k.char(600, PIER.y - 20, 330, { ...THANG, face: after(k, 'd') ? 'angry' : 'calm' });
+          k.char(470, PIER.y - 20, 300, { ...TEO, face: 'shock', talk: k.talk('teo') });
+          shade(k, 0.8, [moon, { x: 600, y: 520, r: 300 }]);
+          quote(k, '"Sáu ơi…"', 'd', { color: COLD });
+        } else {
+          underPier(k);
+          wader(k, k.lerp(300, 700, k.at('e', 4, 'linear')), 760, 330, { ...THANG, face: 'angry', pose: 'point', walk: true }, 0.4);
+          shade(k, 0.65, [{ x: k.lerp(500, 1000, k.at('e', 4, 'linear')), y: 720, r: 380 }]);
+        }
+        countdown(k, 'CÒN 1 NGÀY', 'Dưới gầm bến');
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Là bà Hiền. {b}Bà ngồi ôm một cây cột bến, nửa người ngâm dưới nước, tóc xoã ướt, môi tím ngắt. Miệng bà vẫn mấp máy:',
+        { v: 'hien', text: '{c}Sáu ơi.' },
+        '{d}Hoá ra chỉ là một người mẹ.',
+      ],
+      sfx: [['stinger', 'a', 0.5]],
+      draw(k) {
+        zoom(k, 1110, 650, 1.3, () => {
+          underPier(k);
+          wader(k, 1110, 760, 420, { ...HIEN, face: 'blank', gloom: 0.7, talk: k.talk('hien'), pose: 'hold' }, 0.45);
+          shade(k, 0.62, [{ x: 1110, y: 620, r: 440 }]);
+        });
+        flash(k, 'a');
+        quote(k, 'Hoá ra chỉ là một người mẹ.', 'd');
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Bà quay sang, nhìn thẳng vào ánh đèn mà không chớp mắt.',
+        { v: 'hien', text: '{b}Tao không gọi nó. Con Lụa gọi. Đêm nào nó cũng gọi. Tao chỉ gọi theo, cho người ta nghe thấy. {c}Đêm nào nó cũng hát dưới kia, cái bài nó hay hát ở bến. Tao ngồi đây cho nó biết mẹ nó vẫn ở đây.' },
+        '{d}Tèo kéo tôi chạy. Lúc chạy lên bờ, tôi mới chợt nghĩ: bà Hiền có thể ngồi dưới gầm bến. {e}Nhưng bà không thể ở trên đồi, cách đây mười cây số, đêm bố ngã xuống vũng trâu.',
+      ],
+      sfx: [['stinger', 'e', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('d')) {
+          zoom(k, 1110, 600, 1.9, () => { underPier(k); wader(k, 1110, 760, 420, { ...HIEN, face: 'cold', talk: k.talk('hien'), look: -1 }, 0.45); shade(k, 0.72, [{ x: 1110, y: 600, r: 300 }]); });
+          quote(k, '"Con Lụa gọi. Tao chỉ gọi theo."', 'b', { color: COLD, until: 'c' });
+          quote(k, '"Tao ngồi đây cho nó biết mẹ nó vẫn ở đây."', 'c', { color: COLD });
+          return;
+        }
+        if (k.t < k.cue('e')) { pier(k, { time: 'night' }); k.char(k.lerp(300, 1000, k.at('d', 2)), PIER.y - 20, 330, { ...THANG, face: 'shock', walk: true, walkSpeed: 2 }); k.char(k.lerp(150, 850, k.at('d', 2)), PIER.y - 20, 300, { ...TEO, face: 'shock', walk: true, walkSpeed: 2 }); shade(k, 0.75, [moon]); return; }
+        hill(k, { time: 'night', rain: true }); shade(k, 0.6, [{ x: HILL.pool.x, y: HILL.pool.y, r: 520 }]);
+        quote(k, 'Mười cây số.', 'e', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Đêm ấy, tôi đặt cái mái chèo trước mặt bố, và kể hết. {b}Bố tôi khóc. Lần đầu tiên tôi thấy bố khóc.',
+        { v: 'bo', text: '{c}Đêm ấy, em con ngồi trong thuyền. Thuyền nhỏ. Con Lụa mà trèo lên thì thuyền lật, cả ba cùng chết. {d}Bố không giữ luật. Bố chọn.' },
+        '{e}Bố gỡ tay một đứa con gái mười bảy tuổi, để giữ lấy đứa con gái năm tuổi của mình. {f}Từ hôm ấy, bé Na không bao giờ chịu ngồi thuyền nữa.',
+      ],
+      sfx: [['heartbeat', 'd', 0.35]],
+      draw(k) {
+        sanRoom(k, {});
+        lie(k, 600, SAN.y - 20, 240, { ...NA, face: 'sleep' });
+        k.char(1000, SAN.y, 470, { ...BO, face: after(k, 'b') ? 'cry' : 'sad', tears: after(k, 'b') ? 1 : 0, talk: k.talk('bo'), look: after(k, 'c') ? -1 : 0 });
+        k.char(1280, SAN.y, 330, { ...THANG, face: 'sad', flip: true });
+        paddle(k, 1150, SAN.y - 10, 0.7, 0);
+        shade(k, 0.68, [SAN.lamp, { x: 1050, y: 600, r: 420, warm: 0.6 }]);
+        quote(k, '"Bố không giữ luật. Bố chọn."', 'd', { color: AMBER, until: 'e' });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Gần sáng, bố gọi tôi ra mép sàn, dạy tôi buộc cái nút dây thuyền mà ông nội dạy bố ngày xưa. Buộc đi, buộc lại, đến khi tôi thắt được mà không cần nhìn.',
+        { v: 'bo', text: '{b}Thuyền nhà mình, từ giờ con giữ. Giữ thuyền. Giữ em.' },
+        '{c}Tôi không hiểu tại sao bố lại dạy tôi việc ấy vào đúng sáng hôm ấy. Giờ thì tôi hiểu.',
+      ],
+      draw(k) {
+        pier(k, { time: 'dawn', lit: false });
+        k.char(1400, 590, 420, { ...BO, face: 'calm', pose: 'hold', talk: k.talk('bo') });
+        k.char(1600, 590, 300, { ...THANG, face: 'sad', pose: 'hold', flip: true });
+        const { ctx } = k; ctx.strokeStyle = '#a8905a'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(1500, 450); ctx.bezierCurveTo(1520, 520 + Math.sin(k.t * 2) * 10, 1480, 560, 1460, 760); ctx.stroke();
+        shade(k, 0.35, [{ x: 960, y: 300, r: 1400 }]);
+        quote(k, '"Giữ thuyền. Giữ em."', 'b', { color: AMBER });
+      },
+    },
+
+    // ===== RẰM =====
+    {
+      chapter: 'Rằm tháng Bảy', ...SLOW,
+      say: [
+        '{a}Chiều rằm, bố cạo râu, mặc cái áo sạch nhất, ngồi ăn bữa cơm với cả nhà. Bố gắp cho bé Na miếng cá to nhất. Không ai nói gì. {b}Ăn xong, bố bảo mẹ:',
+        { v: 'bo', text: '{c}Anh không trốn nữa.' },
+        '{d}Tối hôm ấy, cả làng ra bến như mọi năm. Người ta nấu cháo thí, thả đèn, thắp hương cho những người sông đã lấy. {e}Rồi người ta thắp đuốc, đứng thành hàng dọc bờ sông, và chờ.',
+      ],
+      sfx: [['gong', 'd', 0.3]],
+      draw(k) {
+        if (k.t < k.cue('d')) {
+          sanRoom(k, { day: true });
+          const { ctx } = k; ctx.fillStyle = '#5a4030'; ctx.beginPath(); ctx.ellipse(900, SAN.y - 6, 300, 30, 0, 0, Math.PI * 2); ctx.fill();
+          k.char(700, SAN.y, 470, { ...BO, face: after(k, 'c') ? 'sad' : 'calm', talk: k.talk('bo'), stubble: false, color: '#5a6a7a' });
+          k.char(1100, SAN.y, 420, { ...ME, face: 'sad', flip: true }); k.char(900, SAN.y, 270, { ...NA, face: 'calm' }); k.char(1300, SAN.y, 320, { ...THANG, face: 'sad', flip: true }); k.char(480, SAN.y, 450, { ...ONG, face: 'sad' });
+          shade(k, 0.45, [SAN.door, { x: 900, y: 600, r: 600, warm: 0.6 }]);
+          quote(k, '"Anh không trốn nữa."', 'c');
+        } else {
+          riverWide(k, { time: 'night' });
+          for (let i = 0; i < 9; i++) { const x = 400 + i * 160 + Math.sin(k.t * 0.5 + i) * 30, y = 620 + (i % 3) * 50; k.ctx.fillStyle = '#ffb340'; k.ctx.beginPath(); k.ctx.arc(x, y, 7, 0, Math.PI * 2); k.ctx.fill(); }
+          const L = after(k, 'e') ? torchCrowd(k, 60, 1860, 920, 16, { h: 320 }) : [];
+          shade(k, 0.7, [moon, ...L, { x: 960, y: 650, r: 700, warm: 0.4 }]);
+          countdown(k, 'RẰM THÁNG BẢY', '');
+        }
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Và thế là, như tôi đã kể từ đầu: bố tôi lội xuống sông. Cả làng đứng trên bờ cầm đuốc. Không ai bước xuống. Ai cũng giữ đúng luật.',
+        { v: 'lua', text: '{b}Sáu ơi.' },
+        { v: 'bo', text: '{c}Ơi. Anh đây. Anh xin lỗi em.' },
+        '{d}Trong lòng mẹ, bé Na bỗng vùng ra, hét lên một câu mà cả năm nay nó chưa từng nói:',
+        { v: 'na', text: '{e}Chị Lụa ơi! Đừng!' },
+        '{f}Rồi đầu bố chìm xuống.',
+      ],
+      sfx: [['heartbeat', 'b', 0.5], ['stinger', 'e', 0.45], ['whoosh', 'f', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('d')) { zoom(k, 1350, 620, 1.3, () => ram(k, { sink: 0.55, me: true, ong: true })); quote(k, '"Anh xin lỗi em."', 'c', { color: AMBER }); return; }
+        if (k.t < k.cue('f')) { riverWide(k, { time: 'night' }); const L = torchCrowd(k, 900, 1800, 940, 7, { h: 300 }); k.char(560, 990, 440, { ...ME, face: 'shock' }); k.char(720, 990, 290, { ...NA, face: 'shout', pose: 'shout', talk: k.talk('na') }); shade(k, 0.6, [...L, { x: 640, y: 700, r: 420, warm: 0.6 }]); quote(k, '"Chị Lụa ơi! Đừng!"', 'e', { color: COLD }); return; }
+        zoom(k, 1350, 620, 1.6, () => ram(k, { sink: 0.55 + 0.6 * k.at('f', 1.2, 'in'), me: true, ong: true }));
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Thầy Thông bước ra, giơ tay chặn trước hàng người:',
+        { v: 'thong', text: '{b}Không ai được xuống!' },
+        '{c}Ông nội tôi đang nắm chặt cổ tay tôi. Tôi cảm thấy bàn tay ông siết lại, chặt đến đau. {d}Rồi, tôi không biết vì sao, ông buông ra.',
+      ],
+      draw(k) {
+        if (k.t < k.cue('c')) { riverWide(k, { time: 'night' }); const L = torchCrowd(k, 60, 1860, 980, 14, { h: 300 }); k.char(960, 960, 500, { ...THONG, face: 'angry', pose: 'shout', talk: k.talk('thong') }); shade(k, 0.65, [...L, { x: 960, y: 650, r: 400, warm: 0.6 }]); return; }
+        riverWide(k, { time: 'night' });
+        zoom(k, 900, 700, 2.2, () => {
+          torchCrowd(k, 60, 600, 1000, 5, { h: 300 });
+          const let_go = after(k, 'd');
+          k.char(820, 1000, 470, { ...ONG, face: let_go ? 'cry' : 'sad', tears: let_go ? 1 : 0, pose: let_go ? 'stand' : 'point', look: 1 });
+          k.char(let_go ? k.lerp(1010, 1250, k.at('d', 0.8, 'in')) : 1010, 1000, 330, { ...THANG, face: 'angry', look: 1, walk: let_go, walkSpeed: 3 });
+        });
+        shade(k, 0.55, [{ x: 960, y: 560, r: 700, warm: 0.7, flicker: 1 }]);
+        quote(k, 'Ông buông ra.', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Tôi không nhớ mình đã nghĩ gì. Tôi chỉ nhớ mình chạy. {b}Qua hàng đuốc, qua tay ông nội, nhảy ùm xuống sông. {c}Đêm rằm tháng Bảy. Xuống nước. Để cứu người. {d}Tôi phá điều luật cuối cùng của làng.',
+      sfx: [['whoosh', 'a', 0.35], ['boom', 'b', 0.45]],
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          riverWide(k, { time: 'night' });
+          const L = torchCrowd(k, 60, 1100, 960, 10, { h: 300 });
+          const x = k.lerp(300, 1250, k.at('a', 2.5, 'in'));
+          k.char(x, k.t > k.cue('b') ? 700 : 960, 330, { ...THANG, face: 'shout', walk: true, walkSpeed: 3, pose: k.t > k.cue('b') ? 'cheer' : 'stand' });
+          shade(k, 0.65, [moon, ...L]);
+          return;
+        }
+        underwater(k);
+        k.char(960, 800, 330, { ...THANG, face: 'angry', pose: 'cheer', alpha: 0.9 });
+        cold(k, 0.4);
+        k.text('Tôi phá điều luật cuối cùng.', k.W / 2, 980, { size: 48, font: 'title', color: AMBER, fx: 'fade', p: k.at('d', 0.8), outline: '#000', outlineWidth: 8 });
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Dưới nước tối như mực. Tôi túm được cổ áo bố, kéo ngược lên. {b}Rồi có cái gì đó nắm lấy cổ chân tôi. {c}Một bàn tay. Nhỏ. Lạnh. {d}Nó nắm chặt. Tôi nghĩ: thế là hết. {e}Rồi bàn tay ấy buông ra.',
+      sfx: [['heartbeat', 'b', 0.55], ['stinger', 'c', 0.45]],
+      draw(k) {
+        underwater(k);
+        const up = after(k, 'e') ? k.at('e', 1.5, 'out') : 0;
+        k.char(900, 760 - 300 * up, 330, { ...THANG, face: after(k, 'b') ? 'shock' : 'angry', pose: 'cheer' });
+        k.char(1100, 640 - 300 * up, 420, { ...BO, face: 'sleep', alpha: 0.85 });
+        const grab = after(k, 'b') && !after(k, 'e', 0.3);
+        paleHand(k, 880, 810 - 300 * up + (grab ? 0 : 60 * k.at('e', 0.6)), 1.1, -0.3, (grab ? 0.8 : 0.8 * (1 - k.at('e', 0.8))) * k.at('b', 0.4));
+        cold(k, 0.45);
+        k.vignette(0.7);
+      },
+    },
+    {
+      ...FAST,
+      say: '{a}Tôi ngoi lên, ôm được đầu bố trên mặt nước. {b}Người đầu tiên lội ra kéo hai bố con tôi là thằng Tèo, đứa nhát nhất xóm. {c}Rồi bố Tèo. Rồi người thứ ba, người thứ tư. {d}Cái luật giữ cả làng đứng yên suốt bao nhiêu năm, vỡ ra chỉ trong mấy hơi thở.',
+      sfx: [['whoosh', 'b', 0.3], ['whoosh', 'c', 0.3]],
+      draw(k) {
+        riverWide(k, { time: 'night' });
+        const L = torchCrowd(k, 60, 1100, 960, 10, { h: 300 });
+        wader(k, 1300, 640, 300, { ...THANG, face: 'cry' }, 0.62); wader(k, 1420, 650, 380, { ...BO, face: 'sleep' }, 0.75);
+        if (after(k, 'b')) wader(k, k.lerp(900, 1180, k.at('b', 1.5)), 680, 300, { ...TEO, face: 'shout', walk: true }, 0.5);
+        if (after(k, 'c')) for (let i = 0; i < 3; i++) wader(k, k.lerp(700, 1050 - i * 90, k.at(k.cue('c', i * 0.6), 1.5)), 720 + i * 30, 440, { ...DAN(['#4a3a2a', '#3a4a5a', '#5a4a3a'][i]), face: 'shout', walk: true }, 0.45);
+        shade(k, 0.62, [moon, ...L, { x: 1300, y: 600, r: 360 }]);
+        quote(k, 'Cái luật vỡ ra chỉ trong mấy hơi thở.', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: [
+        '{a}Bố tôi nằm trên cát, ho ra nước, nhưng còn sống. {b}Không ai để ý ở đầu bến, có một người đang lội ra sông theo chiều ngược lại. Chậm rãi. Không vùng vẫy. {c}Bà Hiền. Tôi nghe bà gọi, lần này không phải tên bố tôi:',
+        { v: 'hien', text: '{d}Lụa ơi. Mẹ xuống với con đây.' },
+        '{e}Khi tôi chạy được đến đầu bến, mặt sông đã phẳng lặng.',
+      ],
+      sfx: [['wind', 'b', 0.3], ['heartbeat', 'e', 0.35]],
+      draw(k) {
+        riverWide(k, { time: 'night' });
+        const L = torchCrowd(k, 60, 900, 980, 8, { h: 300 });
+        lie(k, 1100, 940, 440, { ...BO, face: 'sad' });
+        k.char(900, 960, 330, { ...THANG, face: after(k, 'c') ? 'shock' : 'cry', look: after(k, 'b') ? 1 : 0 });
+        if (after(k, 'b') && !after(k, 'e')) wader(k, k.lerp(1500, 1720, k.at('b', 6, 'linear')), 600, 300, { ...HIEN, face: 'calm', talk: k.talk('hien') }, k.lerp(0.4, 0.8, k.at('b', 8, 'linear')));
+        shade(k, 0.65, [moon, ...L, { x: 1000, y: 800, r: 400 }]);
+        quote(k, '"Lụa ơi. Mẹ xuống với con đây."', 'd', { color: COLD });
+      },
+    },
+
+    // ===== KẾT =====
+    {
+      chapter: 'Điều tôi vẫn chưa hiểu', ...SLOW,
+      say: '{a}Sáng hôm sau, ông Cửu vớt được bà Hiền ở khúc sông cong, đúng chỗ năm ngoái ông vớt được Lụa. Ông bảo mặt bà bình thản như người đang ngủ. {b}Và trên cổ tay bà có một vệt bầm năm ngón, nhỏ thôi, như có ai nắm tay bà dắt đi. {c}Trong vòng tay bà, ôm chặt vào ngực, là con búp bê của bé Na. {d}Năm ấy, sông vẫn lấy đi đúng một người.',
+      sfx: [['stinger', 'c', 0.4], ['gong', 'd', 0.3]],
+      draw(k) {
+        if (k.t < k.cue('c')) { riverWide(k, { time: 'dawn', sand: false }); boat(k, 960, 640, 1.2, {}); k.char(960, 610, 400, { ...CUU, face: 'sad', pose: 'hold' }); shade(k, 0.35, [{ x: 960, y: 300, r: 1400 }]); return; }
+        black(k); doll(k, 960, 700, 3.5, { wet: true });
+        shade(k, 0.45, [{ x: 960, y: 560, r: 700 }]);
+        quote(k, 'Năm ấy, sông vẫn lấy đi đúng một người.', 'd', { color: AMBER });
+      },
+    },
+    {
+      ...FAST,
+      say: [
+        '{a}Tuần sau, ông nội tôi ra đình, đứng trước cả làng, nói một câu:',
+        { v: 'ong', text: '{b}Từ nay, đêm nào thấy người chìm cũng phải cứu. Đêm rằm cũng cứu.' },
+        '{c}Không ai cãi. {d}Trên tấm bảng gỗ đen, người ta sơn tên bà Hiền vào dòng chín mươi hai. {e}Rồi ông nội tự tay gỡ tấm bảng xuống, chẻ làm củi. Ông Cửu bỏ rượu từ năm ấy. {f}Sông Cái vẫn có người chết đuối, như mọi con sông khác. Nhưng từ năm ấy, không năm nào người làng tôi đứng trên bờ mà nhìn.',
+      ],
+      sfx: [['scratch', 'e', 0.4]],
+      draw(k) {
+        if (k.t < k.cue('d')) { dinh(k, { time: 'day' }); k.char(960, 840, 500, { ...ONG, face: 'angry', pose: 'shout', talk: k.talk('ong') }); for (let i = 0; i < 6; i++) k.char(250 + i * 110 + (i > 2 ? 980 : 0), 1010, 380, { ...DAN(['#3a4a5a', '#5a4a3a', '#4a5a4a', '#5a3a3a', '#3a3a4a', '#4a4a3a'][i]), face: 'sad', flip: i > 2 }); k.vignette(0.35); return; }
+        if (k.t < k.cue('f')) { black(k); k.group({ x: 960, y: 540, r: after(k, 'e') ? 0.15 * k.at('e', 1) : 0 }, () => board(k, 0, 0, 1, ROWS, { fill: 'Bà Hiền', fillP: k.at('d', 1.5, 'linear') })); shade(k, 0.45, [{ x: 960, y: 540, r: 900, warm: 0.3 }]); return; }
+        pier(k, { time: 'day' }); k.vignette(0.35);
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Sau này, tôi đã thử giải thích mọi chuyện. {b}Người ta có thể chết đuối trong một vũng nước sâu một gang tay, nếu ngất đi. {c}Người rơm có thể do ai đó vớt lên, mang về dựng ở cửa. {d}Tiếng gọi dưới gầm bến là bà Hiền. {e}Mọi thứ đều có một lời giải. Trừ một điều.',
+      draw(k) {
+        k.ctx.fillStyle = '#1f242c'; k.ctx.fillRect(-200, -200, k.W + 400, k.H + 400);
+        k.char(400, 1000, 560, { ...DAN('#3c4652', { stubble: true }), face: 'blank', pose: 'think' });
+        const memo = (x, y, c, fn) => { const p = k.at(c, 0.6); if (p <= 0) return; const { ctx } = k; ctx.save(); ctx.globalAlpha = p; ctx.beginPath(); ctx.rect(x, y, 440, 248); ctx.clip(); k.group({ x, y, s: 440 / 1920 }, fn); ctx.restore(); ctx.save(); ctx.globalAlpha = p; ctx.strokeStyle = 'rgba(239,228,204,0.7)'; ctx.lineWidth = 3; ctx.strokeRect(x, y, 440, 248); ctx.restore(); };
+        memo(760, 120, 'b', () => { hill(k, { time: 'day' }); });
+        memo(1290, 120, 'c', () => { sanRoom(k, { day: true }); strawman(k, 1700, SAN.y, 460, { wet: true, blank: true }); });
+        memo(1025, 420, 'd', () => { underPier(k); wader(k, 1110, 760, 420, { ...HIEN, face: 'blank' }, 0.45); });
+        shade(k, 0.45, [{ x: 600, y: 500, r: 700, warm: 0.4 }, { x: 1300, y: 400, r: 800 }]);
+        quote(k, 'Trừ một điều.', 'e', { color: AMBER });
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Bàn tay đã nắm cổ chân tôi đêm ấy. Nó nhỏ, như tay một đứa con gái mười bảy tuổi. {b}Nó có thể kéo tôi xuống. Nhưng nó buông ra. {c}Như thể nó vừa nhận ra, tôi đang làm đúng cái việc mà năm trước, cả một làng người cầm đuốc đã không ai làm cho nó.',
+      draw(k) {
+        underwater(k);
+        const rel = after(k, 'b') ? k.at('b', 2, 'inOut') : 0;
+        paleHand(k, 960, 560 + 140 * rel, 2.6, -0.2, 0.75 * (1 - 0.6 * rel));
+        cold(k, 0.4); k.vignette(0.6);
+        quote(k, 'Nó buông ra.', 'b', { color: COLD, until: 'c' });
+      },
+    },
+    {
+      ...SLOW,
+      say: '{a}Bé Na bây giờ đã ngoài ba mươi. Chiều nào, em cũng ra bến dạy bơi cho trẻ con trong làng. Không lấy tiền. {b}Em bảo, em không nhớ gì về đêm rằm năm em năm tuổi. Em chỉ nhớ có một chị tóc dài, hát rất hay. {c}Con búp bê ngày ấy, Na đặt lên mộ Lụa. Đến giờ vẫn còn ở đó.',
+      draw(k) {
+        if (k.t < k.cue('c')) {
+          pier(k, { time: 'day', boats: false, stilt: false });
+          k.text('LỚP DẠY BƠI', 300, 520, { size: 40, font: 'title', color: '#2a1c10' });
+          wader(k, 1000, 760, 470, { ...ME, color: '#3f7a6a', hair: 'long', face: 'happy', pose: 'present' }, 0.4);
+          for (let i = 0; i < 3; i++) wader(k, 1200 + i * 150, 780, 280, { ...DAN(['#c86a6a', '#5a7aa8', '#e8b84a'][i], { body: 'kid' }), face: 'happy' }, 0.5);
+          k.vignette(0.3);
+          tag(k, 'BÂY GIỜ', 'a');
+          return;
+        }
+        riverWide(k, { time: 'dusk', sand: true });
+        const { ctx } = k; ctx.fillStyle = '#3a3026'; ctx.beginPath(); ctx.ellipse(960, 960, 220, 60, 0, Math.PI, 0); ctx.fill();
+        doll(k, 960, 930, 1.2, {});
+        shade(k, 0.4, [{ x: 960, y: 800, r: 600, warm: 0.4 }]);
+      },
+    },
+    {
+      lead: 0.8, tail: 2.5,
+      say: '{a}Làng tôi vẫn tin mỗi năm sông lấy đi đúng một người. {b}Nhưng năm ấy, lần đầu tiên, sông trả lại một người.',
+      sfx: [['wind', 0, 0.25]],
+      draw(k) {
+        riverWide(k, { time: 'dusk', sand: false });
+        shade(k, 0.4, [{ x: 960, y: 300, r: 1400 }]);
+        quote(k, 'Năm ấy, lần đầu tiên, sông trả lại một người.', 'b', { color: PAPER, size: 54 });
+      },
+    },
+
+    // ===== CUỐI =====
+    nextScene({
+      say: '{next}Tập sau là một chuyện khác, ở một làng khác: bà đồng gọi hồn một người chồng vừa mất. Người về nói đúng giọng anh ấy, kể đúng những chuyện chỉ anh ấy biết. Nhưng người ấy lại gọi vợ mình là chị.',
+      title: 'Gọi Hồn | Người Về Lại Gọi Vợ Mình Là Chị',
+      hook: 'Nói đúng giọng, kể đúng chuyện… nhưng gọi vợ là "chị".',
+      art(k) {
+        const { ctx } = k;
+        ctx.fillStyle = '#120d0a'; ctx.fillRect(400, 200, 1120, 600);
+        k.prop('incense', 960, 640, 200);
+        for (let i = 0; i < 2; i++) { ctx.fillStyle = '#ffb340'; ctx.beginPath(); ctx.ellipse(700 + i * 520, 560, 10, 22, 0, 0, Math.PI * 2); ctx.fill(); }
+        k.char(960, 800, 420, { ...DAN('#7a2a2a', { body: 'woman', hair: 'bun' }), outfit: 'dress', face: 'blank', alpha: 0.9 });
+        k.vignette(0.6);
+      },
+    }),
+    subScene({
+      say: '{q}Nếu là bạn, ngồi trên chiếc thuyền ấy, với đứa con năm tuổi bên cạnh, bạn có gỡ tay Lụa ra không? Hãy để lại câu trả lời. {sub}Và nếu muốn nghe tiếp những chuyện chưa có lời giải, hãy đăng ký Nhân Gian Chưa Kể.',
+      question: 'Ngồi trên chiếc thuyền ấy, bạn có gỡ tay Lụa ra không?',
+      art(k) { paddle(k, 960, 960, 1, 0); },
+    }),
+  ],
+};

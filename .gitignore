@@ -1,55 +1,28 @@
-# Repo chỉ chứa thuật toán hình ảnh (engine vẽ + bộ cảnh) của 2 kênh:
-# Nhân Gian Chưa Kể (nét vẽ hiện tại, từ tập 121) và Hạt Bụi Xanh.
-# Cách làm: chặn TẤT CẢ, rồi chỉ mở đúng các file dưới đây.
-# Video render, file giọng, kịch bản các tập, dữ liệu Studio, token, .env… đều bị chặn.
+# Đưa lên toàn bộ mã nguồn dự án, TRỪ những thứ dưới đây.
 
-/*
-!/.gitignore
-!/.github/
-!/package.json
-!/package-lock.json
-!/.env.example
-
-# Engine vẽ dùng chung (rough.js, nhân vật, đạo cụ, chữ, nét cọ, 3D, player)
-!/engine/
-
-# Bộ cảnh của 2 kênh
-!/channel/
-/channel/*
-# Nhân Gian Chưa Kể
-!/channel/nhan-gian.js
-!/channel/nhan-gian-doll.js
-!/channel/nhan-gian-hd.js
-!/channel/nhan-gian-babi.js
-!/channel/nhan-gian-cauco.js
-!/channel/nhan-gian-gieng.js
-!/channel/nhan-gian-ke.js
-!/channel/nhan-gian-kinh.js
-!/channel/nhan-gian-magiau.js
-!/channel/nhan-gian-nuna.js
-!/channel/art-neu-ban-la.js
-# Hạt Bụi Xanh
-!/channel/hat-bui-xanh.js
-!/channel/hat-bui-xanh-3d.js
-!/channel/art-hat-bui-xanh.js
-
-# Tạo giọng đọc (gọi API OmniVoice / ElevenLabs / Edge TTS)
-!/scripts/
-/scripts/*
-!/scripts/tts.mjs
-!/scripts/tts_edge.py
-!/scripts/vi-so.mjs
-
-# Cảnh mẫu cho 2 kênh
-!/videos/
-/videos/*
-!/videos/mau-nhan-gian/
-!/videos/mau-hat-bui-xanh/
-
-# Phòng hờ trong các thư mục được mở
-.DS_Store
-*.mp4
-*.m4a
-*.mp3
-*.wav
+# Video đã render, giọng đọc, khung hình, cache (sinh lại được bằng scripts/build.mjs)
+output/
+.cache/
 node_modules/
+.venv/
+
+# Khung hình tách từ clip NASA/ESA (~2,9 GB) — tạo lại bằng scripts/anh-that.mjs --video
+videos/*/assets/clips/
+
+# Bí mật: khoá API, token YouTube
+.env
+.secrets/
+
+# Mẫu giọng OmniVoice (bản ghi giọng người thật, không phải mã nguồn)
+channel/research/giong-omnivoice/
+
+# Tài liệu mua của H2DEV — giấy phép cá nhân, không được chia sẻ
+/skills/
+/h2dev_flow/
+/ancient_humans_master_prompt.docx.md
+/GIAY-PHEP.txt
+/README.md
+
+# Rác hệ thống
+.DS_Store
+*.bak
