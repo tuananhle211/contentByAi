@@ -1,0 +1,41 @@
+# Repo chỉ chứa thuật toán hình ảnh (engine vẽ + bộ cảnh) của 2 kênh:
+# Nhân Gian Chưa Kể (nét vẽ hiện tại, từ tập 121) và Hạt Bụi Xanh.
+# Cách làm: chặn TẤT CẢ, rồi chỉ mở đúng các file dưới đây.
+# Video render, giọng đọc, kịch bản, dữ liệu Studio, token, .env… đều bị chặn.
+
+/*
+!/.gitignore
+!/.github/
+!/package.json
+!/package-lock.json
+
+# Engine vẽ dùng chung (rough.js, nhân vật, đạo cụ, chữ, nét cọ, 3D, player)
+!/engine/
+
+# Bộ cảnh của 2 kênh
+!/channel/
+/channel/*
+# Nhân Gian Chưa Kể
+!/channel/nhan-gian.js
+!/channel/nhan-gian-doll.js
+!/channel/nhan-gian-hd.js
+!/channel/nhan-gian-babi.js
+!/channel/nhan-gian-cauco.js
+!/channel/nhan-gian-gieng.js
+!/channel/nhan-gian-ke.js
+!/channel/nhan-gian-kinh.js
+!/channel/nhan-gian-magiau.js
+!/channel/nhan-gian-nuna.js
+!/channel/art-neu-ban-la.js
+# Hạt Bụi Xanh
+!/channel/hat-bui-xanh.js
+!/channel/hat-bui-xanh-3d.js
+!/channel/art-hat-bui-xanh.js
+
+# Phòng hờ trong các thư mục được mở
+.DS_Store
+*.mp4
+*.m4a
+*.mp3
+*.wav
+node_modules/
